@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Verzekeringen prototype</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.1rem; margin-top: 2rem; }
+    .email { border: 1px solid #ddd; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+    .email .meta { font-size: 0.85rem; color: #666; margin-bottom: 0.4rem; }
+    .email .subject { font-weight: 600; }
+    .email .body { white-space: pre-wrap; font-size: 0.9rem; margin-top: 0.5rem; }
+    .distance { font-size: 0.8rem; color: #999; }
+    input[type="text"] { width: 70%; padding: 0.5rem; }
+    button { padding: 0.5rem 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Verzekeringen prototype</h1>
+
+  <h2>Semantic search (vector DB)</h2>
+  <form id="search-form">
+    <input type="text" id="query" placeholder="e.g. schade aan mijn wagen" />
+    <button type="submit">Search</button>
+  </form>
+  <div id="search-results"></div>
+
+  <h2>All emails (normal DB)</h2>
+  <div id="email-list">Loading...</div>
+
+  <script>
+    async function loadEmails() {
+      const res = await fetch('/api/emails');
+      const emails = await res.json();
+      const container = document.getElementById('email-list');
+      container.innerHTML = '';
+      if (emails.length === 0) {
+        container.textContent = 'No emails yet.';
+        return;
+      }
+      emails.forEach(e => container.appendChild(renderEmail(e)));
+    }
+
+    function renderEmail(e, distance) {
+      const div = document.createElement('div');
+      div.className = 'email';
+      div.innerHTML = `
+        <div class="meta">${e.client_name} &lt;${e.client_email}&gt; — ${new Date(e.date).toLocaleString()}
+        ${distance !== undefined ? `<span class="distance"> · distance: ${distance.toFixed(3)}</span>` : ''}</div>
+        <div class="subject">${e.subject}</div>
+        <div class="body">${e.body}</div>
+      `;
+      return div;
+    }
+
+    document.getElementById('search-form').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const query = document.getElementById('query').value.trim();
+      if (!query) return;
+      const res = await fetch('/api/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
+      });
+      const results = await res.json();
+      const container = document.getElementById('search-results');
+      container.innerHTML = '';
+      results.forEach(r => container.appendChild(renderEmail(
+        { client_name: r.metadata.client_name, client_email: r.metadata.client_email, subject: r.metadata.subject, date: r.metadata.date, body: r.document },
+        r.distance
+      )));
+    });
+
+    loadEmails();
+  </script>
+</body>
+</html>
