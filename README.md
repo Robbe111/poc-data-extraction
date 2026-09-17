@@ -41,3 +41,65 @@ Open **http://127.0.0.1:8000** in your browser.
 
 - The page lists the emails from the SQLite DB (paged), with their PDF attachments.
 - The search box does a semantic search against the Chroma vector DB, over email bodies, PDFs, or both (e.g. try "western electricity price cap").
+
+## Use it from Claude (MCP)
+
+`backend/mcp_server.py` is an MCP server that gives Claude read access to the archive, so you can ask questions about it straight from Claude Desktop or Claude Code. Claude does the chatting; the server only searches and fetches documents. It runs locally: Claude starts it in the background when it opens. You never start it yourself.
+
+Tools Claude gets:
+
+| Tool | What it does |
+|---|---|
+| `get_dataset_overview` | number of emails/PDFs, mailboxes, date range, top senders |
+| `search_documents` | semantic search over email bodies and/or PDF text |
+| `list_emails` | filter by sender, recipient, subject, date range, has attachment |
+| `get_email` | full email incl. body and attachment list |
+| `get_pdf_text` | full text of a PDF + link to open the original |
+
+### Prerequisites
+
+1. Dependencies installed in `.venv` (`pip install -r requirements.txt`, includes `mcp`).
+2. Data loaded: `python backend/ingest_enron.py --reset`.
+3. Optional but nice for the demo: run the web app (`uvicorn main:app --app-dir backend`) so the PDF links Claude gives (`http://127.0.0.1:8000/api/attachments/...`) open the original PDF.
+
+### Claude Desktop
+
+1. Open the config file. Easiest: Claude Desktop → **Settings → Developer → Edit Config**. It lives at
+   - Microsoft Store install: `%LOCALAPPDATA%\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`
+   - regular installer: `%APPDATA%\Claude\claude_desktop_config.json`
+2. Add an `mcpServers` block at the top level, next to what's already there (keep the existing `preferences` etc.). Use **absolute paths**, with forward slashes (a single `\` is invalid JSON):
+
+   ```json
+   {
+     "mcpServers": {
+       "broker-mailbox": {
+         "command": "C:/Users/verme/poc-data-extraction/.venv/Scripts/python.exe",
+         "args": ["C:/Users/verme/poc-data-extraction/backend/mcp_server.py"]
+       }
+     },
+     "preferences": { "...": "existing content stays as is" }
+   }
+   ```
+3. **Fully quit** Claude Desktop (system tray icon → Quit, closing the window is not enough) and start it again.
+4. Check: in a new chat, open the tools/connectors menu (the sliders or "+" icon in the message box). `broker-mailbox` should be listed with its 5 tools. **Settings → Developer** also shows the server status.
+5. Ask a question, e.g. the demo prompts below. Claude asks permission the first time it uses a tool; choose "Always allow" to keep the demo smooth.
+
+### Claude Code
+
+The repo contains `.mcp.json`, so Claude Code picks the server up automatically when opened in this folder (it asks once to approve it). Check with `/mcp`. Outside this folder: `claude mcp add broker-mailbox -- C:\path\to\.venv\Scripts\python.exe C:\path\to\backend\mcp_server.py`.
+
+### Demo prompts
+
+- "What's in the mailbox archive?"
+- "Find the PDF newsletters about the Western power price cap. What did FERC staff conclude? Give me the link to the PDF."
+- "Which emails with attachments were sent in January 2002? Summarise each in one line."
+- "What changed in the real-time trading schedule for February, and who sent it?"
+- "Show me the W-4 form that was sent around. What is it for?"
+
+### Troubleshooting
+
+- **Server doesn't show up / "failed"**: check the log `mcp-server-broker-mailbox.log` in the `logs` folder next to `claude_desktop_config.json`. Usual causes: a wrong path, or invalid JSON (missing comma).
+- **Test the server without Claude**: `.venv\Scripts\python backend\mcp_server.py` should start and then wait silently (it's waiting for Claude on stdin). Ctrl+C to stop. An import error here means a dependency is missing.
+- **No results**: data not loaded yet, run the ingest step.
+- **Re-ingested data**: restart Claude Desktop so the server reopens the databases.
+- **PDF links don't open**: the web app (uvicorn) isn't running.

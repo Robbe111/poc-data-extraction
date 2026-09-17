@@ -3,3 +3,4 @@ uvicorn[standard]
 chromadb
 pypdf
 requests
+mcp>=2.2,<3

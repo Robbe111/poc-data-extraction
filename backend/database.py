@@ -94,3 +94,85 @@ def get_attachment(attachment_id: str):
     row = conn.execute("SELECT * FROM attachments WHERE id = ?", (attachment_id,)).fetchone()
     conn.close()
     return dict(row) if row else None
+
+
+def search_emails(
+    sender: str | None = None,
+    recipient: str | None = None,
+    subject: str | None = None,
+    date_from: str | None = None,
+    date_to: str | None = None,
+    with_attachments_only: bool = False,
+    limit: int = 20,
+    offset: int = 0,
+):
+    """Structured (non-semantic) filtering on email metadata."""
+    clauses, params = [], []
+    if sender:
+        clauses.append("e.sender LIKE ?")
+        params.append(f"%{sender}%")
+    if recipient:
+        clauses.append("(e.recipients LIKE ? OR e.cc LIKE ?)")
+        params += [f"%{recipient}%", f"%{recipient}%"]
+    if subject:
+        clauses.append("e.subject LIKE ?")
+        params.append(f"%{subject}%")
+    if date_from:
+        clauses.append("e.date >= ?")
+        params.append(date_from)
+    if date_to:
+        clauses.append("e.date <= ?")
+        params.append(date_to + "T23:59:59" if len(date_to) == 10 else date_to)
+    if with_attachments_only:
+        clauses.append("EXISTS (SELECT 1 FROM attachments a WHERE a.email_id = e.id)")
+    where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+
+    conn = get_connection()
+    total = conn.execute(f"SELECT COUNT(*) FROM emails e {where}", params).fetchone()[0]
+    rows = conn.execute(
+        f"""
+        SELECT e.id, e.sender, e.recipients, e.subject, e.date, e.folder,
+               (SELECT GROUP_CONCAT(a.filename, ', ') FROM attachments a WHERE a.email_id = e.id) AS attachments
+        FROM emails e {where}
+        ORDER BY e.date DESC LIMIT ? OFFSET ?
+        """,
+        params + [limit, offset],
+    ).fetchall()
+    conn.close()
+    return {"total": total, "emails": [dict(r) for r in rows]}
+
+
+def get_email(email_id: str):
+    conn = get_connection()
+    row = conn.execute("SELECT * FROM emails WHERE id = ?", (email_id,)).fetchone()
+    if row is None:
+        conn.close()
+        return None
+    email = dict(row)
+    email["attachments"] = [
+        dict(a)
+        for a in conn.execute(
+            "SELECT id, filename, extension, LENGTH(text) AS text_length FROM attachments WHERE email_id = ?",
+            (email_id,),
+        )
+    ]
+    conn.close()
+    return email
+
+
+def get_overview():
+    conn = get_connection()
+    overview = {
+        "emails": conn.execute("SELECT COUNT(*) FROM emails").fetchone()[0],
+        "attachments": conn.execute("SELECT COUNT(*) FROM attachments").fetchone()[0],
+        "mailboxes": [r[0] for r in conn.execute("SELECT DISTINCT custodian FROM emails ORDER BY 1")],
+        "date_range": dict(conn.execute("SELECT MIN(date) AS first, MAX(date) AS last FROM emails").fetchone()),
+        "top_senders": [
+            {"sender": r[0], "emails": r[1]}
+            for r in conn.execute(
+                "SELECT sender, COUNT(*) FROM emails GROUP BY sender ORDER BY 2 DESC LIMIT 10"
+            )
+        ],
+    }
+    conn.close()
+    return overview

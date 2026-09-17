@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "broker-mailbox": {
+      "command": "cmd",
+      "args": ["/c", ".venv\\Scripts\\python.exe", "backend\\mcp_server.py"]
+    }
+  }
+}

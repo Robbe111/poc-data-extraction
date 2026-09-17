@@ -27,3 +27,6 @@ ENRON_ATTACHMENT_EXTENSIONS = {
 
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))  # characters
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
+
+# Where the web app runs; used by the MCP server to hand out links to original PDFs.
+APP_BASE_URL = os.getenv("APP_BASE_URL", "http://127.0.0.1:8000")
