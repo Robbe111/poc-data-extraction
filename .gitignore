@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local data: downloaded Enron zips, SQLite DB, Chroma store
+data/
