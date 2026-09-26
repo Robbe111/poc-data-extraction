@@ -30,6 +30,10 @@ ENRON_ATTACHMENT_EXTENSIONS = {
 DEMO_DIR = BACKEND_DIR.parent / "demo"
 DEMO_CACHE_DIR = DATA_DIR / "demo"
 
+# Local embedding model (fastembed, ONNX: no PyTorch). Must be multilingual: the demo mailbox is
+# Dutch. Changing it needs a re-ingest; each model gets its own Chroma collection.
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "intfloat/multilingual-e5-large")
+
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))  # characters
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 

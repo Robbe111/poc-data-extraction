@@ -31,7 +31,7 @@ Brokers send every client-facing document (policy documents, offers, claims corr
 - **Frontend**: simple web frontend (framework TBD as the project develops — keep it lightweight)
 - **Email ingestion**: Microsoft Graph API (OAuth2 against the broker's Microsoft 365 / Outlook account)
 - **Vector DB**: open-source, self-hosted locally (e.g. Chroma or Qdrant — pick one when ingestion pipeline is built; no cloud vector DB)
-- **Embeddings**: open-source, run locally (no cloud embedding API for now)
+- **Embeddings**: open-source, run locally (no cloud embedding API for now). Currently `intfloat/multilingual-e5-large` via fastembed, configurable with `EMBEDDING_MODEL`
 - **LLM**: wrapped behind a provider-agnostic interface — see below. Default/current provider is Claude (Anthropic API), using a user-supplied API key.
 
 ### LLM wrapper
@@ -67,7 +67,7 @@ Chatbot flow:
 ## Open questions / decisions still to make
 
 - Which vector DB specifically (Chroma vs Qdrant vs other) — decide when building the ingestion pipeline
-- Which local embedding model to use
+- Which local embedding model to use (now e5-large, best in a small Dutch benchmark, but slow on CPU)
 - How to handle emails/attachments that don't clearly match a single client (e.g. broker-internal mail, group mailings)
 - Attachment parsing strategy for scanned/image-based PDFs (OCR needed?)
 - How to handle re-ingestion / incremental sync (new emails arriving after initial ingest) vs. one-off historical import

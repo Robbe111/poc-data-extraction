@@ -28,6 +28,9 @@ Defaults can also be set via env vars (see `backend/config.py`):
 | `ENRON_MAX_EMAILS` | `0` | max emails per custodian (0 = all) |
 | `ENRON_ATTACHMENT_EXTENSIONS` | `pdf` | attachment types to index (e.g. `pdf,doc,xls` — non-PDFs use EDRM's pre-extracted text) |
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | `1000` / `150` | chunking, in characters |
+| `EMBEDDING_MODEL` | `intfloat/multilingual-e5-large` | local embedding model (via fastembed, see below) |
+
+Embeddings run locally with [fastembed](https://github.com/qdrant/fastembed) (ONNX, no PyTorch). The model has to be multilingual, because the demo mailbox is Dutch. On 11 labelled Dutch questions over the demo mailbox, `multilingual-e5-large` found a relevant passage in the top 5 for 11/11 questions (MRR 0.95). `paraphrase-multilingual-mpnet-base-v2` found 8/11, and Chroma's English default 7/11. e5-large is heavy, though: a 2.2 GB download on first use, and about 15 minutes to embed the demo mailbox on a laptop CPU. For a faster setup, use `EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-mpnet-base-v2` (1 GB, ~5x faster). Each model gets its own Chroma collection, so after changing the model, re-run the ingest.
 
 PDFs are parsed with `pypdf`; if that yields no text, EDRM's pre-extracted text is used. Enron mail is from 2000–2002, so PDFs are relatively rare — custodians with a decent number of PDFs among the small ones: `meyers-a`, `king-j`, `townsend-j`, `motley-m`, `solberg-g`, `platter-p`.
 
@@ -125,4 +128,6 @@ The repo contains `.mcp.json`, so Claude Code picks the server up automatically 
 - **Test the server without Claude**: `.venv\Scripts\python backend\mcp_server.py` should start and then wait silently (it's waiting for Claude on stdin). Ctrl+C to stop. An import error here means a dependency is missing.
 - **No results**: data not loaded yet, run the ingest step.
 - **Re-ingested data**: restart Claude Desktop so the server reopens the databases.
+- **No results after changing `EMBEDDING_MODEL`**: every model has its own collection, so re-run the ingest. Claude Desktop must see the same `EMBEDDING_MODEL` as the ingest (add it under `"env"` in the server config if you changed it).
+- **First search is slow**: the embedding model loads on the first query (and downloads on the very first run).
 - **PDF links don't open**: the web app (uvicorn) isn't running.
