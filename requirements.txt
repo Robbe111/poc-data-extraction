@@ -4,3 +4,5 @@ chromadb
 pypdf
 requests
 mcp>=2.2,<3
+pyyaml
+tzdata  # time zones for zoneinfo on Windows

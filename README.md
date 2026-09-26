@@ -31,6 +31,29 @@ Defaults can also be set via env vars (see `backend/config.py`):
 
 PDFs are parsed with `pypdf`; if that yields no text, EDRM's pre-extracted text is used. Enron mail is from 2000–2002, so PDFs are relatively rare — custodians with a decent number of PDFs among the small ones: `meyers-a`, `king-j`, `townsend-j`, `motley-m`, `solberg-g`, `platter-p`.
 
+## Demo mailbox: Belgian broker
+
+For demos to brokers there is also a synthetic mailbox of a fictional Flemish brokerage ("Verzekeringskantoor Hoflandt"): 99 Dutch emails between the broker and ~29 clients (claims, coverage questions, quotes, a newsletter, internal mail), from Dec 2025 to Sep 2026. 37 of them carry real, public general conditions from AXA Belgium and KBC as PDF attachments, and the emails reference those documents (e.g. "glasbreuk is gedekt volgens artikel 1.4.2").
+
+```
+python backend/ingest_demo.py            # add the demo mailbox next to what's loaded
+python backend/ingest_demo.py --reset    # demo mailbox only (wipes the Enron data)
+```
+
+- `demo/contacts.yaml`: broker staff and the client list (id, name, email addresses, policies), usable later for client matching
+- `demo/documents.yaml`: the 14 AXA/KBC PDFs and their source URLs. They're downloaded into `data/demo/` on first run (not committed). If a URL stops working, save the PDF there by hand as `<key>.pdf`.
+- `demo/mailbox/*.yaml`: the emails, one thread after another. Edit or add emails there and re-run the ingest (idempotent).
+
+All people, addresses and policy numbers are made up. Edge cases for later client matching: one household with two addresses (K-1013), a newsletter sent to 14 clients, and internal mail between broker staff.
+
+Demo prompts (Claude via MCP):
+
+- "Jan Peeters heeft een barst in zijn voorruit. Is dat gedekt en krijgt hij een vervangwagen? Geef het artikel uit de voorwaarden."
+- "Welke klanten hadden het voorbije jaar schade aan hun woning, en wat werd er uitbetaald?"
+- "Waarom is de kapotte turbo van Tom Willems niet gedekt?"
+- "Wat is het verschil tussen de familiale van KBC en AXA voor geleende spullen?"
+- "Hoeveel mag KBC terugvorderen van de zoon van Patrick Martens, en op basis van welk artikel?"
+
 ## Run
 
 ```

@@ -25,6 +25,11 @@ ENRON_ATTACHMENT_EXTENSIONS = {
     e.strip().lower() for e in os.getenv("ENRON_ATTACHMENT_EXTENSIONS", "pdf").split(",") if e.strip()
 }
 
+# Synthetic demo mailbox of a (fictional) Belgian broker: hand-written emails in demo/,
+# with real AXA/KBC general conditions as PDF attachments, downloaded into DEMO_CACHE_DIR.
+DEMO_DIR = BACKEND_DIR.parent / "demo"
+DEMO_CACHE_DIR = DATA_DIR / "demo"
+
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))  # characters
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 
