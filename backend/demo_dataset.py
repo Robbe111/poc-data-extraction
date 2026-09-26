@@ -1,8 +1,9 @@
 """Source adapter for the synthetic demo mailbox of a (fictional) Belgian insurance broker.
 
 The emails are hand-written in demo/mailbox/*.yaml, the people in them in demo/contacts.yaml.
-Attachments are real, public general conditions of AXA Belgium and KBC (demo/documents.yaml),
-downloaded into data/demo/ on first use rather than committed.
+Attachments are real, public general conditions of AXA Belgium, KBC, AG Insurance and P&V
+(demo/documents.yaml), downloaded into data/demo/ on first use rather than committed, and made-up
+special conditions (demo/policies.yaml), rendered into data/demo/ as PDFs by demo_policies.
 
 Yields the same dicts as enron_dataset, so the rest of the pipeline doesn't care where
 emails come from.
@@ -17,6 +18,7 @@ import requests
 import yaml
 
 import config
+import demo_policies
 from enron_dataset import extract_pdf_text
 
 MAILBOX = "hoflandt"
@@ -34,13 +36,26 @@ def load_contacts() -> dict:
 
 
 def load_documents() -> dict[str, dict]:
+    """Attachable documents by key: downloadable general conditions plus generated special conditions."""
     with open(config.DEMO_DIR / "documents.yaml", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+        documents = yaml.safe_load(f)
+    with open(config.DEMO_DIR / "policies.yaml", encoding="utf-8") as f:
+        for key, policy in yaml.safe_load(f).items():
+            if key.startswith("_"):  # reusable YAML anchors, not documents
+                continue
+            if key in documents:
+                raise SystemExit(f"policies.yaml: key {key!r} is also used in documents.yaml")
+            documents[key] = {"filename": policy["filename"], "policy": policy}
+    return documents
 
 
 def download(key: str, document: dict) -> Path:
     config.DEMO_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     target = config.DEMO_CACHE_DIR / f"{key}.pdf"
+    if "policy" in document:
+        # Generated, not downloaded: cheap, so always re-render to pick up edits in policies.yaml.
+        target.write_bytes(demo_policies.render(document["policy"]))
+        return target
     if target.exists():
         return target
     print(f"  downloading {document['filename']}")

@@ -36,7 +36,10 @@ PDFs are parsed with `pypdf`; if that yields no text, EDRM's pre-extracted text 
 
 ## Demo mailbox: Belgian broker
 
-For demos to brokers there is also a synthetic mailbox of a fictional Flemish brokerage ("Verzekeringskantoor Hoflandt"): 99 Dutch emails between the broker and ~29 clients (claims, coverage questions, quotes, a newsletter, internal mail), from Dec 2025 to Sep 2026. 37 of them carry real, public general conditions from AXA Belgium and KBC as PDF attachments, and the emails reference those documents (e.g. "glasbreuk is gedekt volgens artikel 1.4.2").
+For demos to brokers there is also a synthetic mailbox of a fictional Flemish brokerage ("Verzekeringskantoor Hoflandt"): 146 Dutch emails between the broker and 32 clients (claims, coverage questions, quotes, renewals, new contracts, a newsletter, internal mail), from Oct 2025 to Sep 2026. The emails carry two kinds of PDF attachments:
+
+- real, public general conditions (algemene voorwaarden) from AXA Belgium, KBC, AG Insurance and P&V, which the emails quote (e.g. "glasbreuk is gedekt volgens artikel 1.4.2");
+- fictional special conditions (bijzondere voorwaarden) per client: policy number, insured car or home, guarantees, deductibles, premiums, clauses. Real ones contain personal data and aren't public, so these are generated. 40 emails send them to clients: renewals at the annual due date, amendments (new car, move, added option), new contracts and copies on request.
 
 ```
 python backend/ingest_demo.py            # add the demo mailbox next to what's loaded
@@ -44,7 +47,8 @@ python backend/ingest_demo.py --reset    # demo mailbox only (wipes the Enron da
 ```
 
 - `demo/contacts.yaml`: broker staff and the client list (id, name, email addresses, policies), usable later for client matching
-- `demo/documents.yaml`: the 14 AXA/KBC PDFs and their source URLs. They're downloaded into `data/demo/` on first run (not committed). If a URL stops working, save the PDF there by hand as `<key>.pdf`.
+- `demo/documents.yaml`: the 19 general-conditions PDFs (AXA, KBC, AG, P&V) and their source URLs. They're downloaded into `data/demo/` on first run (not committed). If a URL stops working, save the PDF there by hand as `<key>.pdf`.
+- `demo/policies.yaml`: the 43 fictional special conditions, amendments and certificates. `backend/demo_policies.py` renders them into `data/demo/` as PDFs on every ingest (with fpdf2), so edits show up after re-running the ingest. Every page says in its footer that the document is fictional.
 - `demo/mailbox/*.yaml`: the emails, one thread after another. Edit or add emails there and re-run the ingest (idempotent).
 
 All people, addresses and policy numbers are made up. Edge cases for later client matching: one household with two addresses (K-1013), a newsletter sent to 14 clients, and internal mail between broker staff.
@@ -56,6 +60,9 @@ Demo prompts (Claude via MCP):
 - "Waarom is de kapotte turbo van Tom Willems niet gedekt?"
 - "Wat is het verschil tussen de familiale van KBC en AXA voor geleende spullen?"
 - "Hoeveel mag KBC terugvorderen van de zoon van Patrick Martens, en op basis van welk artikel?"
+- "Welke polissen heeft Jonas Aerts bij ons, en wat betaalt hij in totaal per jaar?"
+- "Open de bijzondere voorwaarden van Bart Wouters. Welke wagen is nu verzekerd en wat veranderde er na de diefstal?"
+- "Welke contracten van Sofie Lambrechts veranderen door haar verhuis, en vanaf wanneer?"
 
 ## Run
 

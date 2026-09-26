@@ -56,7 +56,7 @@ clients:
   - id: K-1012
     name: Kathleen Hermans
     contacts: [Kathleen Hermans <kathleen.hermans@hotmail.com>]
-    policies: [AXA Comfort Auto 43.081.764 (Aansprakelijkheid)]
+    policies: [AXA Comfort Auto 43.081.764 (Omnium sinds 22/09/2026)]
   - id: K-1013
     name: Marc Van den Broeck & Hilde Wouters
     contacts:
@@ -70,11 +70,11 @@ clients:
   - id: K-1015
     name: Jonas Aerts
     contacts: [Jonas Aerts <jonas.aerts@telenet.be>]
-    policies: [AXA Comfort Thuis Flex 51.187.330 (eigenaar), AXA Comfort Privéleven 62.410.285]
+    policies: [AXA Comfort Thuis Flex 51.187.330 (eigenaar), AXA Comfort Privéleven 62.410.285, AXA Comfort Fiets+ 71.055.218]
   - id: K-1016
     name: Martine Pauwels
     contacts: [Martine Pauwels <martine.pauwels@skynet.be>]
-    policies: [AXA Comfort Thuis Flex 51.176.019 (eigenaar)]
+    policies: [AXA Comfort Thuis Flex 51.176.019 (eigenaar), AXA Comfort Privéleven 62.421.846]
   - id: K-1017
     name: Geert De Backer
     contacts: [Geert De Backer <geert.debacker@proximus.be>]
@@ -82,7 +82,7 @@ clients:
   - id: K-1018
     name: Elke Segers
     contacts: [Elke Segers <elke.segers@gmail.com>]
-    policies: [AXA Comfort Thuis Flex 51.229.046 (eigenaar, zonder optie Diefstal)]
+    policies: [AXA Comfort Thuis Flex 51.229.046 (eigenaar, optie Diefstal sinds 27/04/2026)]
   - id: K-1019
     name: Hanne Verstraeten
     contacts: [Hanne Verstraeten <hanne.verstraeten@telenet.be>]
@@ -94,7 +94,7 @@ clients:
   - id: K-1021
     name: Nele Michiels
     contacts: [Nele Michiels <nele.michiels@gmail.com>]
-    policies: [AXA Comfort Privéleven 62.405.563 (zonder optie Premium)]
+    policies: [AXA Comfort Privéleven 62.405.563 (optie Premium sinds 01/04/2026)]
   - id: K-1022
     name: Stijn Coppens
     contacts: [Stijn Coppens <stijn.coppens@telenet.be>]
@@ -106,11 +106,11 @@ clients:
   - id: K-1024
     name: Veerle Smets
     contacts: [Veerle Smets <veerle.smets@telenet.be>]
-    policies: [prospect - woningverzekering bij KBC]
+    policies: [AXA Comfort Thuis Flex 51.236.418 (eigenaar, sinds 01/07/2026; voordien KBC)]
   - id: K-1025
     name: Ruben Hendrickx
     contacts: [Ruben Hendrickx <ruben.hendrickx@gmail.com>]
-    policies: [prospect - huurder, offerte AXA Comfort Thuis Flex]
+    policies: [AXA Comfort Thuis Flex 51.241.093 (huurder, vanaf 01/10/2026)]
   - id: K-1026
     name: Julie Wuyts
     contacts: [Julie Wuyts <julie.wuyts@telenet.be>]
@@ -126,4 +126,16 @@ clients:
   - id: K-1029
     name: Patrick Martens
     contacts: [Patrick Martens <patrick.martens@telenet.be>]
-    policies: [prospect - autoverzekering bij KBC]
+    policies: [AXA Comfort Auto 43.134.106 (Omnium, sinds 01/07/2026; voordien KBC)]
+  - id: K-1030
+    name: Thomas Lemmens
+    contacts: [Thomas Lemmens <thomas.lemmens@gmail.com>]
+    policies: [AG Auto 04.1.227.883 (B.A. + Top Omnium)]
+  - id: K-1031
+    name: Evelien Borremans
+    contacts: [Evelien Borremans <evelien.borremans@telenet.be>]
+    policies: [AG Top Woning 08.3.556.120 (eigenaar), P&V Familiale Verzekering 551.2.614.075]
+  - id: K-1032
+    name: Karim El Amrani
+    contacts: [Karim El Amrani <karim.elamrani@gmail.com>]
+    policies: [AG Top Woning 08.3.561.447 (huurder + Pack Huurder), P&V Familiale Verzekering 551.2.598.330]

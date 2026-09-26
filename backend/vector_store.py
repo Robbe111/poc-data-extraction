@@ -100,21 +100,24 @@ def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) 
     return chunks
 
 
-def add_emails(emails: list[dict]) -> int:
-    """Chunk + embed a batch of emails in one upsert (much faster than one call per email)."""
-    ids, documents, metadatas = [], [], []
-    for email in emails:
-        for chunk_id, document, metadata in _chunks_for_email(email):
-            ids.append(chunk_id)
-            documents.append(document)
-            metadatas.append(metadata)
-    if ids:
-        unique = list(dict.fromkeys(documents))
-        vectors = dict(zip(unique, _embed(unique, PASSAGE_PREFIX)))
+def add_emails(emails: list[dict], batch_size: int = 1000) -> int:
+    """Chunk + embed emails and upsert them in batches (much faster than one call per email).
+
+    Batched because Chroma caps the size of one upsert, and so that progress is visible and
+    finished batches are stored even if a later one fails."""
+    chunks = [chunk for email in emails for chunk in _chunks_for_email(email)]
+    batch_size = min(batch_size, _client.get_max_batch_size())
+    vectors: dict[str, list[float]] = {}  # identical texts across batches are embedded once
+    for start in range(0, len(chunks), batch_size):
+        batch = chunks[start:start + batch_size]
+        ids, documents, metadatas = map(list, zip(*batch))
+        new = [d for d in dict.fromkeys(documents) if d not in vectors]
+        vectors.update(zip(new, _embed(new, PASSAGE_PREFIX)))
         _collection.upsert(
             ids=ids, documents=documents, metadatas=metadatas, embeddings=[vectors[d] for d in documents]
         )
-    return len(ids)
+        print(f"  {start + len(batch)}/{len(chunks)} chunks stored ({len(vectors)} embedded)", flush=True)
+    return len(chunks)
 
 
 def _chunks_for_email(email: dict):

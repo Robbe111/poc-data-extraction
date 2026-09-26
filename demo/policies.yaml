@@ -1,0 +1,1235 @@
+# Fictional special conditions (bijzondere voorwaarden), amendments (aanhangsels) and insurance
+# certificates of the demo clients. Special conditions hold personal data, so no real ones are
+# public; these are made up and rendered as PDFs by backend/demo_policies.py on ingest.
+# Emails in demo/mailbox/*.yaml attach them by key, like the general conditions in documents.yaml.
+#
+# Fields: insurer (axa | ag | pv), product, policy, doc (document title), issued, reason, effective,
+# holder, sections (title -> label -> value), guarantees ([name, limit, deductible, premium incl.
+# taxes, tax kind]; tax kind: ba_auto | woning | standard (default)), payment, clauses, text,
+# conditions (names of the general conditions that apply).
+#
+# Facts here match the emails (cars, addresses, deductibles, premiums). All of it is invented.
+
+# --- reusable blocks -----------------------------------------------------------------------------
+
+_axa_auto_av: &axa_auto_av
+  - AXA Comfort Auto - Algemene bepalingen (4186025 - 06.2026)
+  - AXA Comfort Auto - Aansprakelijkheid (4185995 - 06.2026)
+  - AXA Comfort Auto - Bescherming van het voertuig (4186001 - 06.2026)
+_axa_woning_av: &axa_woning_av
+  - AXA Comfort Thuis Flex - Basisdekkingen (4185784 - 10.2024)
+_axa_prive_av: &axa_prive_av
+  - AXA Comfort Privéleven - Aansprakelijkheid (4183784 - 12.2025)
+_ba_auto: &ba_auto_limit "lichamelijke schade: onbeperkt; stoffelijke schade: 100.000.000 EUR per schadegeval"
+_contract_1y: &one_year "1 jaar, stilzwijgend verlengd"
+
+_holder_peeters: &holder_peeters {Naam: Jan Peeters, Adres: "Kerkstraat 14, 2560 Nijlen", Geboortedatum: 14/03/1984, E-mail: jan.peeters@telenet.be}
+_holder_wouters: &holder_wouters {Naam: Bart Wouters, Adres: "Edegemsestraat 45, 2640 Mortsel", Geboortedatum: 02/09/1979, E-mail: bart.wouters@gmail.com}
+_holder_dubois: &holder_dubois {Naam: Nathalie Dubois, Adres: "Hoogveld 12, 2500 Lier", Geboortedatum: 21/06/1981, E-mail: nathalie.dubois@telenet.be}
+_holder_lambrechts: &holder_lambrechts {Naam: Sofie Lambrechts, Adres: "Beekstraat 17, 2500 Koningshooikt", Geboortedatum: 08/11/1987, E-mail: sofie.lambrechts@gmail.com}
+_holder_aerts: &holder_aerts {Naam: Jonas Aerts, Adres: "Lispersteenweg 205, 2500 Lier", Geboortedatum: 30/01/1985, E-mail: jonas.aerts@telenet.be}
+_holder_pauwels: &holder_pauwels {Naam: Martine Pauwels, Adres: "Smidstraat 12, 2590 Berlaar", Geboortedatum: 17/04/1956, E-mail: martine.pauwels@skynet.be}
+_holder_segers: &holder_segers {Naam: Elke Segers, Adres: "Bouwelsesteenweg 31, 2560 Nijlen", Geboortedatum: 25/07/1983, E-mail: elke.segers@gmail.com}
+_holder_borremans: &holder_borremans {Naam: Evelien Borremans, Adres: "Hoogstraat 48, 2220 Heist-op-den-Berg", Geboortedatum: 12/02/1990, E-mail: evelien.borremans@telenet.be}
+_holder_elamrani: &holder_elamrani {Naam: Karim El Amrani, Adres: "Bruul 72 bus 5, 2800 Mechelen", Geboortedatum: 03/10/1996, E-mail: karim.elamrani@gmail.com}
+
+# --- AXA Comfort Auto ----------------------------------------------------------------------------
+
+bv_peeters_auto_2025:
+  filename: AXA Comfort Auto 43.118.207 - Bijzondere voorwaarden 12.2025.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.118.207
+  doc: Bijzondere voorwaarden
+  issued: 2025-11-03
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/12/2025
+  holder: *holder_peeters
+  sections:
+    Contract: {Aanvangsdatum contract: 01/12/2021, Jaarlijkse vervaldag: 1 december, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Volkswagen Golf 1.5 TSI Life
+      Nummerplaat: 1-XKT-482
+      Chassisnummer: WVWZZZCDZMW048213
+      Datum eerste inschrijving: 18/11/2021
+      Vermogen en brandstof: 96 kW - benzine
+      Verzekerde waarde: 29.450,00 EUR (catalogusprijs zonder btw, opties inbegrepen)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Jan Peeters, Rijbewijs B sinds: 22/05/2002}
+    Premiepersonalisatie: {Schadevrije jaren: 14, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 76%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 486.30, ba_auto]
+    - ["Bescherming van het voertuig - formule Mini Omnium Extra: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade enkel bij totaal verlies", 29.450 EUR (afschrijving vanaf de 7e maand 1% per maand), "glasbreuk: geen; andere dekkingen: 250 EUR", 402.60]
+    - [Vervangingsvoertuig, "categorie B; glasbreuk: duur herstelling, max. 3 dagen; ongeval: max. 10 dagen", geen, 54.00]
+  clauses:
+    - Voor de dekking Glasbreuk wordt geen vrijstelling toegepast.
+    - Occasionele bestuurders zijn toegelaten. Een nieuwe gebruikelijke bestuurder moet gemeld worden.
+  conditions:
+    - *axa_auto_av
+    - AXA Comfort Auto - Vervangingsvoertuig (4185998 - 06.2026)
+
+bv_desmet_auto_2026:
+  filename: AXA Comfort Auto 43.120.554 - Bijzondere voorwaarden 02.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.120.554
+  doc: Bijzondere voorwaarden
+  issued: 2026-01-12
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/02/2026
+  holder: {Naam: Sarah De Smet, Adres: "Gasthuisvest 27, 2500 Lier", Geboortedatum: 09/05/1993, E-mail: sarah.desmet@gmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/02/2023, Jaarlijkse vervaldag: 1 februari, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Toyota Yaris 1.5 Hybrid Dynamic
+      Nummerplaat: 2-GHT-915
+      Chassisnummer: VNKKBABA40A127735
+      Datum eerste inschrijving: 24/01/2023
+      Vermogen en brandstof: 68 kW - hybride benzine
+      Verzekerde waarde: 23.980,00 EUR (factuurwaarde zonder btw)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Sarah De Smet, Rijbewijs B sinds: 14/06/2011}
+    Premiepersonalisatie: {Schadevrije jaren: 9, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 86%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 452.10, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade", "23.980 EUR; sleping tot 1.240 EUR excl. btw", 400 EUR per schadegeval, 698.40]
+  clauses:
+    - "Afschrijvingsformule bij totaal verlies: geen afschrijving gedurende de eerste 12 maanden, daarna 1% per maand."
+    - De vrijstelling van 400 EUR geldt voor alle dekkingen van Bescherming van het voertuig, behalve Glasbreuk.
+  conditions: *axa_auto_av
+
+aanh_willems_auto_2025:
+  filename: AXA Comfort Auto 43.097.310 - Aanhangsel 3 - 11.2025.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.097.310
+  doc: Aanhangsel nr. 3 bij de bijzondere voorwaarden
+  issued: 2025-10-20
+  reason: Toevoeging van de waarborg Wegenhulp op vraag van de verzekeringnemer
+  effective: 01/11/2025
+  holder: {Naam: Tom Willems, Adres: "Groeneweg 33, 2550 Kontich", Geboortedatum: 11/12/1976, E-mail: tom.willems@skynet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/03/2019, Jaarlijkse vervaldag: 1 maart, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Peugeot 3008 1.5 BlueHDi Allure
+      Nummerplaat: 1-TRV-306
+      Chassisnummer: VF3MCYHZRKS219054
+      Datum eerste inschrijving: 22/02/2019
+      Vermogen en brandstof: 96 kW - diesel
+      Verzekerde waarde: 31.200,00 EUR (catalogusprijs zonder btw)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Tom Willems, Rijbewijs B sinds: 03/02/1995}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 512.80, ba_auto]
+    - ["Bescherming van het voertuig - formule Mini Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal", werkelijke waarde, "glasbreuk: geen; andere dekkingen: 250 EUR", 238.50]
+    - [Wegenhulp (NIEUW vanaf 01/11/2025), "België en buitenland; vervangwagen cat. B bij pech in België max. 7 dagen (15 dagen in geconventioneerde garage)", geen, 96.00]
+  clauses:
+    - "De formule Mini Omnium dekt geen materiële schade aan het voertuig bij een ongeval en geen mechanische defecten."
+    - "Wegenhulp: bel bij pech of ongeval altijd eerst de AXA-bijstandsdienst (nummer op het verzekeringsbewijs). Een sleping die niet door AXA georganiseerd werd, wordt vergoed tot 500 EUR als ze in opdracht van de politie gebeurde."
+    - De premie voor Wegenhulp wordt voor de periode 01/11/2025 - 01/03/2026 pro rata aangerekend (32,00 EUR).
+  conditions:
+    - *axa_auto_av
+    - AXA Comfort Auto - Wegenhulp (4186022 - 06.2025)
+
+bv_claes_auto_2026:
+  filename: AXA Comfort Auto 43.131.822 - Bijzondere voorwaarden 07.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.131.822
+  doc: Bijzondere voorwaarden
+  issued: 2026-06-24
+  reason: Nieuw contract
+  effective: 01/07/2026
+  holder: {Naam: Lotte Claes, Adres: "Stationsstraat 52 bus 3, 2570 Duffel", Geboortedatum: 27/08/1995, E-mail: lotte.claes@hotmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2026, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Kia EV6 77,4 kWh RWD GT-Line
+      Nummerplaat: 2-LKC-731
+      Chassisnummer: KNACB81GFR5093316
+      Datum eerste inschrijving: 29/06/2026
+      Vermogen en brandstof: 168 kW - elektrisch
+      Verzekerde waarde: 48.950,00 EUR (factuurwaarde zonder btw, opties inbegrepen)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Lotte Claes, Rijbewijs B sinds: 19/10/2013}
+    Premiepersonalisatie: {Schadevrije jaren: 8 (attest schadeverleden vorige verzekeraar), Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 88%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 538.20, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade", "48.950 EUR; laadkabel tot 500 EUR excl. btw", 500 EUR per schadegeval (materiële schade), 1164.90]
+  clauses:
+    - "Afschrijvingsformule bij totaal verlies: factuurwaarde gedurende de eerste 12 maanden, daarna 1% per maand."
+    - "Elektrisch voertuig: de laadkabel en de mobiele laadpaal zijn mee verzekerd tot 500 EUR excl. btw, ook wanneer ze losgekoppeld zijn van het voertuig (art. 1.6.1 Bescherming van het voertuig)."
+    - "Voor Brand, Glasbreuk, Natuurkrachten en Botsing met dieren geldt geen vrijstelling."
+  conditions: *axa_auto_av
+
+bv_maes_auto_2026:
+  filename: AXA Comfort Auto 43.064.915 - Bijzondere voorwaarden 10.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.064.915
+  doc: Bijzondere voorwaarden
+  issued: 2026-09-01
+  reason: Jaarlijkse vervaldag - premiepersonalisatie na schadegeval in fout (observatieperiode tot 15/08/2026)
+  effective: 01/10/2026
+  holder: {Naam: Kevin Maes, Adres: "Boomsesteenweg 210, 2610 Wilrijk", Geboortedatum: 06/04/1990, E-mail: kevin.maes@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/10/2017, Jaarlijkse vervaldag: 1 oktober, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Opel Astra 1.4 Turbo Innovation
+      Nummerplaat: 1-MXS-204
+      Chassisnummer: W0LBD6EB8HG093478
+      Datum eerste inschrijving: 15/09/2017
+      Vermogen en brandstof: 92 kW - benzine
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Kevin Maes, Rijbewijs B sinds: 12/05/2008}
+    Premiepersonalisatie:
+      Schadevrije jaren: 0 (was 12)
+      Schadegevallen in fout (laatste 5 jaar): 1 (21/07/2026, dossier S-2026-0509, vergoed aan de tegenpartij)
+      Premieniveau: 130% x 100% (tweede schaal)
+      Vorige jaarpremie: 468,70 EUR
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 604.50, ba_auto]
+  clauses:
+    - "Het contract bevat enkel de verplichte Aansprakelijkheid. Schade aan het eigen voertuig is niet verzekerd."
+    - "Het premieniveau daalt bij elke schadevrije observatieperiode (125%, 120%, 115%, 110%) tot 100% na vijf schadevrije jaren (art. 2.1.2 Algemene bepalingen)."
+  conditions:
+    - AXA Comfort Auto - Algemene bepalingen (4186025 - 06.2026)
+    - AXA Comfort Auto - Aansprakelijkheid (4185995 - 06.2026)
+
+bv_vermeulen_auto_2026:
+  filename: AXA Comfort Auto 43.102.476 - Bijzondere voorwaarden 03.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.102.476
+  doc: Bijzondere voorwaarden
+  issued: 2026-02-02
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/03/2026
+  holder: {Naam: An Vermeulen, Adres: "Rijmenamseweg 58, 2820 Bonheiden", Geboortedatum: 13/01/1974, E-mail: an.vermeulen@proximus.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/03/2020, Jaarlijkse vervaldag: 1 maart, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Toyota Corolla Touring Sports 1.8 Hybrid
+      Nummerplaat: 1-VNB-588
+      Chassisnummer: SB1Z93BE10E114628
+      Datum eerste inschrijving: 26/02/2020
+      Vermogen en brandstof: 90 kW - hybride benzine
+      Verzekerde waarde: 27.340,00 EUR (catalogusprijs zonder btw)
+      Gebruik: privé
+    Gebruikelijke bestuurder: {Naam: An Vermeulen, Rijbewijs B sinds: 07/03/1993}
+    Premiepersonalisatie: {Schadevrije jaren: 18, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 72%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 474.00, ba_auto]
+    - ["Bescherming van het voertuig - formule Mini Omnium Extra: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade enkel bij totaal verlies", werkelijke waarde, "glasbreuk: geen; andere dekkingen: 250 EUR", 386.20]
+  clauses:
+    - "Occasionele bestuurders zijn toegelaten, ook bestuurders jonger dan 26 jaar. Wordt een bestuurder jonger dan 26 jaar de gebruikelijke bestuurder, dan moet dat gemeld worden (art. 1.5.1 Aansprakelijkheid)."
+  conditions: *axa_auto_av
+
+bv_wouters_auto_2026:
+  filename: AXA Comfort Auto 43.089.633 - Bijzondere voorwaarden 07.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.089.633
+  doc: Bijzondere voorwaarden
+  issued: 2026-06-02
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/07/2026
+  holder: *holder_wouters
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2023, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: BMW X1 sDrive18i
+      Nummerplaat: 2-BWX-118
+      Chassisnummer: WBA11EE0605R72214
+      Datum eerste inschrijving: 12/06/2023
+      Vermogen en brandstof: 100 kW - benzine
+      Verzekerde waarde: 44.900,00 EUR (factuurwaarde zonder btw, opties inbegrepen)
+      Beveiliging: keyless entry, af fabriek
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Bart Wouters, Rijbewijs B sinds: 18/10/1997}
+    Premiepersonalisatie: {Schadevrije jaren: 20, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 70%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 521.40, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade", 44.900 EUR, 500 EUR per schadegeval, 1048.70]
+    - [Wegenhulp, "België en buitenland; vervangwagen cat. B: pech max. 7 dagen, diefstal max. 30 dagen", geen, 96.00]
+  clauses:
+    - "Afschrijvingsformule bij totaal verlies of diefstal: factuurwaarde gedurende de eerste 6 maanden, daarna 1% per maand. De belasting op de inverkeerstelling wordt mee vergoed."
+    - "Diefstal: bij verlies of diefstal van een sleutel moeten binnen 24 uur de sloten vervangen of het sleutelsysteem geherprogrammeerd worden (art. 1.4.5 Bescherming van het voertuig)."
+  conditions:
+    - *axa_auto_av
+    - AXA Comfort Auto - Wegenhulp (4186022 - 06.2025)
+
+aanh_wouters_auto_2026:
+  filename: AXA Comfort Auto 43.089.633 - Aanhangsel 1 - vervanging voertuig 09.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.089.633
+  doc: Aanhangsel nr. 1 bij de bijzondere voorwaarden
+  issued: 2026-09-24
+  reason: Vervanging van het verzekerde voertuig (vorig voertuig BMW X1 2-BWX-118 gestolen op 10/08/2026, totaal verlies, dossier S-2026-0495)
+  effective: 26/09/2026
+  holder: *holder_wouters
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2023, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: BMW iX1 eDrive20
+      Nummerplaat: 2-BWX-118 (behouden)
+      Chassisnummer: WBA21EF0X07M55310
+      Datum eerste inschrijving: 25/09/2026
+      Vermogen en brandstof: 150 kW - elektrisch
+      Verzekerde waarde: 49.600,00 EUR (factuurwaarde zonder btw, opties inbegrepen)
+      Beveiliging: keyless entry uitgeschakeld (digitale sleutel via app) + erkend volgsysteem (klasse SCM)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Bart Wouters, Rijbewijs B sinds: 18/10/1997}
+    Premiepersonalisatie: {Schadevrije jaren: 20, Schadegevallen in fout (laatste 5 jaar): 0 (diefstal is geen schadegeval in fout), Premieniveau: 70%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 534.90, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade", "49.600 EUR; laadkabel tot 500 EUR excl. btw", 500 EUR per schadegeval, 1236.40]
+    - [Wegenhulp, "België en buitenland; vervangwagen cat. B: pech max. 7 dagen, diefstal max. 30 dagen", geen, 96.00]
+  clauses:
+    - "Afschrijvingsformule bij totaal verlies of diefstal: factuurwaarde gedurende de eerste 6 maanden, daarna 1% per maand."
+    - "Preventie diefstal: de verzekeringnemer houdt het volgsysteem actief met een geldig abonnement. Bij verlies van een sleutel of smartphone met digitale sleutel moet de toegang binnen 24 uur geblokkeerd worden."
+    - "De premie voor de periode 26/09/2026 - 01/07/2027 wordt pro rata aangerekend. Het premiesaldo van het gestolen voertuig wordt verrekend."
+  conditions:
+    - *axa_auto_av
+    - AXA Comfort Auto - Wegenhulp (4186022 - 06.2025)
+
+bv_dubois_auto_2026:
+  filename: AXA Comfort Auto 43.110.058 - Bijzondere voorwaarden 04.2025.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.110.058
+  doc: Bijzondere voorwaarden (kopie)
+  issued: 2026-03-10
+  reason: Kopie op vraag van de verzekeringnemer - geldig sinds de vervaldag van 01/04/2025
+  effective: 01/04/2025
+  holder: *holder_dubois
+  sections:
+    Contract: {Aanvangsdatum contract: 01/04/2021, Jaarlijkse vervaldag: 1 april, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Renault Clio TCe 90 Intens
+      Nummerplaat: 1-RND-447
+      Chassisnummer: VF1RJA00465218842
+      Datum eerste inschrijving: 30/03/2021
+      Vermogen en brandstof: 67 kW - benzine
+      Verzekerde waarde: 18.760,00 EUR (catalogusprijs zonder btw)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Nathalie Dubois, Rijbewijs B sinds: 02/09/1999}
+    Premiepersonalisatie: {Schadevrije jaren: 16, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 74%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 442.80, ba_auto]
+    - ["Bescherming van het voertuig - formule Mini Omnium Extra: brand, glasbreuk, natuurkrachten (o.a. hagel), botsing met dieren, diefstal, materiële schade enkel bij totaal verlies", werkelijke waarde, "glasbreuk: geen; andere dekkingen: 250 EUR", 318.60]
+  conditions: *axa_auto_av
+
+bv_jacobs_auto_2026:
+  filename: AXA Comfort Auto 43.075.281 - Bijzondere voorwaarden 05.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.075.281
+  doc: Bijzondere voorwaarden
+  issued: 2026-04-02
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/05/2026
+  holder: {Naam: Dirk Jacobs, Adres: "Heuvelstraat 19, 2530 Boechout", Geboortedatum: 28/02/1969, E-mail: dirk.jacobs@skynet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/05/2018, Jaarlijkse vervaldag: 1 mei, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Volkswagen Passat Variant 2.0 TDI Highline
+      Nummerplaat: 1-DJC-652
+      Chassisnummer: WVWZZZ3CZJE118274
+      Datum eerste inschrijving: 20/04/2018
+      Vermogen en brandstof: 110 kW - diesel
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Dirk Jacobs, Rijbewijs B sinds: 15/04/1988}
+    Premiepersonalisatie: {Schadevrije jaren: 22, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 68%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 498.60, ba_auto]
+    - [Rechtsbijstand Full (beheerd door Legal Village), "125.000 EUR per schadegeval; onvermogen tegenpartij 20.000 EUR", geen, 112.40]
+  clauses:
+    - "Rechtsbijstand Full: vrije keuze van advocaat zodra een gerechtelijke of administratieve procedure nodig is (art. 1.1.2)."
+  conditions:
+    - AXA Comfort Auto - Algemene bepalingen (4186025 - 06.2026)
+    - AXA Comfort Auto - Aansprakelijkheid (4185995 - 06.2026)
+    - AXA Comfort Auto - Rechtsbijstand Full (10.2024)
+
+bv_goossens_auto_2026:
+  filename: AXA Comfort Auto 43.115.940 - Bijzondere voorwaarden 07.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.115.940
+  doc: Bijzondere voorwaarden
+  issued: 2026-06-01
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/07/2026
+  holder: {Naam: Ines Goossens, Adres: "Bosstraat 7, 2580 Putte", Geboortedatum: 19/09/1986, E-mail: ines.goossens@gmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2021, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Skoda Kodiaq 2.0 TDI Style 4x4 (met trekhaak)
+      Nummerplaat: 1-GSN-379
+      Chassisnummer: TMBJJ7NS8L8034471
+      Datum eerste inschrijving: 16/06/2020
+      Vermogen en brandstof: 110 kW - diesel
+      Verzekerde waarde: werkelijke waarde
+      Gebruik: privé en woon-werkverkeer
+    Aanhangwagen: {Type: "caravan Hobby De Luxe 460 UFe (max. toegelaten massa 1.500 kg, lengte met dissel 7,1 m)", Nummerplaat: Q-AFK-208}
+    Gebruikelijke bestuurder: {Naam: Ines Goossens, Rijbewijs B + BE sinds: 30/08/2005}
+    Premiepersonalisatie: {Schadevrije jaren: 12, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 80%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie en aanhangwagen), *ba_auto_limit, geen, 538.70, ba_auto]
+    - ["Bescherming van het voertuig - formule Mini Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal", werkelijke waarde, "glasbreuk: geen; andere dekkingen: 250 EUR", 274.30]
+    - [Wegenhulp, "België en buitenland, incl. aanhangwagen of caravan tot 3,5 ton en 8 m (art. 1.1)", geen, 96.00]
+  clauses:
+    - De aanhangwagen is gedekt in Aansprakelijkheid en Wegenhulp. Schade aan de caravan zelf is niet verzekerd.
+  conditions:
+    - *axa_auto_av
+    - AXA Comfort Auto - Wegenhulp (4186022 - 06.2025)
+
+bv_mertens_auto_2026:
+  filename: AXA Comfort Auto 43.126.307 - Bijzondere voorwaarden 04.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.126.307
+  doc: Bijzondere voorwaarden
+  issued: 2026-03-02
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/04/2026
+  holder: {Naam: Wim Mertens, Adres: "Kapelstraat 4, 2220 Heist-op-den-Berg", Geboortedatum: 05/12/1988, E-mail: wim.mertens@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/04/2023, Jaarlijkse vervaldag: 1 april, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Ford Puma 1.0 EcoBoost Hybrid Titanium
+      Nummerplaat: 2-WMP-512
+      Chassisnummer: WF02XXERK2PA61903
+      Datum eerste inschrijving: 28/03/2023
+      Vermogen en brandstof: 92 kW - benzine (mild hybrid)
+      Verzekerde waarde: 25.870,00 EUR (factuurwaarde zonder btw)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Wim Mertens, Rijbewijs B sinds: 21/01/2007}
+    Premiepersonalisatie: {Schadevrije jaren: 11, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 100% (dekking Materiële schade)}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 489.20, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal", 25.870 EUR, 250 EUR (glasbreuk geen), 236.80]
+    - ["Bescherming van het voertuig - Materiële schade (ongeval), incl. verkeerde brandstof (art. 1.4.6)", 25.870 EUR, 250 EUR per schadegeval, 412.00]
+  clauses:
+    - "Afschrijvingsformule bij totaal verlies: factuurwaarde gedurende de eerste 12 maanden, daarna 1% per maand."
+    - "De premie van de dekking Materiële schade wordt gepersonaliseerd volgens het aantal schadegevallen in fout (art. 2.1.2 Algemene bepalingen)."
+  conditions: *axa_auto_av
+
+aanh_hermans_auto_2026:
+  filename: AXA Comfort Auto 43.081.764 - Aanhangsel 2 - vervanging voertuig 09.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.081.764
+  doc: Aanhangsel nr. 2 bij de bijzondere voorwaarden
+  issued: 2026-09-10
+  reason: Vervanging van het verzekerde voertuig (vorig voertuig Citroën C3 1-KHC-093) en toevoeging formule Omnium
+  effective: 22/09/2026
+  holder: {Naam: Kathleen Hermans, Adres: "Lindelei 23, 2620 Hemiksem", Geboortedatum: 15/03/1982, E-mail: kathleen.hermans@hotmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/11/2016, Jaarlijkse vervaldag: 1 november, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Skoda Octavia Combi 1.5 TSI Style (tweedehands)
+      Nummerplaat: 1-KHC-093 (overgezet)
+      Chassisnummer: TMBJR7NX5NY041236
+      Datum eerste inschrijving: 03/2022
+      Kilometerstand bij aankoop: 41.000 km
+      Vermogen en brandstof: 110 kW - benzine
+      Verzekerde waarde: 21.900,00 EUR (aankoopfactuur, btw inbegrepen)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Kathleen Hermans, Rijbewijs B sinds: 11/06/2000}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 486.00, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium (NIEUW): brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade", 21.900 EUR, 500 EUR per schadegeval (glasbreuk geen), 512.00]
+  clauses:
+    - "Tweedehands voertuig: de verzekerde waarde is de aankoopprijs volgens factuur. Afschrijving bij totaal verlies: 1% per maand vanaf de datum van dit aanhangsel."
+    - "Vanaf de vervanging gelden de algemene voorwaarden Comfort Auto versie 06.2026."
+    - "De premie voor de periode 22/09/2026 - 01/11/2026 wordt pro rata aangerekend."
+  conditions: *axa_auto_av
+
+bewijs_hermans_auto_2026:
+  filename: AXA Comfort Auto 43.081.764 - Internationaal verzekeringsbewijs Skoda Octavia.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.081.764
+  doc: Internationaal verzekeringsbewijs
+  issued: 2026-09-10
+  reason: Bewijs van verzekering BA motorrijtuigen (vervangt de vroegere groene kaart)
+  effective: 22/09/2026
+  holder: {Naam: Kathleen Hermans, Adres: "Lindelei 23, 2620 Hemiksem"}
+  sections:
+    Geldigheid: {Van: 22/09/2026, Tot en met: 31/10/2027, Landen: "alle landen van de Europese Economische Ruimte, Zwitserland, Servië, Bosnië-Herzegovina, Noord-Macedonië, Montenegro, Albanië, Andorra, Marokko, Tunesië, Turkije (Europees deel)"}
+    Voertuig: {Categorie: A - personenwagen, Merk: Skoda Octavia Combi, Nummerplaat: 1-KHC-093, Chassisnummer: TMBJR7NX5NY041236}
+    Bij een ongeval of pech: {AXA-bijstandsdienst (24/7): "+32 2 550 05 55", Aangifte schadegeval: via uw makelaar Verzekeringskantoor Hoflandt}
+  text: Dit bewijs moet zich altijd in het voertuig bevinden. Het is geen betalingsbewijs van de premie.
+
+bv_wuyts_auto_2025:
+  filename: AXA Comfort Auto 43.099.852 - Bijzondere voorwaarden 11.2025.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.099.852
+  doc: Bijzondere voorwaarden
+  issued: 2025-10-06
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/11/2025
+  holder: {Naam: Julie Wuyts, Adres: "Mechelsestraat 60, 2500 Lier", Geboortedatum: 22/10/1997, E-mail: julie.wuyts@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/11/2019, Jaarlijkse vervaldag: 1 november, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Fiat 500 1.2 Lounge
+      Nummerplaat: 1-JWF-826
+      Chassisnummer: ZFA3120000J872214
+      Datum eerste inschrijving: 04/05/2017
+      Vermogen en brandstof: 51 kW - benzine
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Julie Wuyts, Rijbewijs B sinds: 08/01/2016}
+    Premiepersonalisatie: {Schadevrije jaren: 6, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 94%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 412.50, ba_auto]
+  clauses:
+    - Het contract bevat geen reis- of annuleringsverzekering en geen dekking voor schade aan het eigen voertuig.
+  conditions:
+    - AXA Comfort Auto - Algemene bepalingen
+    - AXA Comfort Auto - Aansprakelijkheid
+
+bv_declercq_auto_2026:
+  filename: AXA Comfort Auto 43.117.690 - Bijzondere voorwaarden 08.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.117.690
+  doc: Bijzondere voorwaarden
+  issued: 2026-07-03
+  reason: Jaarlijkse vervaldag - aanpassing premie aan het indexcijfer
+  effective: 01/08/2026
+  holder: {Naam: Olivier Declercq, Adres: "Pastorijstraat 3, 2820 Bonheiden", Geboortedatum: 16/07/1991, E-mail: olivier.declercq@gmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/08/2021, Jaarlijkse vervaldag: 1 augustus, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Hyundai Kona 1.6 T-GDi Hybrid Techno
+      Nummerplaat: 1-ODQ-270
+      Chassisnummer: KMHK381GFMU114952
+      Datum eerste inschrijving: 23/07/2021
+      Vermogen en brandstof: 104 kW - hybride benzine
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Olivier Declercq, Rijbewijs B sinds: 10/09/2009}
+    Premiepersonalisatie: {Schadevrije jaren: 10, Schadegevallen in fout (laatste 5 jaar): 0, Premieniveau: 84%}
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 468.90, ba_auto]
+    - ["Bescherming van het voertuig - formule Mini Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal", werkelijke waarde, "glasbreuk: geen; andere dekkingen: 250 EUR", 256.40]
+  clauses:
+    - "Een wagen die de verzekeringnemer huurt (bijvoorbeeld op reis) is niet verzekerd onder Bescherming van het voertuig."
+  conditions: *axa_auto_av
+
+bv_martens_auto_2026:
+  filename: AXA Comfort Auto 43.134.106 - Bijzondere voorwaarden 07.2026.pdf
+  insurer: axa
+  product: Comfort Auto
+  policy: 43.134.106
+  doc: Bijzondere voorwaarden
+  issued: 2026-06-08
+  reason: Nieuw contract (overname van een contract bij KBC Verzekeringen, opgezegd per 01/07/2026)
+  effective: 01/07/2026
+  holder: {Naam: Patrick Martens, Adres: "Mechelbaan 150, 2860 Sint-Katelijne-Waver", Geboortedatum: 29/11/1966, E-mail: patrick.martens@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2026, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Volvo XC40 B4 Plus Dark
+      Nummerplaat: 1-PMV-661
+      Chassisnummer: YV1XZK9V1M2471835
+      Datum eerste inschrijving: 17/05/2021
+      Vermogen en brandstof: 145 kW - benzine (mild hybrid)
+      Verzekerde waarde: 42.500,00 EUR (catalogusprijs zonder btw)
+      Gebruik: privé
+    Gebruikelijke bestuurder: {Naam: Patrick Martens, Rijbewijs B sinds: 13/02/1985}
+    Premiepersonalisatie:
+      Schadevrije jaren: 0 (attest schadeverleden KBC)
+      Schadegevallen in fout (laatste 5 jaar): 1 (01/2026, bestuurder Jens Martens)
+      Premieniveau: 130% x 100%
+  guarantees:
+    - [Aansprakelijkheid (incl. BOB-garantie), *ba_auto_limit, geen, 612.40, ba_auto]
+    - ["Bescherming van het voertuig - formule Omnium: brand, glasbreuk, natuurkrachten, botsing met dieren, diefstal, materiële schade", werkelijke waarde volgens afschrijvingstabel, 500 EUR per schadegeval (glasbreuk geen), 842.30]
+  clauses:
+    - "Uitgesloten bestuurder: Jens Martens (geboren 2003) mag het voertuig niet besturen. Rijdt hij toch, dan kan AXA verhaal nemen op de verzekeringnemer en de bestuurder, binnen de wettelijke grenzen."
+    - "Afschrijvingsformule bij totaal verlies: 1% per maand vanaf de datum van eerste inschrijving, met als minimum de werkelijke waarde."
+  conditions: *axa_auto_av
+
+# --- AXA Comfort Thuis Flex -------------------------------------------------------------------
+
+bv_dubois_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.220.914 - Bijzondere voorwaarden 01.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.220.914
+  doc: Bijzondere voorwaarden (kopie)
+  issued: 2026-03-10
+  reason: Kopie op vraag van de verzekeringnemer - geldig sinds de vervaldag van 01/01/2026
+  effective: 01/01/2026
+  holder: *holder_dubois
+  sections:
+    Contract: {Aanvangsdatum contract: 01/01/2022, Jaarlijkse vervaldag: 1 januari, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Hoogveld 12, 2500 Lier
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: halfopen eengezinswoning met veranda (polycarbonaat dak, 2019)
+      Bouwjaar: 1998
+      Aantal kamers: 8 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen:
+      Gebouw: volgens stelsel kamers (indicatief 412.000 EUR)
+      Inboedel: 45.000 EUR
+      Indexcijfer: ABEX 1128 / consumptieprijzen
+    Hypothecaire schuldeiser: {Instelling: "BNP Paribas Fortis, kantoor Lier (hypothecaire lening 2021)"}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water, glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 412.10, woning]
+    - ["Basisdekkingen inboedel", 45.000 EUR, "285,17 EUR (geïndexeerd)", 186.30, woning]
+  clauses:
+    - "Optie Diefstal: niet onderschreven."
+    - "Tuinmeubelen en andere voorwerpen die zich buiten bevinden en niet blijvend vastgemaakt zijn, zijn niet gedekt voor storm en hagel (art. 3.14 A)."
+  conditions: *axa_woning_av
+
+bv_vandenbroeck_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.198.402 - Bijzondere voorwaarden 03.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.198.402
+  doc: Bijzondere voorwaarden
+  issued: 2026-02-03
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/03/2026
+  holder: {Naam: Marc Van den Broeck en Hilde Wouters, Adres: "Kesselsesteenweg 88, 2560 Kessel", E-mail: "marc.vandenbroeck@telenet.be; hilde.wouters@gmail.com"}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/03/2016, Jaarlijkse vervaldag: 1 maart, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Kesselsesteenweg 88, 2560 Kessel
+      Hoedanigheid: eigenaars-bewoners, hoofdverblijf
+      Type: open eengezinswoning
+      Bouwjaar: 2004
+      Aantal kamers: 10 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 60.000 EUR}
+    Schadeverleden: {Laatste 5 jaar: "1 schadegeval - water, 12/2025 (dossier S-2025-0877, 4.130 EUR)"}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water, glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 428.50, woning]
+    - ["Basisdekkingen inboedel", 60.000 EUR, "285,17 EUR (geïndexeerd)", 212.40, woning]
+    - [Optie Diefstal, "inboedel 60.000 EUR; juwelen max. 6.000 EUR", "285,17 EUR (geïndexeerd)", 104.90, woning]
+  clauses:
+    - "Schade door water: het opsporen van het lek en het herstellen van de leiding die aan de oorsprong ligt, zijn gedekt als bijdekking (art. 3.11)."
+  conditions: *axa_woning_av
+
+bv_lambrechts_woning_2025:
+  filename: AXA Comfort Thuis Flex 51.204.771 - Bijzondere voorwaarden 12.2025.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.204.771
+  doc: Bijzondere voorwaarden
+  issued: 2025-11-04
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/12/2025
+  holder: *holder_lambrechts
+  sections:
+    Contract: {Aanvangsdatum contract: 01/12/2019, Jaarlijkse vervaldag: 1 december, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Beekstraat 17, 2500 Koningshooikt
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: rijwoning met kelder
+      Bouwjaar: 1962
+      Aantal kamers: 7 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 50.000 EUR}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water, glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 396.20, woning]
+    - ["Basisdekkingen inboedel", 50.000 EUR, "285,17 EUR (geïndexeerd)", 188.70, woning]
+  clauses:
+    - "Natuurrampen (art. 3.14 C) omvatten ook het overlopen of opstuwen van de openbare riolen."
+    - "Optie Diefstal: niet onderschreven."
+  conditions: *axa_woning_av
+
+aanh_lambrechts_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.204.771 - Aanhangsel 1 - verhuis 10.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.204.771
+  doc: Aanhangsel nr. 1 bij de bijzondere voorwaarden
+  issued: 2026-09-23
+  reason: Verhuis naar een appartement - wijziging van het verzekerde risico
+  effective: 15/10/2026
+  holder: *holder_lambrechts
+  sections:
+    Contract: {Aanvangsdatum contract: 01/12/2019, Jaarlijkse vervaldag: 1 december, Duur: *one_year}
+    Nieuw verzekerd risico:
+      Adres: Kolveniersvest 21 bus 4, 2500 Lier
+      Hoedanigheid: eigenaar-bewoner van een appartement in mede-eigendom, hoofdverblijf
+      Type: appartement op de 2e verdieping, zonder kelder
+      Bouwjaar: 2019
+      Bewoonbare oppervlakte: 94 m²
+      Gebouw: verzekerd door de mede-eigendom (collectieve polis via syndicus Immo Zimmer bv)
+    Verzekerde bedragen:
+      Inboedel: 55.000 EUR
+      Verbeteringen en verfraaiingen door de eigenaar: 15.000 EUR (keuken en parket)
+    Vorig risico: {Adres: "Beekstraat 17, 2500 Koningshooikt", Dekking tot en met: 14/10/2026}
+  guarantees:
+    - ["Basisdekkingen inboedel", 55.000 EUR, "285,17 EUR (geïndexeerd)", 214.60, woning]
+    - ["Verbeteringen en verfraaiingen (aanvullend op de collectieve polis van het gebouw)", 15.000 EUR, "285,17 EUR (geïndexeerd)", 41.30, woning]
+    - [BA gebouw als mede-eigenaar (aanvullend), "lichamelijke schade 24.790.000 EUR; stoffelijke schade 1.239.000 EUR", geen, inbegrepen]
+  clauses:
+    - "Afstand van verhaal: AXA ziet af van verhaal tegen de mede-eigenaars en de syndicus, behalve bij kwaad opzet."
+    - "Tijdens de verhuis zijn de inboedel op het oude en het nieuwe adres beide gedekt, gedurende 90 dagen."
+    - "De premie voor de periode 15/10/2026 - 01/12/2026 wordt pro rata verrekend."
+  conditions: *axa_woning_av
+
+bv_aerts_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.187.330 - Bijzondere voorwaarden 02.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.187.330
+  doc: Bijzondere voorwaarden
+  issued: 2026-01-05
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/02/2026
+  holder: *holder_aerts
+  sections:
+    Contract: {Aanvangsdatum contract: 01/02/2018, Jaarlijkse vervaldag: 1 februari, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Lispersteenweg 205, 2500 Lier
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: halfopen eengezinswoning met tuin
+      Bouwjaar: 1985 (gerenoveerd 2017, dubbele beglazing)
+      Aantal kamers: 9 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 55.000 EUR}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water, glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 412.80, woning]
+    - ["Basisdekkingen inboedel", 55.000 EUR, "285,17 EUR (geïndexeerd)", 201.30, woning]
+  clauses:
+    - "Optie Diefstal: niet onderschreven."
+  conditions: *axa_woning_av
+
+bv_pauwels_woning_2025:
+  filename: AXA Comfort Thuis Flex 51.176.019 - Bijzondere voorwaarden 01.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.176.019
+  doc: Bijzondere voorwaarden
+  issued: 2025-12-02
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/01/2026
+  holder: *holder_pauwels
+  sections:
+    Contract: {Aanvangsdatum contract: 01/01/2012, Jaarlijkse vervaldag: 1 januari, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Smidstraat 12, 2590 Berlaar
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: gesloten eengezinswoning
+      Bouwjaar: 1974
+      Aantal kamers: 6 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 40.000 EUR}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water, glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 368.90, woning]
+    - ["Basisdekkingen inboedel, incl. temperatuurschommeling koelkasten en diepvriezers (art. 3.7)", 40.000 EUR, "285,17 EUR (geïndexeerd)", 164.20, woning]
+  clauses:
+    - "Optie Diefstal: niet onderschreven."
+  conditions: *axa_woning_av
+
+bv_debacker_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.213.588 - Bijzondere voorwaarden 07.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.213.588
+  doc: Bijzondere voorwaarden
+  issued: 2026-06-05
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/07/2026
+  holder: {Naam: Geert De Backer, Adres: "Dorpsstraat 64, 2221 Booischot", Geboortedatum: 04/08/1972, E-mail: geert.debacker@proximus.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2020, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Dorpsstraat 64, 2221 Booischot
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: open eengezinswoning met garage (elektrische poort)
+      Bouwjaar: 2008
+      Aantal kamers: 10 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 65.000 EUR}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, bliksem, storm en hagel, water, glas, schade door elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 446.70, woning]
+    - ["Basisdekkingen inboedel, incl. schade door elektriciteit aan toestellen", 65.000 EUR, "285,17 EUR (geïndexeerd)", 229.50, woning]
+  clauses:
+    - "Schade door elektriciteit: niet gedekt is schade die onder de garantie van de fabrikant of verkoper valt."
+  conditions: *axa_woning_av
+
+bv_segers_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.229.046 - Bijzondere voorwaarden 01.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.229.046
+  doc: Bijzondere voorwaarden
+  issued: 2025-12-01
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/01/2026
+  holder: *holder_segers
+  sections:
+    Contract: {Aanvangsdatum contract: 01/01/2023, Jaarlijkse vervaldag: 1 januari, Duur: *one_year}
+    Verzekerde woning: &segers_risk
+      Adres: Bouwelsesteenweg 31, 2560 Nijlen
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: open eengezinswoning
+      Bouwjaar: 1996
+      Aantal kamers: 9 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 60.000 EUR}
+  guarantees:
+    - ["Basisdekkingen gebouw, incl. schade aan onroerend goed n.a.v. diefstal en vandalisme (art. 3.5)", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 431.20, woning]
+    - ["Basisdekkingen inboedel", 60.000 EUR, "285,17 EUR (geïndexeerd)", 214.80, woning]
+  clauses:
+    - "Optie Diefstal: NIET onderschreven. Diefstal van inboedel is niet verzekerd."
+  conditions: *axa_woning_av
+
+aanh_segers_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.229.046 - Aanhangsel 1 - optie Diefstal 04.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.229.046
+  doc: Aanhangsel nr. 1 bij de bijzondere voorwaarden
+  issued: 2026-04-28
+  reason: Toevoeging van de optie Diefstal op vraag van de verzekeringnemer
+  effective: 27/04/2026
+  holder: *holder_segers
+  sections:
+    Contract: {Aanvangsdatum contract: 01/01/2023, Jaarlijkse vervaldag: 1 januari, Duur: *one_year}
+    Verzekerde woning: *segers_risk
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 60.000 EUR}
+    Preventie: {Achterdeur: "veiligheidsslot met cilinder SKG** geplaatst op 25/04/2026 (factuur Slotenmakerij Nijlen)"}
+  guarantees:
+    - ["Basisdekkingen gebouw, incl. schade aan onroerend goed n.a.v. diefstal en vandalisme (art. 3.5)", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 431.20, woning]
+    - ["Basisdekkingen inboedel", 60.000 EUR, "285,17 EUR (geïndexeerd)", 214.80, woning]
+    - ["Optie Diefstal (NIEUW vanaf 27/04/2026)", "inboedel 60.000 EUR; juwelen max. 6.000 EUR; multimedia max. 10.000 EUR", "285,17 EUR (geïndexeerd)", 118.00, woning]
+  clauses:
+    - "De optie Diefstal geldt niet voor de inbraak van 20/04/2026 (PV AN.47.L5.011208/2026)."
+    - "Preventiemaatregel: de achterdeur is uitgerust met een veiligheidsslot. Bij afwezigheid moeten alle toegangsdeuren met de sleutel op slot zijn (art. 1.4)."
+    - "De premie voor de periode 27/04/2026 - 01/01/2027 wordt pro rata aangerekend (81,20 EUR)."
+  conditions: *axa_woning_av
+
+bv_vanacker_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.191.275 - Bijzondere voorwaarden 10.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.191.275
+  doc: Bijzondere voorwaarden
+  issued: 2026-09-02
+  reason: Jaarlijkse vervaldag - aanpassing aan het ABEX-indexcijfer
+  effective: 01/10/2026
+  holder: {Naam: Frank Van Acker, Adres: "Tramstraat 9, 2580 Beerzel", Geboortedatum: 20/05/1971, E-mail: frank.vanacker@skynet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/10/2017, Jaarlijkse vervaldag: 1 oktober, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Tramstraat 9, 2580 Beerzel
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: open eengezinswoning met tuinhuis en carport
+      Bouwjaar: 1991
+      Aantal kamers: 11 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen: {Gebouw: volgens stelsel kamers, Inboedel: 70.000 EUR}
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water, glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 458.30, woning]
+    - ["Basisdekkingen inboedel", 70.000 EUR, "285,17 EUR (geïndexeerd)", 236.90, woning]
+    - [Optie Diefstal, "inboedel 70.000 EUR; juwelen max. 6.000 EUR", "285,17 EUR (geïndexeerd)", 126.40, woning]
+  clauses:
+    - "Aansprakelijkheid privéleven (familiale) is niet verzekerd in dit contract; de verzekeringnemer heeft daarvoor een contract bij een andere verzekeraar."
+  conditions: *axa_woning_av
+
+bv_smets_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.236.418 - Bijzondere voorwaarden 07.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex
+  policy: 51.236.418
+  doc: Bijzondere voorwaarden
+  issued: 2026-06-12
+  reason: Nieuw contract (vervangt KBC Woningpolis, opgezegd per 01/07/2026)
+  effective: 01/07/2026
+  holder: {Naam: Veerle Smets, Adres: "Berlarij 45, 2500 Lier", Geboortedatum: 07/02/1980, E-mail: veerle.smets@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/07/2026, Jaarlijkse vervaldag: 1 juli, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Berlarij 45, 2500 Lier
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: rijwoning met tuin en tuinhuis (hout, 9 m²)
+      Bouwjaar: 1932 (gerenoveerd 2015)
+      Aantal kamers: 8 (stelsel kamers - geen evenredigheidsregel)
+    Verzekerde bedragen:
+      Gebouw: volgens stelsel kamers (tuinhuis inbegrepen)
+      Inboedel: 50.000 EUR
+      Juwelen: 10.000 EUR in totaal, waarvan één ring (witgoud, diamant) 5.200 EUR volgens taxatie van 03/06/2026
+  guarantees:
+    - ["Basisdekkingen gebouw: brand, storm en hagel, water (incl. opsporing lek), glas, elektriciteit, natuurrampen, BA gebouw", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 372.50, woning]
+    - ["Basisdekkingen inboedel", 50.000 EUR, "285,17 EUR (geïndexeerd)", 181.50, woning]
+    - [Optie Diefstal, "inboedel 50.000 EUR; juwelen 10.000 EUR (uitbreiding, zie bijzondere bepaling 1)", "285,17 EUR (geïndexeerd)", 118.00, woning]
+  clauses:
+    - "In afwijking van de algemene voorwaarden zijn juwelen verzekerd tot 10.000 EUR in totaal. De ring (taxatie 03/06/2026) is verzekerd voor 5.200 EUR, zonder toepassing van een grens per voorwerp."
+    - "Opsporing van een lek in een leiding: gedekt tot 3.050 EUR, ook zonder zichtbare schade."
+    - "Voorafgaand schadeverleden: 1 schadegeval water (2025) bij de vorige verzekeraar."
+  conditions: *axa_woning_av
+
+bv_hendrickx_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.241.093 - Bijzondere voorwaarden huurder 10.2026.pdf
+  insurer: axa
+  product: Comfort Thuis Flex - huurder
+  policy: 51.241.093
+  doc: Bijzondere voorwaarden
+  issued: 2026-09-02
+  reason: Nieuw contract
+  effective: 01/10/2026
+  holder: &holder_hendrickx {Naam: Ruben Hendrickx, Adres: "Dolfijnstraat 38 bus 2, 2018 Antwerpen", Geboortedatum: 18/04/2002, E-mail: ruben.hendrickx@gmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/10/2026, Jaarlijkse vervaldag: 1 oktober, Duur: *one_year}
+    Verzekerd risico:
+      Adres: Dolfijnstraat 38 bus 2, 2018 Antwerpen
+      Hoedanigheid: huurder, hoofdverblijf
+      Type: appartement op de 1e verdieping (1 slaapkamer)
+      Aantal kamers: 4 (stelsel kamers - geen evenredigheidsregel)
+      Verhuurder: Mevr. L. Verbist, Cogels-Osylei 11, 2600 Berchem
+      Huurcontract: getekend op 20/08/2026, ingang 01/10/2026
+    Verzekerde bedragen: {Huurdersaansprakelijkheid: volgens stelsel kamers, Inboedel: 15.000 EUR}
+  guarantees:
+    - ["Huurdersaansprakelijkheid: brand, water, glas, storm, elektriciteit en de andere basisgevaren", volgens stelsel kamers, "285,17 EUR (geïndexeerd)", 104.60, woning]
+    - ["Basisdekkingen inboedel (zetel, bed, laptop, fiets in het appartement)", 15.000 EUR, "285,17 EUR (geïndexeerd)", 77.40, woning]
+  clauses:
+    - "Artikel 9 van het huurcontract: de dekking huurdersaansprakelijkheid is uitgebreid tot de contractuele aansprakelijkheid van de huurder voor schade aan het gehuurde goed door een gedekt gevaar, ook als de huurder de afwezigheid van fout zou kunnen bewijzen. Andere schade (slijtage, gewone huurherstellingen) blijft ten laste van de huurder."
+    - "Afstand van verhaal ten gunste van de verhuurder: niet van toepassing."
+    - "Optie Diefstal: niet onderschreven."
+  conditions: *axa_woning_av
+
+attest_hendrickx_woning_2026:
+  filename: AXA Comfort Thuis Flex 51.241.093 - Verzekeringsattest huurder voor verhuurder.pdf
+  insurer: axa
+  product: Comfort Thuis Flex - huurder
+  policy: 51.241.093
+  doc: Verzekeringsattest
+  issued: 2026-09-02
+  reason: Attest voor de verhuurder (Vlaams Woninghuurdecreet, art. 29)
+  effective: 01/10/2026
+  holder: *holder_hendrickx
+  sections:
+    Verzekerd goed: {Adres: "Dolfijnstraat 38 bus 2, 2018 Antwerpen", Verhuurder: "Mevr. L. Verbist, Cogels-Osylei 11, 2600 Berchem"}
+    Dekking: {Waarborg: "Huurdersaansprakelijkheid voor brand en waterschade, inclusief de contractuele aansprakelijkheid uit artikel 9 van het huurcontract", Geldig vanaf: 01/10/2026, Duur: *one_year}
+  text: >-
+    AXA Belgium bevestigt dat de verzekeringnemer hierboven een brandverzekering heeft gesloten die zijn
+    huurdersaansprakelijkheid dekt voor het vermelde gehuurde goed, en dat de premie voor de eerste
+    verzekeringsperiode betaald is. Dit attest geldt onder voorbehoud van de algemene en bijzondere voorwaarden
+    van het contract. De verhuurder wordt verwittigd bij opzegging of schorsing van het contract.
+
+# --- AXA Comfort Privéleven ---------------------------------------------------------------------
+
+bv_aerts_prive_2026:
+  filename: AXA Comfort Privéleven 62.410.285 - Bijzondere voorwaarden 02.2026.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.410.285
+  doc: Bijzondere voorwaarden
+  issued: 2026-01-05
+  reason: Jaarlijkse vervaldag - aanpassing aan het indexcijfer
+  effective: 01/02/2026
+  holder: *holder_aerts
+  sections:
+    Contract: {Aanvangsdatum contract: 01/02/2018, Jaarlijkse vervaldag: 1 februari, Duur: *one_year}
+    Verzekerde personen:
+      Verzekeringnemer: Jonas Aerts
+      Partner: Katrien Wauters (geboren 1986)
+      Kinderen: Mathis (geboren 2016), Noor (geboren 2020)
+    Dieren: {Aantal: "1 kat"}
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 118.60]
+    - [Fietsbijstand, "pechhulp vanaf 1 km van de woning, voor alle gezinsleden", geen, inbegrepen]
+  clauses:
+    - "Optie Premium (toevertrouwde goederen, BOB): niet onderschreven."
+  conditions: *axa_prive_av
+
+bv_verstraeten_prive_2026:
+  filename: AXA Comfort Privéleven 62.398.117 - Bijzondere voorwaarden 10.2026.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.398.117
+  doc: Bijzondere voorwaarden
+  issued: 2026-09-03
+  reason: Jaarlijkse vervaldag - aanpassing aan het indexcijfer
+  effective: 01/10/2026
+  holder: {Naam: Hanne Verstraeten, Adres: "Aarschotsesteenweg 140, 2500 Lier", Geboortedatum: 01/03/1989, E-mail: hanne.verstraeten@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/10/2020, Jaarlijkse vervaldag: 1 oktober, Duur: *one_year}
+    Verzekerde personen: {Verzekeringnemer: Hanne Verstraeten, Partner: Tim Goris (geboren 1987), Kinderen: Fien (geboren 2019)}
+    Dieren: {Aantal: "1 hond (labrador, Nala)"}
+    Schadeverleden: {Laatste 5 jaar: "1 schadegeval - 05/2026, fietser ten val door ontsnapte hond (in behandeling)"}
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 124.30]
+    - [Fietsbijstand, "pechhulp vanaf 1 km van de woning, voor alle gezinsleden", geen, inbegrepen]
+  clauses:
+    - "Schade veroorzaakt door dieren onder de hoede van de verzekerden is gedekt (art. 1.2 A)."
+    - "Optie Premium: niet onderschreven."
+  conditions: *axa_prive_av
+
+bv_vanhoof_prive_2025:
+  filename: AXA Comfort Privéleven 62.377.842 - Bijzondere voorwaarden 11.2025.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.377.842
+  doc: Bijzondere voorwaarden
+  issued: 2025-10-03
+  reason: Jaarlijkse vervaldag - aanpassing aan het indexcijfer
+  effective: 01/11/2025
+  holder: {Naam: Luc Van Hoof, Adres: "Kasteelstraat 5, 2560 Kessel", Geboortedatum: 23/06/1970, E-mail: luc.vanhoof@skynet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/11/2012, Jaarlijkse vervaldag: 1 november, Duur: *one_year}
+    Verzekerde personen:
+      Verzekeringnemer: Luc Van Hoof
+      Partner: Ann De Wit (geboren 1972)
+      Kinderen: "Arne (geboren 2005, student, kot in Gent), Lotte (geboren 2008)"
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 131.80]
+    - [Tijdelijk verblijf (studentenkamer), 50.000 EUR per schadegeval, "266,09 EUR (geïndexeerd)", inbegrepen]
+  clauses:
+    - "Kinderen die voor hun studie buitenshuis verblijven en hun domicilie bij de verzekeringnemer behouden, blijven verzekerd (art. 1.2 E)."
+  conditions: *axa_prive_av
+
+aanh_michiels_prive_2026:
+  filename: AXA Comfort Privéleven 62.405.563 - Aanhangsel 1 - optie Premium 04.2026.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.405.563
+  doc: Aanhangsel nr. 1 bij de bijzondere voorwaarden
+  issued: 2026-03-18
+  reason: Toevoeging van de optie Premium op vraag van de verzekeringnemer
+  effective: 01/04/2026
+  holder: {Naam: Nele Michiels, Adres: "Schoolstraat 11, 2590 Berlaar", Geboortedatum: 10/10/1978, E-mail: nele.michiels@gmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/09/2019, Jaarlijkse vervaldag: 1 september, Duur: *one_year}
+    Verzekerde personen: {Verzekeringnemer: Nele Michiels, Kinderen: "Lien (geboren 2010), Wannes (geboren 2012)"}
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 112.40]
+    - ["Optie Premium (NIEUW vanaf 01/04/2026): gehuurde of toevertrouwde goederen (art. 1.4.1)", 50.000 EUR per schadegeval, "266,09 EUR (geïndexeerd)", 37.90]
+    - ["Optie Premium: BOB (art. 1.4.2)", 25.000 EUR per schadegeval, 500 EUR, inbegrepen]
+  clauses:
+    - "De optie Premium geldt voor schadegevallen vanaf 01/04/2026. De schade aan de geleende laptop van 03/2026 is niet gedekt."
+    - "De premie voor de periode 01/04/2026 - 01/09/2026 wordt pro rata aangerekend (15,80 EUR)."
+  conditions: *axa_prive_av
+
+bv_coppens_prive_2026:
+  filename: AXA Comfort Privéleven 62.419.004 - Bijzondere voorwaarden 06.2026.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.419.004
+  doc: Bijzondere voorwaarden
+  issued: 2026-05-04
+  reason: Jaarlijkse vervaldag - aanpassing aan het indexcijfer
+  effective: 01/06/2026
+  holder: {Naam: Stijn Coppens, Adres: "Hoogstraat 3, 2580 Putte", Geboortedatum: 14/01/1992, E-mail: stijn.coppens@telenet.be}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/06/2021, Jaarlijkse vervaldag: 1 juni, Duur: *one_year}
+    Verzekerde personen: {Verzekeringnemer: Stijn Coppens, Partner: Eline Maes (geboren 1993)}
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 109.90]
+  clauses:
+    - "Modelvliegen, ook met drones voor recreatief gebruik in de categorie Open (tot 20 kg), is gedekt (art. 1.2 G)."
+    - "Optie Premium: niet onderschreven."
+  conditions: *axa_prive_av
+
+bv_dewitte_prive_2026:
+  filename: AXA Comfort Privéleven 62.388.739 - Bijzondere voorwaarden 03.2026.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.388.739
+  doc: Bijzondere voorwaarden
+  issued: 2026-02-04
+  reason: Jaarlijkse vervaldag - aanpassing aan het indexcijfer
+  effective: 01/03/2026
+  holder: {Naam: Yannick Dewitte, Adres: "Guldensporenlaan 12, 2820 Bonheiden", Geboortedatum: 27/05/1995, E-mail: yannick.dewitte@hotmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/03/2022, Jaarlijkse vervaldag: 1 maart, Duur: *one_year}
+    Verzekerde personen: {Verzekeringnemer: Yannick Dewitte (alleenstaande)}
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 104.20]
+    - ["Optie Premium: gehuurde of toevertrouwde goederen (art. 1.4.1)", 50.000 EUR per schadegeval, "266,09 EUR (geïndexeerd)", 36.80]
+    - ["Optie Premium: BOB - schade aan het voertuig van een derde als vrijwillige BOB (art. 1.4.2)", 25.000 EUR per schadegeval, 500 EUR, inbegrepen]
+  conditions: *axa_prive_av
+
+bv_pauwels_prive_2026:
+  filename: AXA Comfort Privéleven 62.421.846 - Bijzondere voorwaarden 04.2026.pdf
+  insurer: axa
+  product: Comfort Privéleven
+  policy: 62.421.846
+  doc: Bijzondere voorwaarden
+  issued: 2026-03-24
+  reason: Nieuw contract
+  effective: 01/04/2026
+  holder: *holder_pauwels
+  sections:
+    Contract: {Aanvangsdatum contract: 01/04/2026, Jaarlijkse vervaldag: 1 april, Duur: *one_year}
+    Verzekerde personen:
+      Verzekeringnemer: Martine Pauwels (alleenstaande)
+      Kleinkinderen: "verzekerd als ze onder toezicht van de verzekeringnemer staan (art. 1.1)"
+  guarantees:
+    - [Aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; stoffelijke schade 5.500.000 EUR (geïndexeerd)", "266,09 EUR (geïndexeerd) op stoffelijke schade", 96.40]
+    - [Fietsbijstand, pechhulp vanaf 1 km van de woning, geen, inbegrepen]
+  clauses:
+    - "Optie Premium: niet onderschreven."
+  conditions: *axa_prive_av
+
+bv_aerts_fiets_2026:
+  filename: AXA Comfort Fiets+ 71.055.218 - Bijzondere voorwaarden 05.2026.pdf
+  insurer: axa
+  product: Comfort Fiets+
+  policy: 71.055.218
+  doc: Bijzondere voorwaarden
+  issued: 2026-05-20
+  reason: Nieuw contract
+  effective: 21/05/2026
+  holder: *holder_aerts
+  sections:
+    Contract: {Aanvangsdatum contract: 21/05/2026, Jaarlijkse vervaldag: 21 mei, Duur: *one_year}
+    Verzekerde fiets:
+      Type: elektrische fiets met trapondersteuning tot 25 km/u (geen speed pedelec)
+      Merk en model: Gazelle Ultimate C380 HMB
+      Framenummer: GZ2604418273
+      Aankoopdatum: 09/05/2026
+      Verzekerde waarde: 3.400,00 EUR (aankoopfactuur, btw en accessoires inbegrepen)
+    Antidiefstalsysteem: {Slot: "ART-gekeurd kettingslot (ART 3), bevestigd aan een vast punt"}
+  guarantees:
+    - ["Diefstal (art. 5.1)", "3.400 EUR; waarde volgens afschrijvingstabel vanaf de 7e maand", 10% van de schade (min. 100 EUR), 119.00]
+    - ["Materiële schade (art. 5.2)", 3.400 EUR, 10% van de schade (min. 100 EUR), 70.00]
+    - ["Fietsbijstand (art. 5.3)", België en tot 30 km over de grens, geen, inbegrepen]
+  clauses:
+    - "Diefstal is enkel gedekt als de fiets met een erkend antidiefstalsysteem correct bevestigd was aan een vast bevestigingspunt, of bij inbraak in een woning, fietsbox of afgesloten lokaal (art. 5.1)."
+  conditions:
+    - AXA Comfort Fiets+ - Verzekering en bijstand (4186535 - 12.2023)
+
+# --- AG Insurance --------------------------------------------------------------------------------
+
+bv_lemmens_auto_2026:
+  filename: AG Auto 04.1.227.883 - Bijzondere voorwaarden 09.2026.pdf
+  insurer: ag
+  product: Verzekering Auto - B.A. Auto en Top Omnium
+  policy: 04.1.227.883
+  doc: Bijzondere voorwaarden
+  issued: 2026-08-19
+  reason: Nieuw contract
+  effective: 01/09/2026
+  holder: {Naam: Thomas Lemmens, Adres: "Battelsesteenweg 301, 2800 Mechelen", Geboortedatum: 08/08/1994, E-mail: thomas.lemmens@gmail.com}
+  sections:
+    Contract: {Aanvangsdatum contract: 01/09/2026, Jaarlijkse vervaldag: 1 september, Duur: *one_year}
+    Verzekerd voertuig:
+      Merk en model: Volkswagen ID.3 Pro S 77 kWh
+      Nummerplaat: 2-TLM-845
+      Chassisnummer: WVWZZZE1ZRP027561
+      Datum eerste inschrijving: 14/03/2024
+      Kilometerstand bij aankoop: 18.400 km
+      Vermogen en brandstof: 150 kW - elektrisch
+      Verzekerde waarde: 38.200,00 EUR (factuurwaarde nieuw, zonder btw)
+      Gebruik: privé en woon-werkverkeer
+    Gebruikelijke bestuurder: {Naam: Thomas Lemmens, Rijbewijs B sinds: 21/09/2012}
+    Bonus-malus (AG): {Graad: 3, Schadegevallen in fout (laatste 5 jaar): 0}
+  guarantees:
+    - [Verzekering B.A. Auto, *ba_auto_limit, geen, 498.40, ba_auto]
+    - ["Top Omnium - formule EXCELLENCE: brand, diefstal, glasbreuk, natuurkrachten, dieren, stoffelijke schade", 38.200 EUR, 500 EUR per schadegeval (glasbreuk 0 EUR bij herstelling), 996.70]
+  clauses:
+    - "Vergoedingsregeling Top Omnium: formule EXCELLENCE, afschrijving 1% per maand van de 7e tot de 60e maand (vanaf de datum van eerste inschrijving), voor zover de kilometerteller minstens 10.000 km aanduidt."
+    - "Laadkabel en laadpaal: verzekerd als toebehoren tot 1.500 EUR."
+    - "Stelsel van aftrekbaarheid van de btw: particulier, btw niet recupereerbaar."
+  conditions:
+    - AG Insurance - Verzekering B.A. Auto (0079-2000424N-23012016)
+    - AG Insurance - Verzekering Auto - Top Omnium (0079-2428634N-18022017)
+
+bv_borremans_woning_2026:
+  filename: AG Top Woning 08.3.556.120 - Bijzondere voorwaarden 05.2026.pdf
+  insurer: ag
+  product: Brandverzekering Top Woning
+  policy: 08.3.556.120
+  doc: Bijzondere voorwaarden
+  issued: 2026-04-22
+  reason: Nieuw contract (aankoop woning)
+  effective: 01/05/2026
+  holder: *holder_borremans
+  sections:
+    Contract: {Aanvangsdatum contract: 01/05/2026, Jaarlijkse vervaldag: 1 mei, Duur: *one_year}
+    Verzekerde woning:
+      Adres: Hoogstraat 48, 2220 Heist-op-den-Berg
+      Hoedanigheid: eigenaar-bewoner, hoofdverblijf
+      Type: halfopen eengezinswoning met tuin en garage
+      Bouwjaar: 1978 (renovatie gepland 2026-2027)
+      Bewoonbare oppervlakte: 146 m²
+    Verzekerde bedragen:
+      Gebouw: 386.000 EUR (volgens evaluatieraster AG - geen evenredigheidsregel)
+      Inhoud: 50.000 EUR
+      Indexcijfer: ABEX 1128
+    Hypothecaire schuldeiser: {Instelling: "Belfius Bank, kantoor Heist-op-den-Berg"}
+  guarantees:
+    - ["Top Woning - gebouw: alle risico's behalve uitsluitingen (brand, water, storm, glas, elektriciteit, natuurrampen, BA gebouw, ...)", 386.000 EUR, "294,21 EUR (geïndexeerd)", 486.30, woning]
+    - ["Top Woning - inhoud", 50.000 EUR, "294,21 EUR (geïndexeerd)", 188.20, woning]
+    - ["Indirect verlies 10% (art. 77)", 10% van de vergoeding, geen, inbegrepen]
+  clauses:
+    - "De verzekeringnemer meldt de geplande renovatiewerken vooraf. Tijdens werken van meer dan 30 dagen kan het Pack Ik verbouw toegevoegd worden."
+    - "Diefstal: niet onderschreven."
+  conditions:
+    - "AG Insurance - Supporter van jouw woning: Brandverzekering Top Woning (0079-3000717N-25062022)"
+
+bv_elamrani_woning_2026:
+  filename: AG Top Woning 08.3.561.447 - Bijzondere voorwaarden huurder 03.2026.pdf
+  insurer: ag
+  product: Brandverzekering Top Woning - huurder + Pack Huurder
+  policy: 08.3.561.447
+  doc: Bijzondere voorwaarden
+  issued: 2026-02-20
+  reason: Nieuw contract
+  effective: 01/03/2026
+  holder: *holder_elamrani
+  sections:
+    Contract: {Aanvangsdatum contract: 01/03/2026, Jaarlijkse vervaldag: 1 maart, Duur: *one_year}
+    Verzekerd risico:
+      Adres: Bruul 72 bus 5, 2800 Mechelen
+      Hoedanigheid: huurder, hoofdverblijf
+      Type: appartement op de 3e verdieping (2 slaapkamers)
+      Verhuurder: Bruul Vastgoed bv, Mechelen
+    Verzekerde bedragen: {Huurdersaansprakelijkheid: "volgens evaluatieraster AG (gebouwwaarde 212.000 EUR)", Inhoud: 20.000 EUR}
+  guarantees:
+    - ["Top Woning - huurdersaansprakelijkheid", 212.000 EUR, "294,21 EUR (geïndexeerd)", 132.50, woning]
+    - ["Top Woning - inhoud", 20.000 EUR, "294,21 EUR (geïndexeerd)", 64.30, woning]
+    - ["Pack Huurder: rechtsbijstand huurder, tijdelijke huisvesting, bijstand thuis", zie algemene voorwaarden Pack Huurder, geen, 38.90]
+  clauses:
+    - "Afstand van verhaal: AG ziet af van verhaal tegen de verhuurder, behalve bij kwaad opzet."
+  conditions:
+    - "AG Insurance - Supporter van jouw woning: Brandverzekering Top Woning (0079-3000717N-25062022)"
+    - "AG Insurance - Pack Huurder (0079-3311131N-01082016)"
+
+# --- P&V -----------------------------------------------------------------------------------------
+
+bv_borremans_familiale_2026:
+  filename: P&V Familiale Verzekering 551.2.614.075 - Bijzondere voorwaarden 05.2026.pdf
+  insurer: pv
+  product: P&V Familiale Verzekering
+  policy: 551.2.614.075
+  doc: Bijzondere voorwaarden
+  issued: 2026-05-06
+  reason: Nieuw contract
+  effective: 15/05/2026
+  holder: *holder_borremans
+  sections:
+    Contract: {Aanvangsdatum contract: 15/05/2026, Jaarlijkse vervaldag: 15 mei, Duur: *one_year}
+    Verzekerde personen: {Verzekeringnemer: Evelien Borremans, Partner: Jeroen Van Dessel (geboren 1989)}
+    Dieren: {Aantal: "2 katten"}
+  guarantees:
+    - [Burgerrechtelijke aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; materiële schade 5.500.000 EUR (geïndexeerd, art. 7)", "323,14 EUR (geïndexeerd; art. 8) op materiële schade", 124.80]
+    - ["Toevertrouwde goederen (art. 9.9.1)", "25.000 EUR per schadegeval, max. 90 opeenvolgende dagen onder bewaking", "323,14 EUR (geïndexeerd)", inbegrepen]
+  clauses:
+    - "Rechtsbijstand: niet onderschreven."
+  conditions:
+    - P&V Familiale Verzekering - Algemene voorwaarden (PV 551/04-2025)
+
+bv_elamrani_familiale_2026:
+  filename: P&V Familiale Verzekering 551.2.598.330 - Bijzondere voorwaarden 03.2026.pdf
+  insurer: pv
+  product: P&V Familiale Verzekering
+  policy: 551.2.598.330
+  doc: Bijzondere voorwaarden
+  issued: 2026-02-24
+  reason: Nieuw contract
+  effective: 01/03/2026
+  holder: *holder_elamrani
+  sections:
+    Contract: {Aanvangsdatum contract: 01/03/2026, Jaarlijkse vervaldag: 1 maart, Duur: *one_year}
+    Verzekerde personen: {Verzekeringnemer: Karim El Amrani (alleenstaande)}
+  guarantees:
+    - [Burgerrechtelijke aansprakelijkheid privéleven, "lichamelijke schade 27.500.000 EUR; materiële schade 5.500.000 EUR (geïndexeerd, art. 7)", "323,14 EUR (geïndexeerd; art. 8) op materiële schade", 92.60]
+    - ["Toevertrouwde goederen (art. 9.9.1)", "25.000 EUR per schadegeval, max. 90 opeenvolgende dagen onder bewaking", "323,14 EUR (geïndexeerd)", inbegrepen]
+    - [Rechtsbijstand privéleven, 50.000 EUR per schadegeval, geen, 34.50]
+  conditions:
+    - P&V Familiale Verzekering - Algemene voorwaarden (PV 551/04-2025)
