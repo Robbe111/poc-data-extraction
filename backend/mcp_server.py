@@ -52,6 +52,7 @@ def get_dataset_overview() -> dict:
 def search_documents(
     query: str,
     source: Literal["all", "email", "pdf"] = "all",
+    person_email: str | None = None,
     limit: int = 8,
 ) -> list[dict]:
     """Semantic search over email bodies and PDF attachment text.
@@ -59,14 +60,22 @@ def search_documents(
     Args:
         query: natural-language description of what you're looking for (English works best).
         source: search everything, only email bodies, or only PDF attachments.
+        person_email: restrict results to mail sent OR received (To/CC) by this exact address
+            (e.g. "pete.davis@enron.com"). Omit to search across everyone.
         limit: max number of passages to return (1-25).
 
     Returns matching text passages with the email they belong to. Lower distance = more relevant.
     """
     limit = max(1, min(limit, 25))
     with contextlib.redirect_stdout(sys.stderr):
-        # Over-fetch: the same email/PDF often sits in several mail folders, drop those duplicates.
-        raw = vector_store.search(query, n_results=limit * 3, source_type=None if source == "all" else source)
+        # Over-fetch: the same email/PDF often sits in several mail folders (or, now, once per
+        # participant), drop those duplicates.
+        raw = vector_store.search(
+            query,
+            n_results=limit * 3,
+            source_type=None if source == "all" else source,
+            email=person_email,
+        )
 
     results, seen = [], set()
     for hit in raw:
