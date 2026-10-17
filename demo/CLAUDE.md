@@ -31,7 +31,7 @@ Brokers send every client-facing document (policy documents, offers, claims corr
 - **Frontend**: simple web frontend (framework TBD as the project develops — keep it lightweight)
 - **Email ingestion**: Microsoft Graph API (OAuth2 against the broker's Microsoft 365 / Outlook account)
 - **Vector DB**: open-source, self-hosted locally (e.g. Chroma or Qdrant — pick one when ingestion pipeline is built; no cloud vector DB)
-- **Embeddings**: open-source, run locally (no cloud embedding API for now)
+- **Embeddings**: open-source, run locally (no cloud embedding API for now). Currently `intfloat/multilingual-e5-large` via fastembed, configurable with `EMBEDDING_MODEL`
 - **LLM**: wrapped behind a provider-agnostic interface — see below. Default/current provider is Claude (Anthropic API), using a user-supplied API key.
 
 ### LLM wrapper
@@ -67,11 +67,11 @@ Chatbot flow:
 ## Open questions / decisions still to make
 
 - Which vector DB specifically (Chroma vs Qdrant vs other) — decide when building the ingestion pipeline
-- Which local embedding model to use
+- Which local embedding model to use (now e5-large, best in a small Dutch benchmark, but slow on CPU)
 - How to handle emails/attachments that don't clearly match a single client (e.g. broker-internal mail, group mailings)
 - Attachment parsing strategy for scanned/image-based PDFs (OCR needed?)
 - How to handle re-ingestion / incremental sync (new emails arriving after initial ingest) vs. one-off historical import
 
 ## Status
 
-Early prototype. Instead of a real broker mailbox (Graph API not built yet), data comes from a configurable slice of the EDRM Enron email dataset (`backend/enron_dataset.py`, `backend/ingest_enron.py`) → SQLite + Chroma (chunked email bodies and PDF attachments) → FastAPI search endpoint + simple web UI, and a local MCP server (`backend/mcp_server.py`) exposing the same retrieval as tools to Claude Desktop / Claude Code, including a `cite` tool that returns links to `frontend/viewer.html`, which shows the source PDF/email with the quoted passages highlighted. No client matching, LLM wrapper or chatbot yet. This file documents intent/architecture so implementation stays aligned with the plan above.
+Early prototype. Instead of a real broker mailbox (Graph API not built yet), data comes from a configurable slice of the EDRM Enron email dataset (`backend/enron_dataset.py`, `backend/ingest_enron.py`) → SQLite + Chroma (chunked email bodies and PDF attachments) → FastAPI search endpoint + simple web UI. For broker demos there is also a synthetic Dutch mailbox of a fictional Flemish broker (`demo_dataset/`, `backend/demo_dataset.py`, `backend/ingest_demo.py`): hand-written emails with real AXA/KBC/AG/P&V general conditions and generated, fictional special conditions (`demo_dataset/policies.yaml`, `backend/demo_policies.py`) as PDF attachments. A local MCP server (`backend/mcp_server.py`) exposes the same retrieval as tools to Claude Desktop / Claude Code, including a `cite` tool that returns links to `frontend/viewer.html`, which shows the source PDF/email with the quoted passages highlighted. No client matching, LLM wrapper or chatbot yet. This file documents intent/architecture so implementation stays aligned with the plan above.

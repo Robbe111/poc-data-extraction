@@ -1,0 +1,141 @@
+# Fictional broker office and its client list (the list the broker maintains: client id,
+# name, email addresses). All people, addresses and policy numbers are made up.
+# The emails in demo/mailbox/ only give addresses; display names are looked up here.
+
+broker:
+  - Els Hoflandt <els@hoflandt.be>                   # zaakvoerder, advies en nieuwe contracten
+  - Pieter Janssens <pieter.janssens@hoflandt.be>    # schadebeheer
+  - Verzekeringskantoor Hoflandt <info@hoflandt.be>
+  - Schadedienst Hoflandt <schade@hoflandt.be>
+
+clients:
+  - id: K-1001
+    name: Jan Peeters
+    contacts: [Jan Peeters <jan.peeters@telenet.be>]
+    policies: [AXA Comfort Auto 43.118.207 (Mini Omnium Extra, Vervangingsvoertuig)]
+  - id: K-1002
+    name: Sarah De Smet
+    contacts: [Sarah De Smet <sarah.desmet@gmail.com>]
+    policies: [AXA Comfort Auto 43.120.554 (Omnium)]
+  - id: K-1003
+    name: Tom Willems
+    contacts: [Tom Willems <tom.willems@skynet.be>]
+    policies: [AXA Comfort Auto 43.097.310 (Mini Omnium, Wegenhulp)]
+  - id: K-1004
+    name: Lotte Claes
+    contacts: [Lotte Claes <lotte.claes@hotmail.com>]
+    policies: [AXA Comfort Auto 43.131.822 (Omnium)]
+  - id: K-1005
+    name: Kevin Maes
+    contacts: [Kevin Maes <kevin.maes@telenet.be>]
+    policies: [AXA Comfort Auto 43.064.915 (enkel Aansprakelijkheid)]
+  - id: K-1006
+    name: An Vermeulen
+    contacts: [An Vermeulen <an.vermeulen@proximus.be>]
+    policies: [AXA Comfort Auto 43.102.476 (Mini Omnium Extra)]
+  - id: K-1007
+    name: Bart Wouters
+    contacts: [Bart Wouters <bart.wouters@gmail.com>]
+    policies: [AXA Comfort Auto 43.089.633 (Omnium, Wegenhulp)]
+  - id: K-1008
+    name: Nathalie Dubois
+    contacts: [Nathalie Dubois <nathalie.dubois@telenet.be>]
+    policies: [AXA Comfort Auto 43.110.058 (Mini Omnium Extra), AXA Comfort Thuis Flex 51.220.914 (eigenaar)]
+  - id: K-1009
+    name: Dirk Jacobs
+    contacts: [Dirk Jacobs <dirk.jacobs@skynet.be>]
+    policies: [AXA Comfort Auto 43.075.281 (Aansprakelijkheid, Rechtsbijstand Full)]
+  - id: K-1010
+    name: Ines Goossens
+    contacts: [Ines Goossens <ines.goossens@gmail.com>]
+    policies: [AXA Comfort Auto 43.115.940 (Mini Omnium, Wegenhulp)]
+  - id: K-1011
+    name: Wim Mertens
+    contacts: [Wim Mertens <wim.mertens@telenet.be>]
+    policies: [AXA Comfort Auto 43.126.307 (Omnium)]
+  - id: K-1012
+    name: Kathleen Hermans
+    contacts: [Kathleen Hermans <kathleen.hermans@hotmail.com>]
+    policies: [AXA Comfort Auto 43.081.764 (Omnium sinds 22/09/2026)]
+  - id: K-1013
+    name: Marc Van den Broeck & Hilde Wouters
+    contacts:
+      - Marc Van den Broeck <marc.vandenbroeck@telenet.be>
+      - Hilde Wouters <hilde.wouters@gmail.com>
+    policies: [AXA Comfort Thuis Flex 51.198.402 (eigenaar)]
+  - id: K-1014
+    name: Sofie Lambrechts
+    contacts: [Sofie Lambrechts <sofie.lambrechts@gmail.com>]
+    policies: [AXA Comfort Thuis Flex 51.204.771 (eigenaar)]
+  - id: K-1015
+    name: Jonas Aerts
+    contacts: [Jonas Aerts <jonas.aerts@telenet.be>]
+    policies: [AXA Comfort Thuis Flex 51.187.330 (eigenaar), AXA Comfort Privéleven 62.410.285, AXA Comfort Fiets+ 71.055.218]
+  - id: K-1016
+    name: Martine Pauwels
+    contacts: [Martine Pauwels <martine.pauwels@skynet.be>]
+    policies: [AXA Comfort Thuis Flex 51.176.019 (eigenaar), AXA Comfort Privéleven 62.421.846]
+  - id: K-1017
+    name: Geert De Backer
+    contacts: [Geert De Backer <geert.debacker@proximus.be>]
+    policies: [AXA Comfort Thuis Flex 51.213.588 (eigenaar)]
+  - id: K-1018
+    name: Elke Segers
+    contacts: [Elke Segers <elke.segers@gmail.com>]
+    policies: [AXA Comfort Thuis Flex 51.229.046 (eigenaar, optie Diefstal sinds 27/04/2026)]
+  - id: K-1019
+    name: Hanne Verstraeten
+    contacts: [Hanne Verstraeten <hanne.verstraeten@telenet.be>]
+    policies: [AXA Comfort Privéleven 62.398.117]
+  - id: K-1020
+    name: Luc Van Hoof
+    contacts: [Luc Van Hoof <luc.vanhoof@skynet.be>]
+    policies: [AXA Comfort Privéleven 62.377.842]
+  - id: K-1021
+    name: Nele Michiels
+    contacts: [Nele Michiels <nele.michiels@gmail.com>]
+    policies: [AXA Comfort Privéleven 62.405.563 (optie Premium sinds 01/04/2026)]
+  - id: K-1022
+    name: Stijn Coppens
+    contacts: [Stijn Coppens <stijn.coppens@telenet.be>]
+    policies: [AXA Comfort Privéleven 62.419.004]
+  - id: K-1023
+    name: Yannick Dewitte
+    contacts: [Yannick Dewitte <yannick.dewitte@hotmail.com>]
+    policies: [AXA Comfort Privéleven 62.388.739 (met optie Premium)]
+  - id: K-1024
+    name: Veerle Smets
+    contacts: [Veerle Smets <veerle.smets@telenet.be>]
+    policies: [AXA Comfort Thuis Flex 51.236.418 (eigenaar, sinds 01/07/2026; voordien KBC)]
+  - id: K-1025
+    name: Ruben Hendrickx
+    contacts: [Ruben Hendrickx <ruben.hendrickx@gmail.com>]
+    policies: [AXA Comfort Thuis Flex 51.241.093 (huurder, vanaf 01/10/2026)]
+  - id: K-1026
+    name: Julie Wuyts
+    contacts: [Julie Wuyts <julie.wuyts@telenet.be>]
+    policies: [AXA Comfort Auto 43.099.852 (Aansprakelijkheid)]
+  - id: K-1027
+    name: Olivier Declercq
+    contacts: [Olivier Declercq <olivier.declercq@gmail.com>]
+    policies: [AXA Comfort Auto 43.117.690 (Mini Omnium)]
+  - id: K-1028
+    name: Frank Van Acker
+    contacts: [Frank Van Acker <frank.vanacker@skynet.be>]
+    policies: [AXA Comfort Thuis Flex 51.191.275 (eigenaar), familiale verzekering bij KBC]
+  - id: K-1029
+    name: Patrick Martens
+    contacts: [Patrick Martens <patrick.martens@telenet.be>]
+    policies: [AXA Comfort Auto 43.134.106 (Omnium, sinds 01/07/2026; voordien KBC)]
+  - id: K-1030
+    name: Thomas Lemmens
+    contacts: [Thomas Lemmens <thomas.lemmens@gmail.com>]
+    policies: [AG Auto 04.1.227.883 (B.A. + Top Omnium)]
+  - id: K-1031
+    name: Evelien Borremans
+    contacts: [Evelien Borremans <evelien.borremans@telenet.be>]
+    policies: [AG Top Woning 08.3.556.120 (eigenaar), P&V Familiale Verzekering 551.2.614.075]
+  - id: K-1032
+    name: Karim El Amrani
+    contacts: [Karim El Amrani <karim.elamrani@gmail.com>]
+    policies: [AG Top Woning 08.3.561.447 (huurder + Pack Huurder), P&V Familiale Verzekering 551.2.598.330]

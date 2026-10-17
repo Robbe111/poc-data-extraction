@@ -1,0 +1,933 @@
+# Policy documents sent to clients: renewals at the annual due date (vervaldag), amendments
+# (aanhangsels), new contracts and copies on request. Each broker email attaches the client's
+# special conditions (demo/policies.yaml, generated) and, for new contracts, the general
+# conditions (demo/documents.yaml). Dates are Brussels local time.
+
+# --- 2025 -------------------------------------------------------------------------------------
+
+- id: hoflandt.vervaldag-vanhoof-2025.1
+  date: 2025-10-03 10:12
+  from: els@hoflandt.be
+  to: luc.vanhoof@skynet.be
+  subject: Jaarlijkse vervaldag familiale verzekering - Comfort Privéleven 62.377.842
+  attachments: [bv_vanhoof_prive_2025]
+  body: |
+    Dag meneer Van Hoof,
+
+    Op 1 november vervalt uw familiale verzekering, AXA Comfort Privéleven 62.377.842. In bijlage vindt u de nieuwe bijzondere voorwaarden. De premie wordt enkel aangepast aan het indexcijfer: 131,80 EUR per jaar, alle taksen inbegrepen. U hoeft niets te doen, de premie wordt zoals altijd via domiciliëring betaald.
+
+    Goed om te weten nu Arne in Gent op kot zit: zolang hij bij u gedomicilieerd blijft, is hij mee verzekerd. Uw polis dekt ook schade aan zijn studentenkamer tot 50.000 EUR (waarborg "Tijdelijk verblijf").
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-wuyts-2025.1
+  date: 2025-10-06 09:40
+  from: els@hoflandt.be
+  to: julie.wuyts@telenet.be
+  subject: Uw autoverzekering vervalt op 1 november - Comfort Auto 43.099.852
+  attachments: [bv_wuyts_auto_2025]
+  body: |
+    Dag Julie,
+
+    Je autoverzekering voor de Fiat 500 (1-JWF-826) wordt op 1 november automatisch verlengd. De nieuwe bijzondere voorwaarden zitten in bijlage.
+
+    Je premie voor de Aansprakelijkheid is 412,50 EUR per jaar, alle taksen inbegrepen. Je hebt nu 6 schadevrije jaren, dus je premieniveau zakt verder naar 94%.
+
+    Je auto is 8 jaar oud, dus een omnium raad ik niet meer aan. Heb je vragen, laat maar iets weten.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.wegenhulp-willems.1
+  date: 2025-10-20 14:25
+  from: els@hoflandt.be
+  to: tom.willems@skynet.be
+  subject: Wegenhulp toegevoegd aan uw autoverzekering - aanhangsel Comfort Auto 43.097.310
+  attachments: [aanh_willems_auto_2025, axa_wegenhulp]
+  body: |
+    Dag meneer Willems,
+
+    Zoals telefonisch besproken heb ik de waarborg Wegenhulp toegevoegd aan uw Comfort Auto voor de Peugeot 3008. In bijlage vindt u het aanhangsel en de algemene voorwaarden Wegenhulp.
+
+    - Ingangsdatum: 1 november 2025
+    - Premie Wegenhulp: 96,00 EUR per jaar; tot de vervaldag van 1 maart betaalt u pro rata 32,00 EUR
+    - U heeft pechhulp in België en het buitenland, en bij pech in België een vervangwagen voor maximum 7 dagen (15 dagen in een geconventioneerde garage)
+
+    Het belangrijkste: bel bij pech altijd eerst de AXA-bijstandsdienst. Het nummer staat op uw verzekeringsbewijs en in de AXA-app. Laat u slepen zonder dat AXA het regelt, dan is de tussenkomst beperkt.
+
+    Uw formule Mini Omnium blijft ongewijzigd.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-peeters-2025.1
+  date: 2025-11-03 09:05
+  from: els@hoflandt.be
+  to: jan.peeters@telenet.be
+  subject: Jaarlijkse vervaldag autoverzekering - Comfort Auto 43.118.207
+  attachments: [bv_peeters_auto_2025]
+  body: |
+    Dag meneer Peeters,
+
+    Uw autoverzekering voor de VW Golf (1-XKT-482) wordt op 1 december verlengd. In bijlage de nieuwe bijzondere voorwaarden.
+
+    Samengevat:
+    - Aansprakelijkheid: 486,30 EUR
+    - Bescherming van het voertuig, formule Mini Omnium Extra: 402,60 EUR (geen vrijstelling op glasbreuk, 250 EUR op de andere dekkingen)
+    - Vervangingsvoertuig: 54,00 EUR
+    Totaal 942,90 EUR per jaar, alle taksen inbegrepen.
+
+    Uw wagen is nu vier jaar oud. De Mini Omnium Extra blijft interessant zolang de wagen meer dan 15.000 EUR waard is. Volgend jaar bekijken we samen of dat nog zo is.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-lambrechts-2025.1
+  date: 2025-11-04 11:30
+  from: els@hoflandt.be
+  to: sofie.lambrechts@gmail.com
+  subject: Vervaldag woningverzekering Comfort Thuis Flex 51.204.771
+  attachments: [bv_lambrechts_woning_2025]
+  body: |
+    Dag Sofie,
+
+    Je woningverzekering voor de Beekstraat in Koningshooikt vervalt op 1 december. De nieuwe bijzondere voorwaarden zitten in bijlage. De premie volgt de ABEX-index van de bouwkosten: 584,90 EUR per jaar (gebouw 396,20 EUR en inboedel 188,70 EUR), alle taksen inbegrepen.
+
+    Je hebt de optie Diefstal nooit genomen. Voor een inboedel van 50.000 EUR kost die ongeveer 105 EUR per jaar. Laat maar weten als je daar eens over wil praten.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-segers-2025.1
+  date: 2025-12-01 10:15
+  from: els@hoflandt.be
+  to: elke.segers@gmail.com
+  subject: Nieuwe bijzondere voorwaarden woningverzekering - Comfort Thuis Flex 51.229.046
+  attachments: [bv_segers_woning_2026]
+  body: |
+    Dag mevrouw Segers,
+
+    Op 1 januari wordt uw woningverzekering voor uw woning in Nijlen verlengd. In bijlage vindt u de nieuwe bijzondere voorwaarden, met een premie van 646,00 EUR per jaar (alle taksen inbegrepen).
+
+    Er verandert niets aan uw dekkingen: gebouw volgens het stelsel kamers en een inboedel van 60.000 EUR. Zoals bij de start van het contract heeft u de optie Diefstal niet genomen. Wilt u dat alsnog doen, dan maak ik graag een voorstel.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-pauwels-2025.1
+  date: 2025-12-02 15:48
+  from: els@hoflandt.be
+  to: martine.pauwels@skynet.be
+  subject: Vervaldag brandverzekering - Comfort Thuis Flex 51.176.019
+  attachments: [bv_pauwels_woning_2025]
+  body: |
+    Dag mevrouw Pauwels,
+
+    Uw brandverzekering voor de Smidstraat in Berlaar wordt op 1 januari verlengd. De nieuwe bijzondere voorwaarden zitten in bijlage.
+
+    De premie wordt 533,10 EUR per jaar, alle taksen inbegrepen (gebouw 368,90 EUR en inboedel 164,20 EUR). Het verschil met vorig jaar komt enkel door de indexering van de bouwkosten.
+
+    Fijne feestdagen alvast!
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+# --- januari - maart 2026 ---------------------------------------------------------------------
+
+- id: hoflandt.vervaldag-aerts-woning-2026.1
+  date: 2026-01-05 10:02
+  from: els@hoflandt.be
+  to: jonas.aerts@telenet.be
+  subject: Vervaldag woningverzekering - Comfort Thuis Flex 51.187.330
+  attachments: [bv_aerts_woning_2026]
+  body: |
+    Dag Jonas,
+
+    Gelukkig nieuwjaar! Op 1 februari vervalt je woningverzekering voor de Lispersteenweg. De nieuwe bijzondere voorwaarden zitten in bijlage: 614,10 EUR per jaar, alle taksen inbegrepen.
+
+    Je familiale verzekering vervalt op dezelfde dag, daarvoor stuur ik je een aparte mail.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-aerts-prive-2026.1
+  date: 2026-01-05 10:09
+  from: els@hoflandt.be
+  to: jonas.aerts@telenet.be
+  subject: Vervaldag familiale verzekering - Comfort Privéleven 62.410.285
+  attachments: [bv_aerts_prive_2026]
+  body: |
+    Dag Jonas,
+
+    En dan je familiale: AXA Comfort Privéleven 62.410.285 wordt op 1 februari verlengd aan 118,60 EUR per jaar. Het hele gezin is verzekerd: jij, Katrien, Mathis en Noor. De bijzondere voorwaarden zitten in bijlage.
+
+    Fietsbijstand is gratis inbegrepen voor iedereen in het gezin. De optie Premium (voor geleende of gehuurde spullen en de BOB-waarborg) heb je niet. Die kost ongeveer 38 EUR per jaar extra.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-desmet-2026.1
+  date: 2026-01-12 16:20
+  from: els@hoflandt.be
+  to: sarah.desmet@gmail.com
+  subject: Je autoverzekering wordt verlengd op 1 februari - Comfort Auto 43.120.554
+  attachments: [bv_desmet_auto_2026]
+  body: |
+    Dag Sarah,
+
+    Je autoverzekering voor de Toyota Yaris (2-GHT-915) wordt op 1 februari verlengd. De nieuwe bijzondere voorwaarden zitten in bijlage:
+    - Aansprakelijkheid: 452,10 EUR
+    - Omnium: 698,40 EUR, met een vrijstelling van 400 EUR per schadegeval (niet op glasbreuk)
+    Totaal 1.150,50 EUR per jaar, alle taksen inbegrepen.
+
+    Je auto is volgende maand drie jaar oud. Vanaf dan wordt de verzekerde waarde bij totaal verlies met 1% per maand afgeschreven. Een volledige omnium blijft voor jouw wagen nog zeker twee jaar zinvol.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-vandenbroeck-2026.1
+  date: 2026-02-03 09:25
+  from: els@hoflandt.be
+  to: [marc.vandenbroeck@telenet.be, hilde.wouters@gmail.com]
+  subject: Vervaldag woningverzekering - Comfort Thuis Flex 51.198.402
+  attachments: [bv_vandenbroeck_woning_2026]
+  body: |
+    Dag Marc en Hilde,
+
+    Op 1 maart wordt jullie woningverzekering voor de Kesselsesteenweg verlengd. In bijlage de nieuwe bijzondere voorwaarden: 745,80 EUR per jaar, alle taksen inbegrepen, inclusief de optie Diefstal.
+
+    De waterschade van december (dossier S-2025-0877) staat vermeld bij het schadeverleden. Eén schadegeval heeft geen invloed op jullie premie.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-vermeulen-2026.1
+  date: 2026-02-02 11:14
+  from: els@hoflandt.be
+  to: an.vermeulen@proximus.be
+  subject: Verlenging autoverzekering op 1 maart - Comfort Auto 43.102.476
+  attachments: [bv_vermeulen_auto_2026]
+  body: |
+    Dag An,
+
+    Je autoverzekering voor de Toyota Corolla (1-VNB-588) wordt op 1 maart verlengd. In bijlage de nieuwe bijzondere voorwaarden: Aansprakelijkheid 474,00 EUR en Mini Omnium Extra 386,20 EUR, samen 860,20 EUR per jaar.
+
+    Met 18 schadevrije jaren zit je op een premieniveau van 72%, het laagste niveau dat we je kunnen geven.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-dewitte-2026.1
+  date: 2026-02-04 14:02
+  from: els@hoflandt.be
+  to: yannick.dewitte@hotmail.com
+  subject: Vervaldag familiale verzekering - Comfort Privéleven 62.388.739
+  attachments: [bv_dewitte_prive_2026]
+  body: |
+    Dag Yannick,
+
+    Je familiale verzekering wordt op 1 maart verlengd. In bijlage de nieuwe bijzondere voorwaarden: 141,00 EUR per jaar, inclusief de optie Premium (36,80 EUR).
+
+    Ter herinnering: met de optie Premium ben je ook verzekerd voor schade aan spullen die je leent of huurt (tot 50.000 EUR), en voor schade aan de auto van een vriend als je vrijwillig BOB bent (tot 25.000 EUR).
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-elamrani-woning.1
+  date: 2026-02-16 19:48
+  from: karim.elamrani@gmail.com
+  to: info@hoflandt.be
+  subject: Verzekering voor mijn huurappartement in Mechelen
+  body: |
+    Goedenavond,
+
+    Ik verhuis op 1 maart naar een appartement aan de Bruul in Mechelen (3e verdieping, 2 slaapkamers). Het is mijn eerste eigen appartement. Mijn verhuurder vraagt een brandverzekering, en een collega zei dat ik ook best een familiale neem.
+
+    Mijn inboedel is niet zo groot, ik schat zo'n 20.000 euro (vooral computer- en fotomateriaal). Kunnen jullie me helpen?
+
+    Karim El Amrani
+
+- id: hoflandt.nieuw-elamrani-woning.2
+  date: 2026-02-20 10:35
+  from: els@hoflandt.be
+  to: karim.elamrani@gmail.com
+  subject: "RE: Verzekering voor mijn huurappartement in Mechelen - uw brandverzekering bij AG"
+  attachments: [bv_elamrani_woning_2026, ag_woning]
+  body: |
+    Dag Karim,
+
+    Bedankt voor het gesprek van gisteren. Je brandverzekering is in orde vanaf 1 maart. Ik heb gekozen voor AG Insurance, omdat hun Top Woning werkt als een "alles behalve"-polis: alles is gedekt, behalve wat uitdrukkelijk uitgesloten is. Voor jouw computer- en fotomateriaal is dat interessant.
+
+    Je polis Top Woning 08.3.561.447 (bijzondere voorwaarden en algemene voorwaarden in bijlage):
+    - Huurdersaansprakelijkheid: 132,50 EUR
+    - Inhoud 20.000 EUR: 64,30 EUR
+    - Pack Huurder (rechtsbijstand bij een geschil met je verhuurder, tijdelijke huisvesting en bijstand thuis): 38,90 EUR
+    Totaal 235,70 EUR per jaar, alle taksen inbegrepen.
+
+    AG ziet af van verhaal tegen je verhuurder. Je kan de bijzondere voorwaarden als bewijs aan je verhuurder bezorgen. Voor je familiale stuur ik je begin volgende week een voorstel.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-elamrani-familiale.1
+  date: 2026-02-24 15:10
+  from: els@hoflandt.be
+  to: karim.elamrani@gmail.com
+  subject: Je familiale verzekering bij P&V - polis 551.2.598.330
+  attachments: [bv_elamrani_familiale_2026, pv_familiale]
+  body: |
+    Dag Karim,
+
+    Zoals beloofd: je familiale verzekering gaat ook in op 1 maart, bij P&V. In bijlage de bijzondere en de algemene voorwaarden.
+
+    - Aansprakelijkheid privéleven: 92,60 EUR per jaar. Vrijstelling op materiële schade: 323,14 EUR, geïndexeerd (artikel 8 van de algemene voorwaarden).
+    - Rechtsbijstand privéleven: 34,50 EUR per jaar.
+
+    Een pluspunt van P&V: schade aan spullen van anderen die je tijdelijk onder je hoede hebt (bijvoorbeeld een geleende camera) is standaard gedekt tot 25.000 EUR (artikel 9.9.1). Bij veel andere maatschappijen is dat een betalende optie.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-mertens-2026.1
+  date: 2026-03-02 09:50
+  from: els@hoflandt.be
+  to: wim.mertens@telenet.be
+  subject: Verlenging autoverzekering Ford Puma - Comfort Auto 43.126.307
+  attachments: [bv_mertens_auto_2026]
+  body: |
+    Dag Wim,
+
+    Je autoverzekering wordt op 1 april verlengd. In bijlage de nieuwe bijzondere voorwaarden.
+
+    - Aansprakelijkheid: 489,20 EUR
+    - Omnium (brand, glas, natuurkrachten, dieren, diefstal): 236,80 EUR
+    - Materiële schade (ongeval): 412,00 EUR, premieniveau 100%
+    Totaal 1.138,00 EUR per jaar, alle taksen inbegrepen. De vrijstelling blijft 250 EUR.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.kopie-polissen-dubois.1
+  date: 2026-03-09 20:31
+  from: nathalie.dubois@telenet.be
+  to: els@hoflandt.be
+  subject: Kopie van mijn polissen voor de bank
+  body: |
+    Dag Els,
+
+    We laten onze hypothecaire lening herzien bij BNP Paribas Fortis. De bank vraagt een kopie van de brandverzekering, en voor de zekerheid ook van de autoverzekering. Kan je die doorsturen? Ik vind de papieren versies niet meer terug.
+
+    Nathalie
+
+- id: hoflandt.kopie-polissen-dubois.2
+  date: 2026-03-10 09:18
+  from: els@hoflandt.be
+  to: nathalie.dubois@telenet.be
+  subject: "RE: Kopie van mijn polissen voor de bank"
+  attachments: [bv_dubois_woning_2026, bv_dubois_auto_2026]
+  body: |
+    Dag Nathalie,
+
+    Geen probleem. In bijlage de geldende bijzondere voorwaarden van je twee polissen bij AXA:
+
+    1. Woning: Comfort Thuis Flex 51.220.914, voor Hoogveld 12 in Lier. Het gebouw is verzekerd volgens het stelsel kamers en de inboedel voor 45.000 EUR. BNP Paribas Fortis staat al vermeld als hypothecaire schuldeiser, dat is wat de bank wil zien.
+    2. Auto: Comfort Auto 43.110.058 voor de Renault Clio (1-RND-447), met Aansprakelijkheid en Mini Omnium Extra.
+
+    Vraagt de bank een apart attest van de brandverzekering, dan laat ik dat bij AXA opmaken. Dat duurt een paar dagen.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.premium-michiels.1
+  date: 2026-03-18 11:42
+  from: els@hoflandt.be
+  to: nele.michiels@gmail.com
+  cc: pieter.janssens@hoflandt.be
+  subject: "RE: Geleende laptop kapot - familiale? - optie Premium vanaf 1 april"
+  attachments: [aanh_michiels_prive_2026]
+  body: |
+    Dag Nele,
+
+    Zoals gevraagd heb ik de optie Premium toegevoegd aan je Comfort Privéleven, met ingang van 1 april 2026. In bijlage het aanhangsel.
+
+    - Gehuurde of toevertrouwde goederen: tot 50.000 EUR per schadegeval (bijvoorbeeld een geleende laptop of een instrument van de muziekschool)
+    - BOB-waarborg: tot 25.000 EUR
+    - Extra premie: 37,90 EUR per jaar. Tot de vervaldag van 1 september betaal je pro rata 15,80 EUR.
+
+    De optie werkt niet met terugwerkende kracht, dus de laptop van maart blijft helaas ten laste van jullie.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-pauwels-familiale.1
+  date: 2026-03-20 10:05
+  from: martine.pauwels@skynet.be
+  to: els@hoflandt.be
+  subject: Familiale verzekering
+  body: |
+    Dag mevrouw Hoflandt,
+
+    Na het gedoe met de diepvries heb ik mijn verzekeringen eens nagekeken. Ik zie dat ik geen familiale verzekering heb. Ik dacht dat die in de brandverzekering zat. Mijn kleinkinderen komen elke woensdag en in de vakanties, en de oudste speelt graag voetbal in de tuin.
+
+    Kan u mij een familiale verzekering aanraden?
+
+    Martine Pauwels
+
+- id: hoflandt.nieuw-pauwels-familiale.2
+  date: 2026-03-24 14:30
+  from: els@hoflandt.be
+  to: martine.pauwels@skynet.be
+  subject: "RE: Familiale verzekering - Comfort Privéleven 62.421.846"
+  attachments: [bv_pauwels_prive_2026, axa_prive_leven]
+  body: |
+    Dag mevrouw Pauwels,
+
+    U heeft gelijk: de familiale zit niet in uw brandverzekering, het is een apart contract. Zoals afgesproken aan de telefoon heb ik een AXA Comfort Privéleven voor u afgesloten, vanaf 1 april 2026. In bijlage de bijzondere en de algemene voorwaarden.
+
+    - Premie: 96,40 EUR per jaar, alle taksen inbegrepen
+    - Uw kleinkinderen: schade die zij aan anderen veroorzaken terwijl ze bij u logeren, is gedekt, omdat ze dan onder uw toezicht staan
+    - Vrijstelling op materiële schade: 266,09 EUR, geïndexeerd
+    - Fietsbijstand is gratis inbegrepen
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+# --- april - juni 2026 ------------------------------------------------------------------------
+
+- id: hoflandt.vervaldag-jacobs-2026.1
+  date: 2026-04-02 10:20
+  from: els@hoflandt.be
+  to: dirk.jacobs@skynet.be
+  subject: Verlenging autoverzekering op 1 mei - Comfort Auto 43.075.281
+  attachments: [bv_jacobs_auto_2026]
+  body: |
+    Dag meneer Jacobs,
+
+    Uw autoverzekering voor de VW Passat (1-DJC-652) wordt op 1 mei verlengd. In bijlage de nieuwe bijzondere voorwaarden:
+    - Aansprakelijkheid: 498,60 EUR
+    - Rechtsbijstand Full, beheerd door Legal Village: 112,40 EUR
+    Totaal 611,00 EUR per jaar, alle taksen inbegrepen.
+
+    Met 22 schadevrije jaren betaalt u het laagste premieniveau. De Rechtsbijstand Full dekt tot 125.000 EUR per geschil, met vrije keuze van advocaat bij een procedure.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-borremans.1
+  date: 2026-04-14 21:06
+  from: evelien.borremans@telenet.be
+  to: info@hoflandt.be
+  subject: Nieuwe woning - brandverzekering en familiale
+  body: |
+    Hallo,
+
+    Mijn vriend Jeroen en ik hebben een huis gekocht in Heist-op-den-Berg (Hoogstraat 48). De akte is op 30 april, en de bank (Belfius) wil tegen dan een brandverzekering zien. Het is een halfopen woning uit 1978 die we de komende jaren willen renoveren.
+
+    We hebben ook nog geen familiale verzekering. Kunnen jullie een voorstel maken voor beide?
+
+    Evelien Borremans
+
+- id: hoflandt.nieuw-borremans.2
+  date: 2026-04-22 16:45
+  from: els@hoflandt.be
+  to: evelien.borremans@telenet.be
+  subject: "RE: Nieuwe woning - brandverzekering en familiale - polis AG Top Woning"
+  attachments: [bv_borremans_woning_2026, ag_woning]
+  body: |
+    Dag Evelien,
+
+    Proficiat met jullie huis! De brandverzekering is in orde vanaf 1 mei 2026, bij AG Insurance: Top Woning, polis 08.3.556.120. Bijzondere en algemene voorwaarden in bijlage.
+
+    - Gebouw: 386.000 EUR, bepaald met het evaluatieraster van AG, dus geen evenredigheidsregel bij onderverzekering
+    - Inhoud: 50.000 EUR
+    - Premie: 674,50 EUR per jaar, alle taksen inbegrepen
+    - Belfius staat vermeld als hypothecaire schuldeiser
+
+    Top Woning is een "alles behalve"-polis. Voor jullie renovatie is één ding belangrijk: meld de werken vooraf. Voor grote werken voegen we best het Pack Ik verbouw toe, dat staat ook in de algemene voorwaarden. De familiale regel ik volgende week.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.diefstal-segers-akkoord.1
+  date: 2026-04-26 18:12
+  from: elke.segers@gmail.com
+  to: els@hoflandt.be
+  subject: "RE: Voorstel optie Diefstal - Comfort Thuis Flex 51.229.046"
+  body: |
+    Dag Els,
+
+    Graag de optie Diefstal toevoegen, liefst zo snel mogelijk. Gisteren is er een veiligheidsslot op de achterdeur geplaatst (slotenmakerij in Nijlen, factuur volgt).
+
+    Elke
+
+- id: hoflandt.diefstal-segers-akkoord.2
+  date: 2026-04-28 09:35
+  from: els@hoflandt.be
+  to: elke.segers@gmail.com
+  subject: "RE: Voorstel optie Diefstal - Comfort Thuis Flex 51.229.046"
+  attachments: [aanh_segers_woning_2026]
+  body: |
+    Dag mevrouw Segers,
+
+    Het is geregeld: de optie Diefstal loopt sinds 27 april 2026. In bijlage het aanhangsel bij uw bijzondere voorwaarden.
+
+    - Diefstal van inboedel tot 60.000 EUR, juwelen tot 6.000 EUR, multimedia (laptop, tablet, tv) tot 10.000 EUR
+    - Extra premie: 118,00 EUR per jaar; tot de vervaldag van 1 januari betaalt u pro rata 81,20 EUR
+    - Het nieuwe veiligheidsslot staat vermeld als preventiemaatregel. Sluit bij afwezigheid altijd alle deuren met de sleutel.
+
+    De inbraak van 20 april valt hier jammer genoeg niet onder, maar voor de schade aan de achterdeur loopt het dossier bij Pieter gewoon verder.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-coppens-2026.1
+  date: 2026-05-04 10:40
+  from: els@hoflandt.be
+  to: stijn.coppens@telenet.be
+  subject: Vervaldag familiale verzekering - Comfort Privéleven 62.419.004
+  attachments: [bv_coppens_prive_2026]
+  body: |
+    Dag Stijn,
+
+    Je familiale verzekering wordt op 1 juni verlengd, aan 109,90 EUR per jaar. De nieuwe bijzondere voorwaarden zitten in bijlage. Eline en jij zijn allebei verzekerd.
+
+    Goed om te weten: ook hobby's zoals modelvliegen zijn gedekt, zelfs met een drone, zolang je binnen de regels van de categorie "Open" blijft (tot 20 kg).
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-borremans.3
+  date: 2026-05-06 11:25
+  from: els@hoflandt.be
+  to: evelien.borremans@telenet.be
+  subject: Jullie familiale verzekering bij P&V - polis 551.2.614.075
+  attachments: [bv_borremans_familiale_2026, pv_familiale]
+  body: |
+    Dag Evelien,
+
+    Hier is de familiale verzekering voor jou en Jeroen, bij P&V, vanaf 15 mei 2026. In bijlage de bijzondere en de algemene voorwaarden.
+
+    - Premie: 124,80 EUR per jaar, alle taksen inbegrepen
+    - Jullie twee katten zijn mee verzekerd
+    - Vrijstelling op materiële schade: 323,14 EUR, geïndexeerd (artikel 8)
+    - Spullen van anderen die jullie tijdelijk onder je hoede hebben, zijn gedekt tot 25.000 EUR (artikel 9.9.1). Handig als jullie voor de renovatie gereedschap lenen.
+
+    Rechtsbijstand hebben jullie niet genomen. Dat kan later nog altijd.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.ebike-aerts.3
+  date: 2026-05-18 20:14
+  from: jonas.aerts@telenet.be
+  to: els@hoflandt.be
+  subject: "RE: Verzekering voor nieuwe elektrische fiets"
+  body: |
+    Dag Els,
+
+    Doe maar de formule met diefstal en schade. Het is een Gazelle Ultimate C380, framenummer GZ2604418273, gekocht op 9 mei. De factuur zit in bijlage. Ik heb er een ART-kettingslot bij gekocht.
+
+    Jonas
+
+- id: hoflandt.ebike-aerts.4
+  date: 2026-05-20 09:12
+  from: els@hoflandt.be
+  to: jonas.aerts@telenet.be
+  subject: "RE: Verzekering voor nieuwe elektrische fiets - Comfort Fiets+ 71.055.218"
+  attachments: [bv_aerts_fiets_2026, axa_fiets]
+  body: |
+    Dag Jonas,
+
+    Je Gazelle is verzekerd vanaf morgen, 21 mei 2026: AXA Comfort Fiets+, polis 71.055.218. Bijzondere en algemene voorwaarden in bijlage.
+
+    - Diefstal: 119,00 EUR per jaar
+    - Materiële schade: 70,00 EUR per jaar
+    - Fietsbijstand: inbegrepen
+    - Verzekerde waarde: 3.400 EUR; vrijstelling 10% van de schade, minimum 100 EUR
+
+    Let op bij diefstal: de fiets moet met je ART-slot vastgemaakt zijn aan een vast punt, zoals een fietsrek, of in een afgesloten ruimte staan (artikel 5.1 van de algemene voorwaarden). Een fiets die enkel op slot staat maar niet vastgemaakt is, is niet gedekt.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-goossens-2026.1
+  date: 2026-06-01 10:05
+  from: els@hoflandt.be
+  to: ines.goossens@gmail.com
+  subject: Verlenging autoverzekering op 1 juli - Comfort Auto 43.115.940
+  attachments: [bv_goossens_auto_2026]
+  body: |
+    Dag Ines,
+
+    Je autoverzekering voor de Skoda Kodiaq wordt op 1 juli verlengd. De nieuwe bijzondere voorwaarden zitten in bijlage: Aansprakelijkheid 538,70 EUR, Mini Omnium 274,30 EUR en Wegenhulp 96,00 EUR, samen 909,00 EUR per jaar.
+
+    Je caravan (Hobby De Luxe, Q-AFK-208) staat vermeld in de bijzondere voorwaarden en is mee gedekt in Aansprakelijkheid en Wegenhulp. Schade aan de caravan zelf is niet verzekerd. Wil je dat, dan kan ik een aparte caravanverzekering voorstellen.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-wouters-2026.1
+  date: 2026-06-02 14:15
+  from: els@hoflandt.be
+  to: bart.wouters@gmail.com
+  subject: Verlenging autoverzekering BMW X1 - Comfort Auto 43.089.633
+  attachments: [bv_wouters_auto_2026]
+  body: |
+    Dag Bart,
+
+    Je autoverzekering voor de BMW X1 (2-BWX-118) wordt op 1 juli verlengd. In bijlage de nieuwe bijzondere voorwaarden:
+    - Aansprakelijkheid: 521,40 EUR
+    - Omnium, vrijstelling 500 EUR: 1.048,70 EUR
+    - Wegenhulp: 96,00 EUR
+    Totaal 1.666,10 EUR per jaar, alle taksen inbegrepen.
+
+    De afschrijvingsformule staat in de bijzondere bepalingen: bij totaal verlies of diefstal de factuurwaarde tijdens de eerste 6 maanden, daarna 1% per maand. Je wagen is nu 36 maanden oud.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-debacker-2026.1
+  date: 2026-06-05 11:50
+  from: els@hoflandt.be
+  to: geert.debacker@proximus.be
+  subject: Vervaldag woningverzekering - Comfort Thuis Flex 51.213.588
+  attachments: [bv_debacker_woning_2026]
+  body: |
+    Dag meneer De Backer,
+
+    Op 1 juli wordt uw woningverzekering voor de Dorpsstraat in Booischot verlengd. In bijlage de nieuwe bijzondere voorwaarden: 676,20 EUR per jaar, alle taksen inbegrepen.
+
+    Uw bliksemschade van vorige week behandelt Pieter verder. Die heeft geen invloed op deze premie.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-martens-auto.1
+  date: 2026-06-08 15:40
+  from: els@hoflandt.be
+  to: patrick.martens@telenet.be
+  subject: Uw nieuwe autoverzekering bij AXA - Comfort Auto 43.134.106
+  attachments: [bv_martens_auto_2026, axa_auto_ipid, axa_auto_algemeen, axa_ba_auto, axa_omnium]
+  body: |
+    Dag meneer Martens,
+
+    Uw autoverzekering voor de Volvo XC40 (1-PMV-661) is in orde bij AXA vanaf 1 juli 2026, polis 43.134.106. Uw KBC-polis heb ik opgezegd tegen dezelfde datum, dus u bent zonder onderbreking verzekerd. In bijlage de bijzondere voorwaarden, het informatiedocument en de algemene voorwaarden.
+
+    - Aansprakelijkheid: 612,40 EUR
+    - Omnium, vrijstelling 500 EUR: 842,30 EUR
+    Totaal 1.454,70 EUR per jaar, alle taksen inbegrepen.
+
+    Uw premieniveau is 130%, omdat het ongeval van januari op uw attest schadeverleden staat. Elk schadevrij jaar zakt het, tot 100% na vijf jaar.
+
+    Zoals besproken staat Jens in de bijzondere voorwaarden als uitgesloten bestuurder. Dat houdt de premie lager, maar rijdt hij toch met de wagen en veroorzaakt hij een ongeval, dan kan AXA verhaal nemen. Wordt dat later anders, dan passen we het aan.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-smets-woning.1
+  date: 2026-06-12 10:30
+  from: els@hoflandt.be
+  to: veerle.smets@telenet.be
+  subject: Uw nieuwe woningverzekering bij AXA - Comfort Thuis Flex 51.236.418
+  attachments: [bv_smets_woning_2026, axa_woning_flex]
+  body: |
+    Dag Veerle,
+
+    Leuk dat je voor ons kiest! Je nieuwe woningverzekering voor de Berlarij gaat in op 1 juli 2026, dezelfde dag waarop je KBC-polis stopt. De opzegging bij KBC is aangetekend verstuurd. In bijlage de bijzondere en de algemene voorwaarden.
+
+    Zoals besproken op kantoor:
+    - Gebouw volgens het stelsel kamers, tuinhuis inbegrepen: 372,50 EUR
+    - Inboedel 50.000 EUR: 181,50 EUR
+    - Optie Diefstal: 118,00 EUR
+    Totaal 672,00 EUR per jaar, alle taksen inbegrepen.
+
+    Je ring: juwelen zijn in jouw contract verzekerd tot 10.000 EUR in totaal, en de ring staat apart vermeld voor 5.200 EUR op basis van de taxatie van 3 juni. Er geldt dus geen grens per stuk zoals bij KBC. Het opsporen van een lek is gedekt tot 3.050 EUR, ook als er nog geen zichtbare schade is.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+# --- juli - september 2026 -------------------------------------------------------------------
+
+- id: hoflandt.contract-claes.2
+  date: 2026-07-01 09:20
+  from: els@hoflandt.be
+  to: lotte.claes@hotmail.com
+  subject: Je bijzondere voorwaarden AXA Comfort Auto - polis 43.131.822
+  attachments: [bv_claes_auto_2026]
+  body: |
+    Dag Lotte,
+
+    Vandaag gaat je autoverzekering voor de Kia EV6 in. Je bijzondere voorwaarden zijn per post onderweg, maar hier alvast de digitale versie om bij te houden.
+
+    Alles zoals afgesproken: Aansprakelijkheid 538,20 EUR en Omnium 1.164,90 EUR, samen 1.703,10 EUR per jaar. De vrijstelling van 500 EUR geldt voor materiële schade; op brand, glas, natuurkrachten en dieren is er geen vrijstelling. Je laadkabel staat er ook in, verzekerd tot 500 EUR.
+
+    Veel rijplezier!
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-declercq-2026.1
+  date: 2026-07-03 11:05
+  from: els@hoflandt.be
+  to: olivier.declercq@gmail.com
+  subject: Verlenging autoverzekering op 1 augustus - Comfort Auto 43.117.690
+  attachments: [bv_declercq_auto_2026]
+  body: |
+    Dag Olivier,
+
+    Je autoverzekering voor de Hyundai Kona (1-ODQ-270) wordt op 1 augustus verlengd. De nieuwe bijzondere voorwaarden zitten in bijlage: Aansprakelijkheid 468,90 EUR en Mini Omnium 256,40 EUR, samen 725,30 EUR per jaar.
+
+    Ga je deze zomer op reis en huur je daar een wagen? Die is niet gedekt door je Mini Omnium. Kijk dus na wat de verhuurder of je kredietkaart dekt.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuw-lemmens-auto.1
+  date: 2026-08-12 13:22
+  from: thomas.lemmens@gmail.com
+  to: els@hoflandt.be
+  subject: Autoverzekering voor mijn tweedehands ID.3
+  body: |
+    Dag Els,
+
+    Via mijn collega Wim Mertens kreeg ik jouw naam. Ik koop een tweedehands Volkswagen ID.3 (maart 2024, 18.400 km) en haal hem op 1 september op. Ik zou graag een BA en een volledige omnium. Kan je een voorstel maken? Mijn attest schadeverleden zit in bijlage: geen ongevallen.
+
+    Thomas Lemmens
+
+- id: hoflandt.nieuw-lemmens-auto.2
+  date: 2026-08-19 10:48
+  from: els@hoflandt.be
+  to: thomas.lemmens@gmail.com
+  subject: "RE: Autoverzekering voor mijn tweedehands ID.3 - polis AG 04.1.227.883"
+  attachments: [bv_lemmens_auto_2026, ag_ba_auto, ag_top_omnium]
+  body: |
+    Dag Thomas,
+
+    Bedankt voor je akkoord aan de telefoon. Je ID.3 is verzekerd bij AG Insurance vanaf 1 september 2026, polis 04.1.227.883. In bijlage de bijzondere voorwaarden en de algemene voorwaarden van B.A. Auto en Top Omnium.
+
+    - B.A. Auto: 498,40 EUR
+    - Top Omnium, formule EXCELLENCE, vrijstelling 500 EUR: 996,70 EUR
+    Totaal 1.495,10 EUR per jaar, alle taksen inbegrepen.
+
+    Ik koos voor AG omdat hun formule EXCELLENCE voor een recente tweedehandswagen interessant is. De verzekerde waarde is de nieuwwaarde van 38.200 EUR, en de afschrijving is maar 1% per maand vanaf de 7e maand na de eerste inschrijving. De laadkabel en de laadpaal zijn verzekerd tot 1.500 EUR.
+
+    Het verzekeringsbewijs stuurt AG rechtstreeks naar je op. Geef je nummerplaat door zodra je die hebt.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-maes-2026.1
+  date: 2026-09-01 10:30
+  from: pieter.janssens@hoflandt.be
+  to: kevin.maes@telenet.be
+  cc: els@hoflandt.be
+  subject: "Vervaldag 1 oktober: nieuwe premie na het ongeval op de Ring - Comfort Auto 43.064.915"
+  attachments: [bv_maes_auto_2026]
+  body: |
+    Dag meneer Maes,
+
+    Zoals beloofd kom ik terug op uw premie. AXA heeft op 11 augustus de schade aan de Audi vergoed: 1.520 EUR (dossier S-2026-0509).
+
+    Ik heb gerekend of terugbetalen de moeite loont. Uw premie gaat van 468,70 EUR naar 604,50 EUR (130%) en zakt daarna elk schadevrij jaar. Over vijf jaar kost dat samen ongeveer 480 EUR extra. Dat is minder dan de 1.520 EUR die AXA betaalde, dus het schadegeval laten staan is voor u de goedkoopste keuze. Zo hebben we het ook telefonisch afgesproken.
+
+    In bijlage de nieuwe bijzondere voorwaarden vanaf 1 oktober 2026. U heeft nog steeds enkel de Aansprakelijkheid.
+
+    Groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.huurder-hendrickx.4
+  date: 2026-09-02 10:10
+  from: els@hoflandt.be
+  to: ruben.hendrickx@gmail.com
+  subject: "RE: Brandverzekering voor mijn eerste huurappartement - polis en attest voor je verhuurder"
+  attachments: [bv_hendrickx_woning_2026, attest_hendrickx_woning_2026, axa_woning_flex]
+  body: |
+    Dag Ruben,
+
+    Het is in orde: je AXA Comfort Thuis Flex als huurder gaat in op 1 oktober 2026, polis 51.241.093. In bijlage:
+    1. je bijzondere voorwaarden;
+    2. een verzekeringsattest dat je aan je verhuurder kan bezorgen;
+    3. de algemene voorwaarden.
+
+    Premie: 182,00 EUR per jaar, alle taksen inbegrepen (huurdersaansprakelijkheid 104,60 EUR en inboedel 15.000 EUR 77,40 EUR).
+
+    Over artikel 9 van je huurcontract: ik heb laten opnemen dat je dekking ook je contractuele aansprakelijkheid uit dat artikel omvat, voor schade door brand, water en de andere verzekerde gevaren. Gewone slijtage en kleine herstellingen blijven voor jou, dat is bij elke polis zo.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-vanacker-2026.1
+  date: 2026-09-02 15:25
+  from: els@hoflandt.be
+  to: frank.vanacker@skynet.be
+  subject: Vervaldag woningverzekering - Comfort Thuis Flex 51.191.275
+  attachments: [bv_vanacker_woning_2026]
+  body: |
+    Dag Frank,
+
+    Je woningverzekering voor de Tramstraat in Beerzel wordt op 1 oktober verlengd. De nieuwe bijzondere voorwaarden zitten in bijlage: 821,60 EUR per jaar, alle taksen inbegrepen, met de optie Diefstal.
+
+    Ik heb genoteerd dat ik je in november een voorstel stuur voor een Comfort Privéleven met de optie Premium, zodat je je KBC-gezinspolis tegen januari kan opzeggen.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vervaldag-verstraeten-2026.1
+  date: 2026-09-03 09:45
+  from: els@hoflandt.be
+  to: hanne.verstraeten@telenet.be
+  subject: Vervaldag familiale verzekering - Comfort Privéleven 62.398.117
+  attachments: [bv_verstraeten_prive_2026]
+  body: |
+    Dag Hanne,
+
+    Je familiale verzekering wordt op 1 oktober verlengd, aan 124,30 EUR per jaar. De nieuwe bijzondere voorwaarden zitten in bijlage.
+
+    Het dossier van de fietser (mei 2026) staat vermeld bij het schadeverleden. Een familiale verzekering werkt zonder bonus-malus, dus je premie stijgt daardoor niet. Nala staat nog altijd vermeld als verzekerd dier.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.nieuwe-auto-hermans.4
+  date: 2026-09-10 10:05
+  from: els@hoflandt.be
+  to: kathleen.hermans@hotmail.com
+  subject: "RE: Nieuwe (tweedehands) auto - wat moet ik doen?"
+  attachments: [aanh_hermans_auto_2026, bewijs_hermans_auto_2026, axa_auto_algemeen, axa_ba_auto, axa_omnium]
+  body: |
+    Dag Kathleen,
+
+    Alles is in orde voor 22 september. In bijlage:
+    1. het aanhangsel met de Skoda Octavia (1-KHC-093) en de nieuwe Omnium;
+    2. het internationaal verzekeringsbewijs voor de garage. Leg het daarna in de wagen;
+    3. de algemene voorwaarden versie 06.2026, die gelden vanaf de vervanging van je wagen.
+
+    Je premie: Aansprakelijkheid 486,00 EUR en Omnium met 500 EUR vrijstelling 512,00 EUR, samen 998,00 EUR per jaar. Tot de vervaldag van 1 november betaal je pro rata.
+
+    De verzekerde waarde is de aankoopprijs van 21.900 EUR. Bij totaal verlies schrijft AXA 1% per maand af vanaf 22 september.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.verhuis-lambrechts.3
+  date: 2026-09-23 14:40
+  from: els@hoflandt.be
+  to: sofie.lambrechts@gmail.com
+  subject: "RE: Verhuis - woningverzekering meenemen? - aanhangsel vanaf 15 oktober"
+  attachments: [aanh_lambrechts_woning_2026]
+  body: |
+    Dag Sofie,
+
+    Bedankt voor de gegevens van het appartement en de syndicus. In bijlage het aanhangsel bij je Comfort Thuis Flex 51.204.771. Het gaat in op 15 oktober 2026, de dag dat je de sleutel krijgt.
+
+    Wat verandert:
+    - Adres: Kolveniersvest 21 bus 4, Lier
+    - Het gebouw zelf verzekert de mede-eigendom via de collectieve polis van de syndicus (Immo Zimmer). Jij verzekert je inboedel (55.000 EUR) en je eigen verbeteringen, zoals de keuken en het parket (15.000 EUR).
+    - Nieuwe premie: 255,90 EUR per jaar in plaats van 584,90 EUR. Het verschil voor oktober en november wordt verrekend.
+    - Tijdens de verhuis is je inboedel op beide adressen verzekerd, tot 90 dagen.
+
+    De dekking voor de Beekstraat loopt tot en met 14 oktober. Verkoop je het huis later, laat het me dan weten: de koper moet vanaf de akte zelf verzekerd zijn.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.diefstal-wouters.6
+  date: 2026-09-24 16:05
+  from: els@hoflandt.be
+  to: bart.wouters@gmail.com
+  cc: pieter.janssens@hoflandt.be
+  subject: "RE: Diefstal BMW X1 - totaal verlies (dossier S-2026-0495) - verzekering nieuwe iX1"
+  attachments: [aanh_wouters_auto_2026]
+  body: |
+    Dag Bart,
+
+    Proficiat met je nieuwe BMW iX1. Hij is verzekerd vanaf de levering op 26 september, op hetzelfde contract 43.089.633 en met je oude nummerplaat 2-BWX-118. In bijlage het aanhangsel.
+
+    - Aansprakelijkheid: 534,90 EUR
+    - Omnium, vrijstelling 500 EUR: 1.236,40 EUR (verzekerde waarde 49.600 EUR, laadkabel tot 500 EUR)
+    - Wegenhulp: 96,00 EUR
+    Het premiesaldo van de gestolen X1 wordt verrekend. De diefstal telt niet als schadegeval in fout, dus je blijft op 70%.
+
+    Nieuw in je bijzondere voorwaarden, na de relay attack: keyless entry staat uit en de wagen heeft een erkend volgsysteem. Hou dat abonnement actief. Verlies je een sleutel of je smartphone met de digitale sleutel, blokkeer de toegang dan binnen 24 uur.
+
+    Groetjes,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt

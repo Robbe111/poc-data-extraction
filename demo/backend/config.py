@@ -25,6 +25,15 @@ ENRON_ATTACHMENT_EXTENSIONS = {
     e.strip().lower() for e in os.getenv("ENRON_ATTACHMENT_EXTENSIONS", "pdf").split(",") if e.strip()
 }
 
+# Synthetic demo mailbox of a (fictional) Belgian broker: hand-written emails in demo_dataset/,
+# with real AXA/KBC general conditions as PDF attachments, downloaded into DEMO_CACHE_DIR.
+DEMO_DIR = BACKEND_DIR.parent / "demo_dataset"
+DEMO_CACHE_DIR = DATA_DIR / "demo"
+
+# Local embedding model (fastembed, ONNX: no PyTorch). Must be multilingual: the demo mailbox is
+# Dutch. Changing it needs a re-ingest; each model gets its own Chroma collection.
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "intfloat/multilingual-e5-large")
+
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))  # characters
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 

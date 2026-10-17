@@ -1,6 +1,10 @@
 fastapi
 uvicorn[standard]
 chromadb
+fastembed  # local ONNX embedding models (multilingual)
 pypdf
 requests
 mcp>=2.2,<3
+pyyaml
+fpdf2  # renders the fictional special conditions of the demo mailbox
+tzdata  # time zones for zoneinfo on Windows

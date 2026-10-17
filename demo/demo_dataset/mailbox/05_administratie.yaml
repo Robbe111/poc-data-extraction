@@ -1,0 +1,107 @@
+# Administrative mail without policy documents: newsletter to many clients (no single client
+# to match), a move, a quote. Dates are Brussels local time.
+
+- id: hoflandt.nieuwsbrief-zomer-2026.1
+  date: 2026-06-25 10:00
+  from: els@hoflandt.be
+  to: info@hoflandt.be
+  cc:
+    - jan.peeters@telenet.be
+    - sarah.desmet@gmail.com
+    - tom.willems@skynet.be
+    - lotte.claes@hotmail.com
+    - kevin.maes@telenet.be
+    - an.vermeulen@proximus.be
+    - bart.wouters@gmail.com
+    - nathalie.dubois@telenet.be
+    - dirk.jacobs@skynet.be
+    - ines.goossens@gmail.com
+    - wim.mertens@telenet.be
+    - kathleen.hermans@hotmail.com
+    - julie.wuyts@telenet.be
+    - olivier.declercq@gmail.com
+  subject: "Zomer 2026: op reis met de auto? Vijf tips van uw verzekeringskantoor"
+  body: |
+    Beste klant,
+
+    De zomervakantie komt eraan. Veel van u vertrekken met de wagen naar het buitenland. Vijf tips om zorgeloos te vertrekken:
+
+    1. Neem uw internationaal verzekeringsbewijs (vroeger "groene kaart") mee in de wagen. U vindt het ook in de AXA-app.
+    2. Heeft u de waarborg Wegenhulp? Bel bij pech of een ongeval in het buitenland altijd eerst de bijstandscentrale, vóór u zelf een takeldienst of garage inschakelt. Anders kan de tussenkomst beperkt worden.
+    3. Trekt u een caravan of aanhangwagen? Kijk na of die in uw contract vermeld staat en of hij binnen de grenzen van gewicht en lengte valt.
+    4. Huurt u ter plaatse een wagen? Uw eigen omnium dekt die meestal niet. Kijk na of uw kredietkaart een verzekering voor de franchise van huurwagens heeft.
+    5. Leg voor vertrek een ingevuld Europees aanrijdingsformulier in het handschoenkastje, met een pen.
+
+    Nieuw vanaf deze maand: AXA heeft de algemene voorwaarden van Comfort Auto vernieuwd (versie 06.2026). Voor bestaande contracten verandert er inhoudelijk weinig. Wie een nieuw contract afsluit of zijn wagen vervangt, krijgt de nieuwe voorwaarden automatisch.
+
+    Een deugddoende zomer gewenst!
+
+    Els Hoflandt en Pieter Janssens
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.verhuis-lambrechts.1
+  date: 2026-09-01 19:15
+  from: sofie.lambrechts@gmail.com
+  to: els@hoflandt.be
+  subject: Verhuis - woningverzekering meenemen?
+  body: |
+    Dag Els,
+
+    Na het wateroverlast-avontuur van vorige winter hebben we besloten te verhuizen: we hebben een appartement gekocht in Lier (Kolveniersvest), zonder kelder deze keer! De sleutel krijgen we op 15 oktober, maar we verhuizen pas begin november na wat schilderwerken. Het huis in Koningshooikt wordt verkocht, de akte is voorzien in december.
+
+    Wat moet ik doen met mijn woningverzekering? Moet ik een nieuwe afsluiten?
+
+    Sofie
+
+- id: hoflandt.verhuis-lambrechts.2
+  date: 2026-09-02 09:30
+  from: els@hoflandt.be
+  to: sofie.lambrechts@gmail.com
+  subject: "RE: Verhuis - woningverzekering meenemen?"
+  body: |
+    Dag Sofie,
+
+    Proficiat met jullie nieuwe appartement, en ik begrijp de keuze zonder kelder wel!
+
+    Je hoeft geen nieuw contract af te sluiten, we passen je Comfort Thuis Flex aan. Een paar praktische punten:
+    - Je hebt 90 dagen om ons een verhuis te melden. Tijdens de verhuisperiode zijn beide adressen gedekt via een dekkingsuitbreiding in je contract.
+    - Voor het appartement zelf: bij een appartement verzekert de mede-eigendom meestal het gebouw via een collectieve polis. Vraag de syndicus een kopie van die polis. Jij verzekert dan je inboedel en eventuele eigen verbeteringen. Daardoor daalt je premie waarschijnlijk.
+    - Het huis in Koningshooikt blijft verzekerd tot de akte. Verwittig ons zodra de datum vastligt. Let op als het huis lang leeg staat: bij een woning die langer dan 180 dagen onbewoond is, vervallen sommige dekkingen, zoals vandalisme.
+
+    Stuur me het adres, het bouwjaar en de oppervlakte van het appartement, en de gegevens van de syndicus. Dan maak ik het aanhangsel klaar met ingang 15 oktober.
+
+    Groetjes,
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.ebike-aerts.1
+  date: 2026-05-12 20:40
+  from: jonas.aerts@telenet.be
+  to: els@hoflandt.be
+  subject: Verzekering voor nieuwe elektrische fiets
+  body: |
+    Dag Els,
+
+    Ik heb een elektrische fiets gekocht om naar het werk te rijden (2 x 14 km per dag), 3.400 euro, gewone trapondersteuning tot 25 km/u, geen speed pedelec. Hij staat overdag op de fietsparking van mijn werk. Wat raad je aan qua verzekering? Is er iets al gedekt via mijn familiale?
+
+    Jonas
+
+- id: hoflandt.ebike-aerts.2
+  date: 2026-05-13 11:15
+  from: els@hoflandt.be
+  to: jonas.aerts@telenet.be
+  subject: "RE: Verzekering voor nieuwe elektrische fiets"
+  body: |
+    Dag Jonas,
+
+    Je hebt al meer dan je denkt via je Comfort Privéleven:
+    - Aansprakelijkheid: veroorzaak je met je e-bike schade aan anderen, dan is dat gedekt. Het is een fiets met trapondersteuning tot 25 km/u, dus geen motorvoertuig.
+    - Fietsbijstand: gratis inbegrepen. Bij pech, een lekke band, een ongeval of diefstal onderweg (vanaf 1 km van je woning) komt er een pechverhelper, of word jij en je fiets naar huis of een fietsenmaker gebracht.
+
+    Niet gedekt: diefstal van de fiets zelf en schade aan je eigen fiets. Voor een fiets van 3.400 EUR die elke dag op een parking staat, raad ik de AXA Comfort Fiets+ aan: die dekt diefstal (met een goedgekeurd slot), vandalisme en materiële schade. Voor jouw fiets kost dat 189 EUR per jaar met diefstal en schade, of 119 EUR per jaar met enkel diefstal.
+
+    Laat maar weten welke formule je wil. Ik heb dan de aankoopfactuur en het framenummer nodig.
+
+    Groetjes,
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt

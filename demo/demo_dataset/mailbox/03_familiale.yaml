@@ -1,0 +1,226 @@
+# Family liability (AXA Comfort Privéleven, conditions 12.2025). Dates are Brussels local time.
+
+# --- Hanne Verstraeten: hond ontsnapt, fietser ten val (dieren) -----------------------------
+- id: hoflandt.hond-verstraeten.1
+  date: 2026-05-06 19:40
+  from: hanne.verstraeten@telenet.be
+  to: schade@hoflandt.be
+  subject: Onze hond heeft een fietser doen vallen
+  body: |
+    Dag,
+
+    Onze labrador Nala is vanmiddag door het tuinpoortje ontsnapt dat niet goed dicht was, en is de straat op gelopen net toen er een fietser passeerde. De man is gevallen en heeft zijn pols gebroken, zijn koersfiets is beschadigd (derailleur, stuur) en zijn helm is gebarsten. Hij is met de ambulance naar het ziekenhuis in Lier gebracht. Ik heb mijn gegevens aan hem en aan de politie gegeven.
+
+    Ik voel me er heel slecht over. Ben ik verzekerd? Wat moet ik doen als hij contact opneemt?
+
+    Hanne Verstraeten
+
+- id: hoflandt.hond-verstraeten.2
+  date: 2026-05-07 09:15
+  from: pieter.janssens@hoflandt.be
+  to: hanne.verstraeten@telenet.be
+  subject: "RE: Onze hond heeft een fietser doen vallen"
+  attachments: [axa_prive_leven]
+  body: |
+    Dag mevrouw Verstraeten,
+
+    Vervelend voor iedereen, maar u bent hiervoor verzekerd. Uw Comfort Privéleven dekt de schade die veroorzaakt wordt door dieren die u onder uw hoede heeft (artikel 1.2 A van de bijgevoegde voorwaarden). "Uw hond bijt de postbode" is zelfs een van de voorbeelden in de voorwaarden.
+
+    Wat AXA vergoedt:
+    - de lichamelijke schade van de fietser (medische kosten na tussenkomst van zijn ziekenfonds, arbeidsongeschiktheid, smartengeld);
+    - zijn materiële schade: fiets, helm, kledij.
+    Op de materiële schade geldt een eigen risico van 266,09 EUR (geïndexeerd); op de lichamelijke schade niet.
+
+    Wat u best doet:
+    - erken zelf geen aansprakelijkheid en beloof geen bedragen; verwijs de fietser of zijn verzekeraar naar ons;
+    - bezorg ons het PV-nummer en de contactgegevens van de fietser;
+    - bewaar zelf wat notities over hoe het gebeurd is (tijdstip, poortje, getuigen).
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.hond-verstraeten.3
+  date: 2026-05-20 13:28
+  from: hanne.verstraeten@telenet.be
+  to: pieter.janssens@hoflandt.be
+  subject: "RE: Onze hond heeft een fietser doen vallen"
+  body: |
+    Dag Pieter,
+
+    Ik kreeg vandaag een brief van de rechtsbijstandsverzekeraar van de fietser (meneer Van Dyck). Ze vragen mijn verzekeringsgegevens en melden dat hij 6 weken arbeidsongeschikt is. Ik stuur de brief in bijlage door. Het PV-nummer is ME.12.L3.008830/2026.
+
+    Mag ik jullie gegevens gewoon doorgeven?
+
+    Hanne
+
+# --- Luc Van Hoof: schade aan studentenkamer van zoon (tijdelijk verblijf) -------------------
+- id: hoflandt.kot-vanhoof.1
+  date: 2026-02-09 18:02
+  from: luc.vanhoof@skynet.be
+  to: info@hoflandt.be
+  subject: Schade aan kot van mijn zoon in Gent
+  body: |
+    Dag,
+
+    Mijn zoon Arne studeert in Gent en huurt daar een studentenkamer. Bij het verplaatsen van zijn bureau heeft hij de glazen douchewand van zijn kamer gebroken en een diepe scheur in het laminaat gemaakt. De kotbaas heeft een offerte gestuurd van 1.100 euro en wil dat Arne dat betaalt.
+
+    Is dat gedekt door onze familiale verzekering? Arne is 20 en staat nog op ons adres gedomicilieerd.
+
+    Luc Van Hoof
+
+- id: hoflandt.kot-vanhoof.2
+  date: 2026-02-10 10:30
+  from: pieter.janssens@hoflandt.be
+  to: luc.vanhoof@skynet.be
+  subject: "RE: Schade aan kot van mijn zoon in Gent"
+  attachments: [axa_prive_leven]
+  body: |
+    Dag meneer Van Hoof,
+
+    Ja, Arne is verzekerd. Kinderen die voor hun studies buitenshuis verblijven, blijven verzekerd onder uw Comfort Privéleven. Voor de studentenkamer is er een specifieke regeling onder "Tijdelijk verblijf" (artikel 1.2 E van de bijgevoegde voorwaarden): AXA dekt uw contractuele aansprakelijkheid voor materiële schade aan de studentenkamer die uw kind huurt tijdens zijn studies, tot 50.000 EUR per schadegeval. De douchewand en het laminaat vallen daaronder.
+
+    Het eigen risico van 266,09 EUR (geïndexeerd) wordt van de vergoeding afgetrokken.
+
+    Stuur me de offerte van de kotbaas, een paar foto's en een kopie van het huurcontract, dan dien ik het dossier in. AXA betaalt rechtstreeks aan de kotbaas.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.kot-vanhoof.3
+  date: 2026-02-10 21:17
+  from: luc.vanhoof@skynet.be
+  to: pieter.janssens@hoflandt.be
+  subject: "RE: Schade aan kot van mijn zoon in Gent"
+  body: |
+    Dag Pieter,
+
+    Heel fijn, bedankt. Offerte, foto's en huurcontract zitten in bijlage. De gegevens van de kotbaas: mevrouw Vandamme, Overpoortstraat, Gent (telefoon staat op de offerte).
+
+    Luc
+
+# --- Nele Michiels: dochter breekt geleende laptop (geen optie Premium) ---------------------
+- id: hoflandt.laptop-michiels.1
+  date: 2026-03-02 16:45
+  from: nele.michiels@gmail.com
+  to: info@hoflandt.be
+  subject: Geleende laptop kapot - familiale?
+  body: |
+    Dag,
+
+    Mijn dochter Lien (15) had voor een schoolproject de laptop van haar vriendin geleend. Ze heeft hem thuis laten vallen en het scherm is gebarsten. De ouders van de vriendin zeggen dat het herstel 650 euro kost. Kan ik dit via onze familiale verzekering laten betalen?
+
+    Nele Michiels
+
+- id: hoflandt.laptop-michiels.2
+  date: 2026-03-03 11:10
+  from: pieter.janssens@hoflandt.be
+  to: nele.michiels@gmail.com
+  subject: "RE: Geleende laptop kapot - familiale?"
+  attachments: [axa_prive_leven]
+  body: |
+    Dag mevrouw Michiels,
+
+    Ik moet u helaas teleurstellen. Uw Comfort Privéleven dekt de schade die u of uw kinderen aan anderen veroorzaken, maar niet de schade aan goederen die u onder uw bewaring heeft, zoals iets wat u geleend of gehuurd heeft (artikel 1.2 B van de voorwaarden in bijlage).
+
+    Die schade is enkel gedekt met de optie Premium: de waarborg "gehuurde of toevertrouwde goederen" (artikel 1.4.1) dekt dan tot 50.000 EUR per schadegeval materiële schade aan goederen die u gehuurd of geleend heeft. De voorwaarden geven zelfs het voorbeeld van een klarinet die de muziekacademie aan een kind uitleent. U heeft deze optie niet onderschreven, dus AXA zal hier niet tussenkomen.
+
+    De optie Premium kost ongeveer 38 EUR per jaar extra en bevat ook de BOB-waarborg. Ze kan niet met terugwerkende kracht ingaan, maar geldt wel voor alles wat daarna gebeurt. Laat maar weten of u een voorstel wil.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.laptop-michiels.3
+  date: 2026-03-03 20:04
+  from: nele.michiels@gmail.com
+  to: pieter.janssens@hoflandt.be
+  cc: els@hoflandt.be
+  subject: "RE: Geleende laptop kapot - familiale?"
+  body: |
+    Dag Pieter,
+
+    Jammer, maar duidelijk. We betalen de laptop dan zelf. Met twee tieners in huis lijkt die optie Premium me wel verstandig, dus mag Els de optie toevoegen vanaf 1 april?
+
+    Nele
+
+# --- Stijn Coppens: drone neergestort op auto van de buurman ------------------------------
+- id: hoflandt.drone-coppens.1
+  date: 2026-05-24 15:20
+  from: stijn.coppens@telenet.be
+  to: schade@hoflandt.be
+  subject: Drone neergestort op auto buurman
+  body: |
+    Hallo,
+
+    Ik was vanmiddag met mijn drone (een mini-drone van 249 gram, gewoon voor de hobby) foto's aan het maken van onze straat toen de verbinding wegviel. Hij is op de auto van mijn buurman neergestort: kras in de lak op de motorkap en een barst in het glazen panoramadak. Dat panoramadak zal wel duur zijn.
+
+    Ben ik daarvoor verzekerd met mijn familiale?
+
+    Stijn Coppens
+
+- id: hoflandt.drone-coppens.2
+  date: 2026-05-26 09:05
+  from: pieter.janssens@hoflandt.be
+  to: stijn.coppens@telenet.be
+  subject: "RE: Drone neergestort op auto buurman"
+  attachments: [axa_prive_leven]
+  body: |
+    Dag meneer Coppens,
+
+    Ja. Luchtvaartuigen zijn uitgesloten in uw Comfort Privéleven, maar modelvliegen is uitdrukkelijk wel gedekt, ook met drones (artikel 1.2 G van de voorwaarden in bijlage). Voorwaarde: het gaat om recreatief gebruik en u respecteert de regels van de categorie "Open", voor drones tot 20 kg. Met een hobbydrone van 249 gram zit u daar ruim onder.
+
+    De schade aan de auto van uw buurman (lak en panoramadak) wordt vergoed, min het eigen risico van 266,09 EUR (geïndexeerd). Uw eigen drone is niet gedekt, dat is geen schade aan een derde.
+
+    Vraag uw buurman om een bestek van zijn garage en stuur het mij samen met een paar foto's. Zijn het panoramadak en de lak samen meer dan 1.500 EUR, dan stuurt AXA waarschijnlijk een expert.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+# --- Yannick Dewitte: als BOB de auto van een vriend beschadigd (optie Premium) --------------
+- id: hoflandt.bob-dewitte.1
+  date: 2026-06-14 11:30
+  from: yannick.dewitte@hotmail.com
+  to: schade@hoflandt.be
+  subject: Ongeval als BOB met auto van een vriend
+  body: |
+    Dag,
+
+    Gisterenavond was ik BOB op het verjaardagsfeest van een vriend in Kessel. Ik heb niets gedronken en heb hem na het feest met zijn eigen auto naar huis gebracht, want hij had te veel gedronken. Bij het indraaien van zijn oprit ben ik tegen een betonnen paal gereden: de hele rechterflank en het portier zijn ingedeukt. Zijn garage schat de schade op 4.000 euro. Hij heeft enkel een BA-verzekering.
+
+    Er was geen andere partij, maar zijn buren hebben de politie gebeld omdat het nogal een knal was. De politie heeft een PV opgemaakt en ik heb geblazen: 0,00.
+
+    Kan mijn verzekering iets betekenen? Ik voel me verantwoordelijk.
+
+    Yannick
+
+- id: hoflandt.bob-dewitte.2
+  date: 2026-06-15 10:05
+  from: pieter.janssens@hoflandt.be
+  to: yannick.dewitte@hotmail.com
+  subject: "RE: Ongeval als BOB met auto van een vriend"
+  attachments: [axa_prive_leven]
+  body: |
+    Dag Yannick,
+
+    Goed nieuws: u heeft bij uw Comfort Privéleven de optie Premium, en daarin zit de waarborg BOB (artikel 1.4.2 van de voorwaarden in bijlage). Die dekt tot 25.000 EUR materiële schade aan het voertuig van een derde die zelf niet meer in staat was om te rijden, als u vrijwillig BOB was.
+
+    De voorwaarden, en hoe het bij u zit:
+    - verkeersongeval in België waarvoor u (gedeeltelijk) aansprakelijk bent: ja;
+    - u was zelf nuchter: ja, 0,00 bij de ademtest;
+    - de rit diende enkel om uw vriend veilig naar huis te brengen: ja;
+    - bewijs via een aanrijdingsformulier of, bij gebrek daaraan, een PV opgemaakt binnen 24 uur: ja, de politie heeft een PV opgemaakt. Dat is belangrijk, want bij een ongeval zonder tegenpartij is er geen aanrijdingsformulier;
+    - uw vriend mag de schade niet vergoed krijgen via een andere verzekering: hij heeft enkel BA, dus in orde.
+
+    Er geldt een vrijstelling van 500 EUR. Waardevermindering en gebruiksderving van de wagen vallen er niet onder. Bezorg me het PV-nummer, de gegevens van uw vriend en het bestek van zijn garage, dan open ik het dossier.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt

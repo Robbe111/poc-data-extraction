@@ -21,6 +21,7 @@ from mcp.server.mcpserver.exceptions import ToolError  # noqa: E402
 with contextlib.redirect_stdout(sys.stderr):
     import citations  # noqa: E402
     import database  # noqa: E402
+    import demo_dataset  # noqa: E402
     import enron_dataset  # noqa: E402
     import vector_store  # noqa: E402
     from config import APP_BASE_URL  # noqa: E402
@@ -63,30 +64,27 @@ def search_documents(
     """Semantic search over email bodies and PDF attachment text.
 
     Args:
-        query: natural-language description of what you're looking for (English works best).
+        query: natural-language description of what you're looking for, in any language
+            (the archive is multilingual; the demo mailbox is Dutch).
         source: search everything, only email bodies, or only PDF attachments.
         person_email: restrict results to mail sent OR received (To/CC) by this exact address
-            (e.g. "pete.davis@enron.com"). Omit to search across everyone.
+            (e.g. "jan.peeters@telenet.be"). Omit to search across everyone.
         limit: max number of passages to return (1-25).
 
     Returns matching text passages with the email they belong to. Lower distance = more relevant.
     """
     limit = max(1, min(limit, 25))
     with contextlib.redirect_stdout(sys.stderr):
-        # Over-fetch: the same email/PDF often sits in several mail folders (or, now, once per
-        # participant), drop those duplicates.
+        # Hits come back with distinct text: duplicate copies (same PDF in several emails) are dropped.
         raw = vector_store.search(
             query,
-            n_results=limit * 3,
+            n_results=limit,
             source_type=None if source == "all" else source,
             email=person_email,
         )
 
-    results, seen = [], set()
+    results = []
     for hit in raw:
-        if hit["document"] in seen:
-            continue
-        seen.add(hit["document"])
         m = hit["metadata"]
         result = {
             "text": hit["document"],
@@ -105,8 +103,6 @@ def search_documents(
                 "open_url": _pdf_url(m["attachment_id"]),
             }
         results.append(result)
-        if len(results) == limit:
-            break
     return results
 
 
@@ -200,7 +196,10 @@ def cite(quotes: list[str], attachment_id: str | None = None, email_id: str | No
                 raise ToolError(f"No attachment with id {attachment_id!r}")
             text, label = source["text"], source["filename"]
             try:
-                pdf = enron_dataset.read_native(source["zip_name"], source["native_path"])
+                if source["zip_name"]:
+                    pdf = enron_dataset.read_native(source["zip_name"], source["native_path"])
+                else:
+                    pdf = demo_dataset.read_native(source["native_path"])
             except (FileNotFoundError, KeyError):
                 pdf = None
         else:

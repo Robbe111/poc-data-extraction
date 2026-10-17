@@ -28,8 +28,41 @@ Defaults can also be set via env vars (see `backend/config.py`):
 | `ENRON_MAX_EMAILS` | `0` | max emails per custodian (0 = all) |
 | `ENRON_ATTACHMENT_EXTENSIONS` | `pdf` | attachment types to index (e.g. `pdf,doc,xls` — non-PDFs use EDRM's pre-extracted text) |
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | `1000` / `150` | chunking, in characters |
+| `EMBEDDING_MODEL` | `intfloat/multilingual-e5-large` | local embedding model (via fastembed, see below) |
+
+Embeddings run locally with [fastembed](https://github.com/qdrant/fastembed) (ONNX, no PyTorch). The model has to be multilingual, because the demo mailbox is Dutch. On 11 labelled Dutch questions over the demo mailbox, `multilingual-e5-large` found a relevant passage in the top 5 for 11/11 questions (MRR 0.95). `paraphrase-multilingual-mpnet-base-v2` found 8/11, and Chroma's English default 7/11. e5-large is heavy, though: a 2.2 GB download on first use, and about 15 minutes to embed the demo mailbox on a laptop CPU. For a faster setup, use `EMBEDDING_MODEL=sentence-transformers/paraphrase-multilingual-mpnet-base-v2` (1 GB, ~5x faster). Each model gets its own Chroma collection, so after changing the model, re-run the ingest.
 
 PDFs are parsed with `pypdf`; if that yields no text, EDRM's pre-extracted text is used. Enron mail is from 2000–2002, so PDFs are relatively rare — custodians with a decent number of PDFs among the small ones: `meyers-a`, `king-j`, `townsend-j`, `motley-m`, `solberg-g`, `platter-p`.
+
+## Demo mailbox: Belgian broker
+
+For demos to brokers there is also a synthetic mailbox of a fictional Flemish brokerage ("Verzekeringskantoor Hoflandt"): 146 Dutch emails between the broker and 32 clients (claims, coverage questions, quotes, renewals, new contracts, a newsletter, internal mail), from Oct 2025 to Sep 2026. The emails carry two kinds of PDF attachments:
+
+- real, public general conditions (algemene voorwaarden) from AXA Belgium, KBC, AG Insurance and P&V, which the emails quote (e.g. "glasbreuk is gedekt volgens artikel 1.4.2");
+- fictional special conditions (bijzondere voorwaarden) per client: policy number, insured car or home, guarantees, deductibles, premiums, clauses. Real ones contain personal data and aren't public, so these are generated. 40 emails send them to clients: renewals at the annual due date, amendments (new car, move, added option), new contracts and copies on request.
+
+```
+python backend/ingest_demo.py            # add the demo mailbox next to what's loaded
+python backend/ingest_demo.py --reset    # demo mailbox only (wipes the Enron data)
+```
+
+- `demo_dataset/contacts.yaml`: broker staff and the client list (id, name, email addresses, policies), usable later for client matching
+- `demo_dataset/documents.yaml`: the 19 general-conditions PDFs (AXA, KBC, AG, P&V) and their source URLs. They're downloaded into `data/demo/` on first run (not committed). If a URL stops working, save the PDF there by hand as `<key>.pdf`.
+- `demo_dataset/policies.yaml`: the 43 fictional special conditions, amendments and certificates. `backend/demo_policies.py` renders them into `data/demo/` as PDFs on every ingest (with fpdf2), so edits show up after re-running the ingest. Every page says in its footer that the document is fictional.
+- `demo_dataset/mailbox/*.yaml`: the emails, one thread after another. Edit or add emails there and re-run the ingest (idempotent).
+
+All people, addresses and policy numbers are made up. Edge cases for later client matching: one household with two addresses (K-1013), a newsletter sent to 14 clients, and internal mail between broker staff.
+
+Demo prompts (Claude via MCP):
+
+- "Jan Peeters heeft een barst in zijn voorruit. Is dat gedekt en krijgt hij een vervangwagen? Geef het artikel uit de voorwaarden."
+- "Welke klanten hadden het voorbije jaar schade aan hun woning, en wat werd er uitbetaald?"
+- "Waarom is de kapotte turbo van Tom Willems niet gedekt?"
+- "Wat is het verschil tussen de familiale van KBC en AXA voor geleende spullen?"
+- "Hoeveel mag KBC terugvorderen van de zoon van Patrick Martens, en op basis van welk artikel?"
+- "Welke polissen heeft Jonas Aerts bij ons, en wat betaalt hij in totaal per jaar?"
+- "Open de bijzondere voorwaarden van Bart Wouters. Welke wagen is nu verzekerd en wat veranderde er na de diefstal?"
+- "Welke contracten van Sofie Lambrechts veranderen door haar verhuis, en vanaf wanneer?"
 
 ## Run
 
@@ -83,8 +116,8 @@ Matching ignores case, whitespace, punctuation and hyphenation, because PDF text
    {
      "mcpServers": {
        "broker-mailbox": {
-         "command": "C:/Users/verme/poc-data-extraction/.venv/Scripts/python.exe",
-         "args": ["C:/Users/verme/poc-data-extraction/backend/mcp_server.py"]
+         "command": "C:/Users/verme/poc-data-extraction/demo/.venv/Scripts/python.exe",
+         "args": ["C:/Users/verme/poc-data-extraction/demo/backend/mcp_server.py"]
        }
      },
      "preferences": { "...": "existing content stays as is" }
@@ -113,5 +146,7 @@ The repo contains `.mcp.json`, so Claude Code picks the server up automatically 
 - **Test the server without Claude**: `.venv\Scripts\python backend\mcp_server.py` should start and then wait silently (it's waiting for Claude on stdin). Ctrl+C to stop. An import error here means a dependency is missing.
 - **No results**: data not loaded yet, run the ingest step.
 - **Re-ingested data**: restart Claude Desktop so the server reopens the databases.
+- **No results after changing `EMBEDDING_MODEL`**: every model has its own collection, so re-run the ingest. Claude Desktop must see the same `EMBEDDING_MODEL` as the ingest (add it under `"env"` in the server config if you changed it).
+- **First search is slow**: the embedding model loads on the first query (and downloads on the very first run).
 - **PDF links don't open**: the web app (uvicorn) isn't running.
 - **Claude doesn't give highlight links**: the server instructions changed, so restart Claude Desktop (or `/mcp` → reconnect in Claude Code) to load the new `cite` tool.

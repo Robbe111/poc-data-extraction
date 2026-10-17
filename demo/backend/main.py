@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from database import get_attachment, get_email, init_db, list_emails
+import demo_dataset
 import enron_dataset
 import vector_store
 
@@ -52,7 +53,10 @@ def open_attachment(attachment_id: str):
     if not attachment or not attachment["native_path"]:
         raise HTTPException(404, "Attachment not found")
     try:
-        content = enron_dataset.read_native(attachment["zip_name"], attachment["native_path"])
+        if attachment["zip_name"]:
+            content = enron_dataset.read_native(attachment["zip_name"], attachment["native_path"])
+        else:
+            content = demo_dataset.read_native(attachment["native_path"])
     except (FileNotFoundError, KeyError):
         raise HTTPException(404, "Original file not in the local dataset cache")
     filename = attachment["filename"].replace('"', "")

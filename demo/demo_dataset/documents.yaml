@@ -1,0 +1,87 @@
+# Real, public general conditions (algemene voorwaarden) and product sheets, attached to
+# emails in demo/mailbox/*.yaml by key. They are downloaded into data/demo/<key>.pdf on first
+# ingest and not committed. If a URL stops working, save the PDF there by hand.
+#
+# Sources:
+#   https://www.axa.be/nl/juridische-info/wettelijke-documenten/algemene-voorwaarden-en-productfiches
+#   https://www.kbc.be/particulieren/nl/juridische-info/documenten.html
+#   https://www.aginsurance.be (broker portal) and https://www.pv.be/algemene-voorwaarden
+#
+# The special conditions (bijzondere voorwaarden) of each client are not public; fictional ones
+# are described in policies.yaml and generated as PDFs.
+
+axa_auto_ipid:
+  filename: AXA Comfort Auto - Informatiedocument (IPID).pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/ipid/3/8/c/d/a/Comfort%20Auto%20(Personenwagen,%20Mobilhome,%20Minibus)%20-%20IPID%20Fiches.pdf?rev=c2d739cd93bf4c1a95e826bba7626e65
+
+axa_auto_algemeen:
+  filename: AXA Comfort Auto - Algemene bepalingen - AV 06.2026.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/0/d/d/8/8/4186025/4186025062026Dispositions%20Gnrales%20AXA.pdf?rev=630f81ef409f44dc98a35f38d088763e
+
+axa_ba_auto:
+  filename: AXA Comfort Auto - Aansprakelijkheid - AV 06.2026.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/7/5/8/4/f/4185995/4185995062026Responsabilit%20AXA.pdf?rev=5579e1ff17d941d2b22c69f39002b7ce
+
+axa_omnium:
+  filename: AXA Comfort Auto - Bescherming van het voertuig - AV 06.2026.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/3/4/2/7/0/4186001/4186001062026Protection%20du%20vhicule%20AXA.pdf?rev=dc9dd2c79b8e4e92af7e79ad84d799eb
+
+axa_vervangwagen:
+  filename: AXA Comfort Auto - Vervangingsvoertuig - AV 06.2026.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/3/7/1/c/e/4185998/4185998062026Vhicule%20de%20remplacement%20AXA.pdf?rev=754e98c4d91647d7a8349d10f85e3af1
+
+axa_wegenhulp:
+  filename: AXA Comfort Auto - Wegenhulp - AV 06.2025.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/7/0/f/3/e/4186022/4186022062025ASSISTANCE%20VEHICULE.pdf?rev=806bd4ab0f70496a81c54a85cc9d23d1
+
+axa_rechtsbijstand_auto:
+  filename: AXA Comfort Auto - Rechtsbijstand Full - AV 10.2024.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/a/d/c/d/5/418601602/4186016102024%20PJ%20FULL.pdf?rev=f292ac513ad645beb3bcc8c9e3b7f6f3
+
+axa_woning_flex:
+  filename: AXA Comfort Thuis Flex - Basisdekkingen - AV 10.2024.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/6/3/6/a/7/418578402/4185784102024.pdf?rev=7201d4108f034c5997a9d8d2fab2891c
+
+axa_fiets:
+  filename: AXA Comfort Fiets+ - Verzekering en bijstand - AV 12.2023.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/6/4/5/3/6/4186535/4186535%20%20122023.pdf?rev=9e0fd9d628754b79963cf104962b42f5
+
+axa_prive_leven:
+  filename: AXA Comfort Privéleven - Aansprakelijkheid - AV 12.2025.pdf
+  url: https://cdn.website.axa.be/nl-be/-/media/axa-documents/library-public/cg/9/8/1/d/0/4183784-02/4183784122025.pdf?rev=d9b65294f80f482db62207915e2ab6f6
+
+kbc_woning_eigenaar:
+  filename: KBC Woningpolis eigenaar hoofdverblijf - Algemene voorwaarden.pdf
+  url: https://multimediafiles.kbcgroup.eu/ng/published/KBC/PDF/VERZEKERINGEN/woning/kbc-woningpolis-eigenaar-hoofdverblijf-algemene-voorwaarden.pdf
+
+kbc_woning_huurder:
+  filename: KBC Woningpolis huurder hoofdverblijf - Algemene voorwaarden.pdf
+  url: https://multimediafiles.kbcgroup.eu/ng/published/KBC/PDF/VERZEKERINGEN/woning/kbc-woningpolis-huurder-hoofdverblijf-algemene-voorwaarden.pdf
+
+kbc_gezinspolis:
+  filename: KBC Gezinspolis - Algemene voorwaarden.pdf
+  url: https://multimediafiles.kbcgroup.eu/ng/published/KBC/PDF/VERZEKERINGEN/gezinspolis/kbc-gezinspolis-algemene-voorwaarden.pdf
+
+kbc_auto_minimum:
+  filename: Minimumvoorwaarden verplichte aansprakelijkheid motorrijtuigen (KBC).pdf
+  url: https://multimediafiles.kbcgroup.eu/ng/published/KBC/PDF/VERZEKERINGEN/motorrijtuigen/kbc-verzekering-motorrijtuigen-minimumvoorwaarden.pdf
+
+kbc_reispakket:
+  filename: KBC Kredietkaartverzekering Reispakket - Algemene voorwaarden.pdf
+  url: https://multimediafiles.kbcgroup.eu/ng/published/KBC/PDF/BETALEN/KREDIETKAARTEN/NKK/kbc-reispakket-informatiedocument.pdf
+
+ag_woning:
+  filename: AG Supporter van jouw woning - Top Woning en Pack Huurder - AV 06.2022.pdf
+  url: https://ag.be/professioneel/content/dam/transversal/professionals/documents/product-documents/nl/workplace/30007N1.pdf
+
+ag_ba_auto:
+  filename: AG Verzekering B.A. Auto - Algemene voorwaarden 01.2016.pdf
+  url: https://www.portalpack.aginsurance.be/sites/IBP2/SiteCollectionDocuments/BrokerDocuments/0079-2000424N-23012016.pdf
+
+ag_top_omnium:
+  filename: AG Verzekering Auto - Top Omnium - Algemene voorwaarden 02.2017.pdf
+  url: https://www.portalpack.aginsurance.be/sites/IBP2/SiteCollectionDocuments/BrokerDocuments/0079-2428634N-18022017.pdf
+
+pv_familiale:
+  filename: P&V Familiale Verzekering - Algemene voorwaarden 04.2025.pdf
+  url: https://www.pv.be/documents/2579080/0/P&V+Familiale+Verzekering_algemene+voorwaarden_551_04_2025_NL.pdf/49a338da-e464-5ebd-be03-77d34ad42623?t=1743092647933

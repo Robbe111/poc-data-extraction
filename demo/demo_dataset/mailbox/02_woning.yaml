@@ -1,0 +1,307 @@
+# Home insurance (AXA Comfort Thuis Flex, conditions 10.2024). Dates are Brussels local time.
+
+# --- Van den Broeck: lek onder de douche, vochtplek in keukenplafond (schade door water) -----
+- id: hoflandt.waterschade-vandenbroeck.1
+  date: 2025-12-03 08:55
+  from: hilde.wouters@gmail.com
+  to: info@hoflandt.be
+  cc: marc.vandenbroeck@telenet.be
+  subject: Vochtplek in plafond keuken - lek badkamer?
+  body: |
+    Goeiemorgen,
+
+    Sinds een week zien we een vochtplek in het plafond van onze keuken, recht onder de douche van de badkamer. De plek wordt elke dag groter en de verf komt los. De loodgieter is gisteren geweest en vermoedt een lek in de afvoer- of toevoerleiding onder de douchevloer. Om dat te vinden moet hij de tegels openbreken.
+
+    Is dit gedekt door onze woningverzekering? En mogen we de loodgieter al laten beginnen?
+
+    Vriendelijke groeten,
+    Hilde Wouters (en Marc Van den Broeck)
+
+- id: hoflandt.waterschade-vandenbroeck.2
+  date: 2025-12-03 11:40
+  from: pieter.janssens@hoflandt.be
+  to: hilde.wouters@gmail.com
+  cc: marc.vandenbroeck@telenet.be
+  subject: "RE: Vochtplek in plafond keuken - lek badkamer?"
+  attachments: [axa_woning_flex]
+  body: |
+    Dag mevrouw Wouters, dag meneer Van den Broeck,
+
+    Ja, dit valt onder de waarborg "Schade door water" van uw Comfort Thuis Flex (artikel 3.11 van de basisdekkingen in bijlage). Uw situatie is zelfs het voorbeeld dat in de voorwaarden staat: een leiding breekt onder de vloer en beschadigt het gebouw.
+
+    Wat is gedekt:
+    - de gevolgschade: het plafond van de keuken en de schilderwerken;
+    - als bijdekking: het opsporen van het lek, het openbreken en herstellen van de vloer en de tegels, en de herstelling of vervanging van het stuk leiding dat lekt.
+
+    Wat niet gedekt is: de leiding zelf is geen verzekerde schade als die aan de oorsprong ligt, maar het herstellen of vervangen van het lekkende stuk valt dus wel onder de bijdekking. Opgelet: als de leiding zichtbaar aangetast is door corrosie op meerdere plaatsen die niet behandeld werden, kan AXA dat uitsluiten.
+
+    U mag de loodgieter laten beginnen, de schade beperken is zelfs uw plicht. Neem wel vooraf foto's van de vochtplek en van de vloer vóór en tijdens het openbreken, en bewaar de oude leiding. Vraag facturen met een aparte vermelding van de opsporing, de herstelling van de leiding en de tegelwerken.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.waterschade-vandenbroeck.3
+  date: 2026-01-12 20:05
+  from: marc.vandenbroeck@telenet.be
+  to: pieter.janssens@hoflandt.be
+  cc: hilde.wouters@gmail.com
+  subject: "RE: Vochtplek in plafond keuken - lek badkamer?"
+  body: |
+    Dag Pieter,
+
+    De werken zijn klaar. Het was een gebarsten koppeling in de warmwaterleiding onder de douche. In bijlage de facturen:
+    - loodgieter (opsporing + herstelling leiding): 1.180 euro
+    - tegelzetter (douchevloer opnieuw betegelen): 2.300 euro
+    - schilder (plafond keuken): 650 euro
+
+    Hebben jullie nog iets van ons nodig?
+
+    Marc
+
+- id: hoflandt.waterschade-vandenbroeck.4
+  date: 2026-01-14 10:22
+  from: pieter.janssens@hoflandt.be
+  to: marc.vandenbroeck@telenet.be
+  cc: hilde.wouters@gmail.com
+  subject: "RE: Vochtplek in plafond keuken - lek badkamer? (dossier S-2025-0877)"
+  body: |
+    Dag Marc,
+
+    Dank u, het dossier is volledig. AXA heeft de drie facturen (samen 4.130 EUR) aanvaard zonder expertise. De vergoeding min de vrijstelling uit uw bijzondere voorwaarden wordt de komende dagen op uw rekening gestort.
+
+    Tip: de loodgieter vond een losgekomen koppeling. Laat de andere koppelingen in de badkamer eens nakijken bij een volgende onderhoudsbeurt.
+
+    Groeten,
+    Pieter
+
+# --- Sofie Lambrechts: water in de kelder na hevige regen (riool vs grondwater) --------------
+- id: hoflandt.kelder-lambrechts.1
+  date: 2026-01-27 09:14
+  from: sofie.lambrechts@gmail.com
+  to: schade@hoflandt.be
+  subject: Water in de kelder na de regen
+  body: |
+    Hallo,
+
+    Na de hevige regen van het weekend stond er zondagochtend 10 cm water in onze kelder in Koningshooikt. De diepvries, de verwarmingsketel en een hoop dozen met spullen hebben in het water gestaan. De loodgieter zegt dat het water via het afvoerputje in de kelder naar boven kwam, omdat de riolering in de straat overbelast was. Verschillende buren hebben hetzelfde probleem.
+
+    Ben ik hiervoor verzekerd? Ik heb gelezen dat insijpelend water niet gedekt is.
+
+    Sofie Lambrechts
+
+- id: hoflandt.kelder-lambrechts.2
+  date: 2026-01-27 14:30
+  from: pieter.janssens@hoflandt.be
+  to: sofie.lambrechts@gmail.com
+  subject: "RE: Water in de kelder na de regen"
+  attachments: [axa_woning_flex]
+  body: |
+    Dag mevrouw Lambrechts,
+
+    U heeft gelijk dat het uitmaakt hoe het water binnenkwam, en in uw geval is het goed nieuws.
+
+    - Water dat door de muren of de vloer insijpelt (grondwater, of regen die langs de buitenmuren binnenkomt) is uitgesloten onder "Schade door water" (artikel 3.11).
+    - Water dat binnenkomt doordat de openbare riolering overloopt of terugstuwt, valt onder de waarborg Natuurrampen (artikel 3.14 C). Die is standaard in uw Comfort Thuis Flex inbegrepen.
+
+    Uw loodgieter stelt vast dat het water via het afvoerputje terugkwam door een overbelaste riolering, en de buren hebben hetzelfde probleem: dat is dus een typisch geval van opstuwen van de openbare riolen. Vraag de loodgieter om dat schriftelijk te bevestigen, dat is het belangrijkste stuk in uw dossier.
+
+    Gedekt: de schade aan het gebouw, de verwarmingsketel en uw inboedel in de kelder, plus het leegpompen en reinigen. Hou beschadigde spullen bij tot de expert langs geweest is, of neem er duidelijke foto's van.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.kelder-lambrechts.3
+  date: 2026-02-18 16:48
+  from: pieter.janssens@hoflandt.be
+  to: sofie.lambrechts@gmail.com
+  subject: "RE: Water in de kelder na de regen (dossier S-2026-0061)"
+  body: |
+    Dag Sofie,
+
+    De expert heeft zijn verslag afgerond: 6.740 EUR, waarvan 3.900 EUR voor de verwarmingsketel, 1.650 EUR voor de inboedel en 1.190 EUR voor reiniging en herstelling van de pleisterwerken. AXA betaalt dat bedrag min de vrijstelling binnen de 30 dagen.
+
+    De expert raadt aan om een terugslagklep op de afvoer van de kelder te laten plaatsen. Dat is geen verplichting in uw contract, maar het voorkomt dat dit opnieuw gebeurt. Sommige gemeenten geven er een premie voor.
+
+    Groeten,
+    Pieter
+
+# --- Jonas Aerts: voetbal door eigen raam en dat van de buren (glasbreuk + BA privéleven) ----
+- id: hoflandt.voetbal-aerts.1
+  date: 2026-03-14 17:05
+  from: jonas.aerts@telenet.be
+  to: info@hoflandt.be
+  subject: Zoon heeft met de voetbal twee ramen gebroken
+  body: |
+    Dag,
+
+    Onze zoon Mathis (9) was aan het voetballen in de tuin en heeft in één namiddag twee ramen gesneuveld: eerst ons eigen keukenraam (dubbele beglazing) en daarna het badkamerraam van de buren, over de haag. Ongelukkiger kan niet.
+
+    Welke verzekering komt hiervoor tussen?
+
+    Jonas Aerts
+
+- id: hoflandt.voetbal-aerts.2
+  date: 2026-03-16 09:30
+  from: pieter.janssens@hoflandt.be
+  to: jonas.aerts@telenet.be
+  subject: "RE: Zoon heeft met de voetbal twee ramen gebroken"
+  attachments: [axa_woning_flex, axa_prive_leven]
+  body: |
+    Dag meneer Aerts,
+
+    Het overkomt veel ouders. Er zijn twee verschillende polissen van toepassing:
+
+    1. Uw eigen keukenraam: waarborg "Breken en barsten van glas" van uw Comfort Thuis Flex (artikel 3.13). De vervanging van de dubbele beglazing is gedekt, net als eventuele schade aan het raamkader en de vensterbank.
+
+    2. Het raam van de buren: dat is schade die uw zoon aan een derde veroorzaakt. Die valt onder uw familiale verzekering, Comfort Privéleven, die de burgerrechtelijke aansprakelijkheid van het hele gezin dekt, ook voor schade veroorzaakt door uw kinderen (artikel 1.1). Voor materiële schade geldt een eigen risico van 266,09 EUR, geïndexeerd (artikel 1.1 C).
+
+    Stuur me de offertes of facturen van de glazenier voor beide ramen en de naam en het adres van de buren.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.voetbal-aerts.3
+  date: 2026-03-16 19:22
+  from: jonas.aerts@telenet.be
+  to: pieter.janssens@hoflandt.be
+  subject: "RE: Zoon heeft met de voetbal twee ramen gebroken"
+  body: |
+    Dag Pieter,
+
+    Ons keukenraam kost 780 euro, dat van de buren 420 euro. Voor de buren loont het met dat eigen risico eigenlijk niet om het via de verzekering te doen. Ik denk dat ik dat gewoon zelf betaal, dan is het ook snel opgelost met de buren. Het keukenraam mag je wel indienen, de factuur zit in bijlage.
+
+    Jonas
+
+# --- Martine Pauwels: diepvries ontdooid na stroompanne (temperatuurschommeling) -------------
+- id: hoflandt.diepvries-pauwels.1
+  date: 2026-02-11 10:05
+  from: martine.pauwels@skynet.be
+  to: info@hoflandt.be
+  subject: Diepvries ontdooid door stroompanne
+  body: |
+    Goedendag,
+
+    Door de storm van maandag viel de stroom in onze straat in Berlaar uit van maandagavond 19u tot dinsdagmiddag 11u. Toen de stroom terugkwam was alles in onze diepvries ontdooid: vlees, vis, zelfgemaakte soep, ijs. Ik schat de waarde op zo'n 350 euro. Ik heb alles moeten weggooien maar eerst foto's genomen.
+
+    Kan ik dat terugkrijgen via mijn brandverzekering?
+
+    Martine Pauwels
+
+- id: hoflandt.diepvries-pauwels.2
+  date: 2026-02-11 14:50
+  from: pieter.janssens@hoflandt.be
+  to: martine.pauwels@skynet.be
+  subject: "RE: Diepvries ontdooid door stroompanne"
+  body: |
+    Dag mevrouw Pauwels,
+
+    Ja, uw Comfort Thuis Flex heeft daarvoor de waarborg "Temperatuurschommeling van de inhoud van koelkasten en diepvriezers" (artikel 3.7). Die komt tussen als de stroomonderbreking minstens 12 uur duurde en niet vooraf aangekondigd was door de netbeheerder. Uw onderbreking duurde 16 uur door de storm, dus dat is in orde.
+
+    Niet gedekt zou zijn: een panne van de diepvries zelf, of een geplande en aangekondigde onderbreking.
+
+    Stuur me de foto's en een lijstje met wat u heeft moeten weggooien, met een geschatte waarde. Als u een bericht van de netbeheerder over de panne heeft (sms of mail), stuur dat ook mee. Bij een bedrag van 350 EUR moet u wel rekening houden met de vrijstelling uit uw bijzondere voorwaarden, dus u krijgt maar een deel terug.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+# --- Geert De Backer: blikseminslag, tv en router kapot (schade door elektriciteit) ---------
+- id: hoflandt.bliksem-debacker.1
+  date: 2026-06-02 08:12
+  from: geert.debacker@proximus.be
+  to: schade@hoflandt.be
+  subject: Tv, router en poortmotor kapot na onweer
+  body: |
+    Dag,
+
+    Tijdens het zware onweer van zondagnacht is de bliksem vlakbij ingeslagen, er was een enorme knal. Sindsdien werken onze tv (2 jaar oud), de internetrouter en de motor van de garagepoort niet meer. De zekeringen waren ook uitgeslagen.
+
+    Is dit verzekerd? Wat hebben jullie nodig?
+
+    Geert De Backer
+
+- id: hoflandt.bliksem-debacker.2
+  date: 2026-06-02 11:35
+  from: pieter.janssens@hoflandt.be
+  to: geert.debacker@proximus.be
+  subject: "RE: Tv, router en poortmotor kapot na onweer"
+  body: |
+    Dag meneer De Backer,
+
+    Ja, dat is verzekerd. Schade aan elektrische toestellen door een overspanning bij onweer valt onder "Schade door elektriciteit" van uw Comfort Thuis Flex (de waarborg Bliksem verwijst daar zelf naar). Ook de motor van de garagepoort is gedekt, die hoort bij het gebouw.
+
+    Wat hebben we nodig:
+    - een attest van een hersteller of elektricien per toestel, waarin staat dat de schade door overspanning komt en of herstelling mogelijk is of hoeveel die kost;
+    - de aankoopfactuur van de tv, als u die nog heeft;
+    - de router is meestal eigendom van uw internetprovider; die vervangt hem normaal gratis.
+
+    Let op: schade die nog onder de garantie van de fabrikant of verkoper valt, is niet gedekt. Een tv van 2 jaar oud valt meestal net buiten de wettelijke garantie, maar kijk dat even na.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+# --- Elke Segers: inbraak tijdens vakantie, geen optie Diefstal ----------------------------
+- id: hoflandt.inbraak-segers.1
+  date: 2026-04-20 21:15
+  from: elke.segers@gmail.com
+  to: [schade@hoflandt.be, info@hoflandt.be]
+  subject: Inbraak in onze woning
+  body: |
+    Goedenavond,
+
+    We zijn vandaag thuisgekomen van een week vakantie in Spanje en er is ingebroken. De achterdeur is opengebroken (slot en deurkader kapot), en er zijn een laptop, een tablet en mijn juwelen verdwenen (o.a. de ring van mijn grootmoeder). De politie is al langs geweest, PV-nummer AN.47.L5.011208/2026.
+
+    Wat vergoedt onze verzekering?
+
+    Elke Segers
+
+- id: hoflandt.inbraak-segers.2
+  date: 2026-04-21 10:20
+  from: pieter.janssens@hoflandt.be
+  to: elke.segers@gmail.com
+  subject: "RE: Inbraak in onze woning"
+  attachments: [axa_woning_flex]
+  body: |
+    Dag mevrouw Segers,
+
+    Wat een vervelende thuiskomst. Ik wil u meteen eerlijk zeggen wat uw polis dekt en wat niet.
+
+    Wel gedekt: de schade aan het gebouw door de inbraak (achterdeur, slot en deurkader), onder de basiswaarborg "Schade aan onroerend goed n.a.v. een diefstal, vandalisme en kwaad opzet" (artikel 3.5). Omdat er braak was, heeft het geen gevolgen of alle deuren met de sleutel op slot waren (preventiemaatregelen, artikel 1.4). U mag de deur meteen laten herstellen of beveiligen, bewaar de factuur.
+
+    Niet gedekt: de diefstal van de laptop, de tablet en de juwelen. Diefstal van inboedel valt onder de aparte optie "Diefstal" van Comfort Thuis Flex, en die heeft u bij het afsluiten niet gekozen. Dat staat ook zo vermeld in uw bijzondere voorwaarden.
+
+    Ik besef dat dit geen leuk nieuws is. Als u wil, maak ik een voorstel om de optie Diefstal toe te voegen voor de toekomst.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+- id: hoflandt.inbraak-segers.3
+  date: 2026-04-22 11:05
+  from: els@hoflandt.be
+  to: elke.segers@gmail.com
+  cc: pieter.janssens@hoflandt.be
+  subject: Voorstel optie Diefstal - Comfort Thuis Flex 51.229.046
+  body: |
+    Beste mevrouw Segers,
+
+    Pieter liet me weten dat u na de inbraak graag de optie Diefstal wil toevoegen. Voor uw woning in Nijlen, met een verzekerde inboedel van 60.000 EUR, kost de optie Diefstal 118 EUR per jaar extra (alle taksen inbegrepen). Juwelen zijn daarin beperkt verzekerd; voor waardevolle stukken zoals erfstukken bespreken we best een aparte regeling.
+
+    AXA kan wel preventiemaatregelen vragen, bijvoorbeeld een veiligheidsslot op de achterdeur. Na de herstelling van uw deur is dat een goed moment om dat meteen in orde te brengen.
+
+    De optie kan ingaan vanaf de dag dat u akkoord geeft. Ze geldt uiteraard niet voor de inbraak van deze week.
+
+    Vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt

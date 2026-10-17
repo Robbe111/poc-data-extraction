@@ -1,0 +1,289 @@
+# Clients with KBC policies (bank-insurer): comparisons, credit card insurance, recourse.
+# Dates are Brussels local time.
+
+# --- Veerle Smets: KBC woningpolis laten vergelijken ----------------------------------------
+- id: hoflandt.vergelijking-smets.1
+  date: 2026-04-08 20:30
+  from: veerle.smets@telenet.be
+  to: els@hoflandt.be
+  subject: Vergelijking woningverzekering - nu bij KBC
+  attachments: [kbc_woning_eigenaar]
+  body: |
+    Dag Els,
+
+    Een collega raadde jullie aan. Mijn woningverzekering loopt via de bank bij KBC (woningpolis eigenaar, hoofdverblijf), maar de premie is dit jaar gestegen naar 780 euro. We hebben een rijwoning in Lier met een inboedel van ongeveer 50.000 euro, geen zwembad, wel een tuinhuis.
+
+    Kunnen jullie eens vergelijken of het beter of goedkoper kan? In bijlage de algemene voorwaarden die ik van KBC kreeg. Ik vind het vooral belangrijk dat waterschade en diefstal goed gedekt zijn, want we hebben vorig jaar een lek gehad.
+
+    Groeten,
+    Veerle Smets
+
+- id: hoflandt.vergelijking-smets.2
+  date: 2026-04-10 14:15
+  from: els@hoflandt.be
+  to: veerle.smets@telenet.be
+  subject: "RE: Vergelijking woningverzekering - nu bij KBC"
+  attachments: [axa_woning_flex]
+  body: |
+    Dag Veerle,
+
+    Bedankt voor je vertrouwen. Ik heb de KBC-voorwaarden die je stuurde naast de AXA Comfort Thuis Flex gelegd (voorwaarden in bijlage). Eerst de sterke punten van je huidige KBC-polis, want die zijn er zeker:
+
+    - De woning is verzekerd tegen "alle risico's": elke onverwachte beschadiging is gedekt, tenzij uitdrukkelijk uitgesloten.
+    - Voor je inboedel is er een "alle risico bescherming", maar pas vanaf 1.500 EUR schade en niet voor fietsen.
+    - Heel goed voor jullie, na dat lek: KBC laat een lek in een leiding opsporen zodra er aanwijzingen zijn, zelfs als er nog geen schade is, en betaalt ook de herstelling van het lek, zelfs bij corrosie.
+    - Diefstal van inboedel is een keuze in de bijzondere voorwaarden. Kijk even na of jullie die hebben. Juwelen en uurwerken zijn beperkt tot 4.000 EUR per stuk en 16.000 EUR samen.
+    - Een schadegeval meld je binnen 10 dagen, een diefstal binnen 24 uur bij de politie.
+
+    AXA Comfort Thuis Flex werkt met een lijst van benoemde gevaren (brand, water, glas, storm, natuurrampen, elektriciteit, ...) met duidelijke bedragen per bijdekking. Opsporing van een lek is gedekt; als er geen schade is, tot 3.050 EUR. Diefstal is ook daar een optie.
+
+    Mijn eerste berekening voor een vergelijkbare dekking bij AXA, met optie Diefstal: 672 EUR per jaar. Dat is ruim 100 EUR goedkoper, maar het verschil zit vooral in de details. Zullen we eens samenzitten om ook je tuinhuis en je waardevolle spullen te overlopen?
+
+    Groetjes,
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.vergelijking-smets.3
+  date: 2026-04-11 09:02
+  from: veerle.smets@telenet.be
+  to: els@hoflandt.be
+  subject: "RE: Vergelijking woningverzekering - nu bij KBC"
+  body: |
+    Dag Els,
+
+    Super, bedankt voor de heldere uitleg. Ik zie in mijn bijzondere voorwaarden dat ik bij KBC wel diefstal heb. Ik heb één ring van meer dan 4.000 euro, dat is dus een aandachtspunt.
+
+    Kan ik volgende week donderdag om 17u30 langskomen op kantoor? Mijn KBC-polis vervalt op 1 juli, dus we hebben nog tijd om op te zeggen.
+
+    Veerle
+
+# --- Ruben Hendrickx: huurder, verhuurder wil bewijs van brandverzekering -------------------
+- id: hoflandt.huurder-hendrickx.1
+  date: 2026-08-26 13:40
+  from: ruben.hendrickx@gmail.com
+  to: info@hoflandt.be
+  subject: Brandverzekering voor mijn eerste huurappartement
+  attachments: [kbc_woning_huurder]
+  body: |
+    Hallo,
+
+    Vanaf 1 oktober huur ik mijn eerste appartement in Antwerpen (Zurenborg). De verhuurder vraagt een bewijs van een brandverzekering voor huurders. Mijn ouders hebben hun verzekeringen bij KBC en stuurden me de voorwaarden van de KBC-woningpolis voor huurders, die zit in bijlage.
+
+    Is het genoeg als ik die polis neem, of moet ik iets bij jullie afsluiten? Wat heb ik juist nodig als huurder? Ik heb niet zo veel spullen, een zetel, bed, laptop, fiets.
+
+    Ruben Hendrickx
+
+- id: hoflandt.huurder-hendrickx.2
+  date: 2026-08-27 10:25
+  from: els@hoflandt.be
+  to: ruben.hendrickx@gmail.com
+  subject: "RE: Brandverzekering voor mijn eerste huurappartement"
+  body: |
+    Dag Ruben,
+
+    Proficiat met je eerste appartement! Je hebt zeker een eigen verzekering nodig, op jouw naam en voor jouw adres; de polis van je ouders dekt jouw appartement niet. Het gaat vooral om twee zaken:
+
+    1. Huurdersaansprakelijkheid: als huurder ben je tegenover je verhuurder aansprakelijk voor schade aan het appartement (bijvoorbeeld door brand of water), tenzij je kan bewijzen dat het buiten jouw schuld gebeurde. Voor huurcontracten in Vlaanderen die vanaf 1 januari 2019 gesloten zijn, is die verzekering verplicht (Vlaams Woninghuurdecreet). De KBC-woningpolis voor huurders die je stuurde dekt dit, "zoals geregeld door de huurwetgeving". Bijkomende verplichtingen die je in het huurcontract op je neemt, zijn daar niet gedekt, dus lees je huurcontract even na.
+    2. Je eigen inboedel: zetel, bed, laptop, fiets.
+
+    Je kan dat bij KBC of bij ons afsluiten. Ik maak je graag een offerte voor een AXA Comfort Thuis Flex als huurder, met een inboedel van bijvoorbeeld 15.000 EUR. Voor een appartement van jouw grootte kom je rond de 170 tot 190 EUR per jaar uit. Stuur me je huurcontract, dan kan ik het exact berekenen en controleren of er speciale clausules in staan.
+
+    Groetjes,
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.huurder-hendrickx.3
+  date: 2026-08-28 22:10
+  from: ruben.hendrickx@gmail.com
+  to: els@hoflandt.be
+  subject: "RE: Brandverzekering voor mijn eerste huurappartement"
+  body: |
+    Dag Els,
+
+    Bedankt! Huurcontract in bijlage. Ik zie in artikel 9 dat de huurder "alle schade aan het gehuurde goed" moet vergoeden, is dat zo'n bijkomende verplichting? Een inboedel van 15.000 euro is voldoende. Als de offerte in orde is, mag je het afsluiten vanaf 1 oktober, dan stuur ik het attest door naar de verhuurder.
+
+    Ruben
+
+# --- Julie Wuyts: reis annuleren door operatie, betaald met KBC-kredietkaart -----------------
+- id: hoflandt.annulering-wuyts.1
+  date: 2026-05-19 12:05
+  from: julie.wuyts@telenet.be
+  to: info@hoflandt.be
+  subject: Reis annuleren wegens operatie - ben ik verzekerd?
+  body: |
+    Dag,
+
+    Mijn vriend en ik hebben een reis naar Kreta geboekt van 2 tot 12 juni (vlucht + hotel, 2.380 euro, betaald met mijn KBC-kredietkaart). Gisteren kreeg ik te horen dat ik dringend geopereerd moet worden aan mijn galblaas op 28 mei. De chirurg zegt dat ik zeker twee weken niet mag reizen.
+
+    Ik heb bij jullie alleen mijn autoverzekering, geen reisverzekering. Is er toch een manier om mijn geld terug te krijgen? Het reisbureau rekent 100% annuleringskosten aan.
+
+    Julie Wuyts
+
+- id: hoflandt.annulering-wuyts.2
+  date: 2026-05-19 15:40
+  from: pieter.janssens@hoflandt.be
+  to: julie.wuyts@telenet.be
+  subject: "RE: Reis annuleren wegens operatie - ben ik verzekerd?"
+  attachments: [kbc_reispakket]
+  body: |
+    Dag mevrouw Wuyts,
+
+    Eerst en vooral veel beterschap. Via ons kantoor bent u inderdaad niet verzekerd voor annulering, maar u heeft misschien toch geluk. Particuliere KBC-kredietkaarten hebben een verzekering "Reispakket" met een waarborg reisannulering. De algemene voorwaarden die KBC publiceert zitten in bijlage. Kijk bij KBC na of uw kaart die verzekering heeft.
+
+    Wat ik uit de voorwaarden haal:
+    - ziekte of een ongeval van een verzekerde, vastgesteld door een erkend geneesheer, die de reis medisch onmogelijk maakt, is een gedekte reden;
+    - uw samenwonende partner is mee verzekerd, als hij op hetzelfde adres gedomicilieerd is;
+    - de reis moet volledig betaald zijn met een KBC-betaalmiddel;
+    - de vergoeding is 100% van de contractuele annuleringskosten, met een maximum van 10.000 EUR per schadegeval en per verzekeringsjaar;
+    - belangrijk: u moet het reisbureau binnen 48 uur nadat u het weet verwittigen. Doe dat vandaag nog. Bij laattijdigheid betaalt de verzekeraar alleen wat het gekost zou hebben als u tijdig geannuleerd had.
+
+    Vraag de chirurg om een medisch attest dat u niet kan reizen, en meld het schadegeval bij KBC Verzekeringen via de bank of de KBC-app. Wij kunnen dit dossier niet voor u indienen, maar als u vragen heeft, help ik u graag.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+# --- Olivier Declercq: schade aan huurwagen in Spanje (franchise) --------------------------
+- id: hoflandt.huurwagen-declercq.1
+  date: 2026-08-30 17:55
+  from: olivier.declercq@gmail.com
+  to: schade@hoflandt.be
+  subject: Schade aan huurauto in Spanje - omnium?
+  body: |
+    Dag,
+
+    Ik ben net terug uit Málaga. Bij het parkeren in een smalle parkeergarage heb ik de zijkant van onze huurauto geschraapt tegen een pilaar. De verhuurfirma heeft 1.200 euro franchise ingehouden op mijn kredietkaart (KBC Gold). Ik heb een omnium op mijn eigen auto bij jullie. Kan die hier tussenkomen?
+
+    Olivier Declercq
+
+- id: hoflandt.huurwagen-declercq.2
+  date: 2026-08-31 09:40
+  from: pieter.janssens@hoflandt.be
+  to: olivier.declercq@gmail.com
+  subject: "RE: Schade aan huurauto in Spanje - omnium?"
+  attachments: [kbc_reispakket]
+  body: |
+    Dag meneer Declercq,
+
+    Helaas niet via uw autoverzekering. Uw Mini Omnium bij AXA dekt alleen uw eigen wagen (en een tijdelijk vervangingsvoertuig als uw eigen wagen in herstelling is), niet een huurwagen op vakantie. Bovendien dekt een Mini Omnium geen materiële schade.
+
+    Maar kijk eens naar uw KBC-kredietkaart: de verzekering "Reispakket" bij particuliere KBC-kredietkaarten heeft een waarborg "franchise bij schade aan het huurvoertuig" (voorwaarden in bijlage). Die vergoedt de franchise die u volgens het huurcontract moet betalen, vanaf 100 EUR en tot 2.500 EUR, als:
+    - de huur maximaal 30 dagen duurde;
+    - de wagen bij een professioneel verhuurbedrijf gehuurd werd;
+    - de huur betaald werd met een KBC-betaalmiddel;
+    - de wagen bestuurd werd volgens de voorwaarden van het huurcontract.
+
+    Met uw 1.200 EUR zit u ruim binnen die grenzen. Meld het schadegeval bij KBC met het huurcontract, het schaderapport van de verhuurder en het bewijs van de ingehouden franchise.
+
+    Met vriendelijke groeten,
+
+    Pieter Janssens
+    Schadebeheer - Verzekeringskantoor Hoflandt
+
+# --- Frank Van Acker: zoon breekt geleend gereedschap (KBC gezinspolis vs AXA) ---------------
+- id: hoflandt.gereedschap-vanacker.1
+  date: 2026-06-08 18:25
+  from: frank.vanacker@skynet.be
+  to: pieter.janssens@hoflandt.be
+  subject: Geleende schuurmachine buurman kapot
+  attachments: [kbc_gezinspolis]
+  body: |
+    Dag Pieter,
+
+    Mijn woningverzekering loopt bij jullie, maar onze familiale verzekering hebben we nog altijd bij KBC (gezinspolis, voorwaarden in bijlage). Mijn zoon Robin (20) had de professionele vloerschuurmachine van onze buurman geleend en die is van de aanhangwagen gevallen. De behuizing is gebarsten en de motor draait niet meer. Herstelling 890 euro volgens de dealer.
+
+    Ik weet dat dit bij KBC moet, maar kan jij eens kijken of dit gedekt is? Ik vind mijn weg niet in die voorwaarden.
+
+    Frank
+
+- id: hoflandt.gereedschap-vanacker.2
+  date: 2026-06-09 10:50
+  from: pieter.janssens@hoflandt.be
+  to: frank.vanacker@skynet.be
+  subject: "RE: Geleende schuurmachine buurman kapot"
+  body: |
+    Dag Frank,
+
+    Ik heb je KBC-gezinspolis erbij genomen. Goed nieuws: onder "Schade aan toevertrouwde goederen" (hoofdstuk aansprakelijkheid privéleven, punt 5f) dekt KBC je aansprakelijkheid voor schade aan goederen die je huurt, leent of gebruikt in je privéleven. "Gereedschap dat u leent van een vriend" staat er zelfs als voorbeeld in.
+
+    Aandachtspunten:
+    - uitgesloten zijn o.a. diefstal, verdwijning, brand en water, slijtage of gebrek aan onderhoud, en esthetische schade. Een gebarsten behuizing en een defecte motor na een val vallen daar niet onder;
+    - de dekking voor toevertrouwde goederen is beperkt tot 15.000 EUR, met een franchise van 250 EUR per schadegeval voor stoffelijke schade.
+
+    Je krijgt dus 640 EUR (890 EUR min 250 EUR). Meld het bij je KBC-verzekeringsagent met de factuur van de dealer en een verklaring van de buurman.
+
+    Ter info, omdat je vroeger vroeg of je familiale ook naar ons kan: bij AXA Comfort Privéleven is schade aan geleende goederen alleen gedekt met de optie Premium (tot 50.000 EUR). Zonder die optie had dit niet gedekt geweest. Als je ooit overstapt, neem je die optie best mee.
+
+    Groeten,
+    Pieter
+
+- id: hoflandt.gereedschap-vanacker.3
+  date: 2026-06-09 19:30
+  from: frank.vanacker@skynet.be
+  to: pieter.janssens@hoflandt.be
+  cc: els@hoflandt.be
+  subject: "RE: Geleende schuurmachine buurman kapot"
+  body: |
+    Dag Pieter,
+
+    Top, heel erg bedankt, ik dien het in bij KBC. Onze gezinspolis vervalt in januari. Els, mag je in november eens een voorstel maken voor Comfort Privéleven met de optie Premium? Dan hebben we alles op één plek.
+
+    Frank
+
+# --- Patrick Martens: KBC wil terugvordering na ongeval zoon onder invloed (verhaalsrecht) ----
+- id: hoflandt.verhaal-martens.1
+  date: 2026-04-27 21:40
+  from: patrick.martens@telenet.be
+  to: els@hoflandt.be
+  subject: Verzekeraar vordert 14.600 euro terug van mijn zoon
+  body: |
+    Dag mevrouw Hoflandt,
+
+    U werd mij aangeraden door mijn broer, die klant is bij u. In januari reed mijn zoon Jens (23) met mijn auto, die bij KBC verzekerd is, na een feestje tegen twee geparkeerde wagens in Duffel. Hij had 1,4 promille, stelde de politie vast. KBC heeft de eigenaars van de twee auto's vergoed, samen 14.600 euro, en eist nu dat hele bedrag terug van Jens.
+
+    Mag dat zomaar? Jens is student en kan dat onmogelijk betalen. Ik heb ook het document "minimumvoorwaarden" gevonden op de site van KBC, maar ik begrijp het niet goed.
+
+    Daarnaast wil ik mijn autoverzekering eigenlijk naar u overbrengen.
+
+    Patrick Martens
+
+- id: hoflandt.verhaal-martens.2
+  date: 2026-04-28 16:20
+  from: els@hoflandt.be
+  to: patrick.martens@telenet.be
+  subject: "RE: Verzekeraar vordert 14.600 euro terug van mijn zoon"
+  attachments: [kbc_auto_minimum]
+  body: |
+    Dag meneer Martens,
+
+    Dank u voor het vertrouwen. Ik heb het document "minimumvoorwaarden" (in bijlage) bekeken. Dat zijn de wettelijke minimumvoorwaarden die voor elke Belgische BA-autoverzekering gelden. Een verzekeraar mag verhaal nemen, maar binnen strikte grenzen.
+
+    1. Wanneer? Artikel 46, 2° laat verhaal op de verzekerde toe als die het schadegeval veroorzaakt heeft in staat van dronkenschap (of onder invloed van drugs of medicatie), en de verzekeraar moet het oorzakelijk verband met het ongeval aantonen. Let op: de wet spreekt van "dronkenschap". Dat is niet hetzelfde als een alcoholgehalte boven de wettelijke limiet. Vraag KBC op basis van welke vaststellingen in het PV zij dronkenschap aannemen.
+
+    2. Hoeveel? Artikel 44 begrenst het bedrag. Tot 11.000 EUR netto-uitgaven mag de verzekeraar alles terugvorderen. Daarboven komt er slechts de helft van het meerdere bij, met een absoluut maximum van 31.000 EUR. Bij 14.600 EUR wordt dat:
+       11.000 EUR + (14.600 - 11.000) / 2 = 12.800 EUR.
+       KBC mag dus hoogstens 12.800 EUR terugvorderen, niet 14.600 EUR, tenzij hun uitgaven hoger zijn dan u weet (gerechtskosten, intresten).
+
+    Mijn advies: betwist het bedrag schriftelijk bij KBC en vraag een gedetailleerde afrekening. Is er een rechtsbijstandsverzekering in uw gezinspolis? Die kan hier soms helpen. Een afbetalingsplan vragen is bij zo'n bedrag heel gebruikelijk.
+
+    Voor de overstap naar ons maak ik graag een offerte. Ik heb daarvoor uw attest schadeverleden nodig. KBC moet dat binnen 15 dagen na uw aanvraag bezorgen, u vindt het ook in de Car@ttest-app. Dit schadegeval in fout staat erop en telt mee voor uw premie.
+
+    Met vriendelijke groeten,
+
+    Els Hoflandt
+    Verzekeringskantoor Hoflandt
+
+- id: hoflandt.verhaal-martens.3
+  date: 2026-05-04 08:35
+  from: patrick.martens@telenet.be
+  to: els@hoflandt.be
+  subject: "RE: Verzekeraar vordert 14.600 euro terug van mijn zoon"
+  body: |
+    Dag mevrouw Hoflandt,
+
+    Hartelijk dank. Ik heb KBC aangeschreven zoals u voorstelde en zij hebben hun vordering herberekend naar 12.800 euro. Jens kan dat afbetalen over 36 maanden. In het PV staat trouwens enkel de ademanalyse, geen vaststelling van dronkenschap. Onze rechtsbijstand bekijkt dat nu verder.
+
+    Het attest schadeverleden zit in bijlage. Mijn auto is een Volvo XC40 uit 2021, ik rij zelf, Jens niet meer. Graag een offerte voor BA en omnium.
+
+    Patrick Martens
