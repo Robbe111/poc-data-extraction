@@ -5,7 +5,7 @@ from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from database import get_attachment, init_db, list_emails
+from database import get_attachment, get_email, init_db, list_emails
 import enron_dataset
 import vector_store
 
@@ -28,6 +28,14 @@ class SearchRequest(BaseModel):
 @app.get("/api/emails")
 def get_emails(limit: int = 50, offset: int = 0):
     return list_emails(limit=limit, offset=offset)
+
+
+@app.get("/api/emails/{email_id}")
+def get_email_detail(email_id: str):
+    email = get_email(email_id)
+    if email is None:
+        raise HTTPException(404, "Email not found")
+    return email
 
 
 @app.post("/api/search")
@@ -53,6 +61,23 @@ def open_attachment(attachment_id: str):
         media_type=MEDIA_TYPES.get(attachment["extension"], "application/octet-stream"),
         headers={"Content-Disposition": f'inline; filename="{filename}"'},
     )
+
+
+@app.get("/api/attachments/{attachment_id}/info")
+def attachment_info(attachment_id: str):
+    """Metadata for the document viewer: the attachment plus the email it came with."""
+    attachment = get_attachment(attachment_id)
+    if not attachment:
+        raise HTTPException(404, "Attachment not found")
+    email = get_email(attachment["email_id"])
+    return {
+        "id": attachment_id,
+        "filename": attachment["filename"],
+        "extension": attachment["extension"],
+        "has_original": bool(attachment["native_path"]),
+        "text": attachment["text"],  # fallback when the original can't be rendered
+        "email": {k: email[k] for k in ("id", "subject", "sender", "date")} if email else None,
+    }
 
 
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

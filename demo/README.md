@@ -55,6 +55,16 @@ Tools Claude gets:
 | `list_emails` | filter by sender, recipient, subject, date range, has attachment |
 | `get_email` | full email incl. body and attachment list |
 | `get_pdf_text` | full text of a PDF + link to open the original |
+| `cite` | checks that quoted passages really occur in a PDF/email and returns a link that opens the source with them highlighted |
+
+### Seeing where an answer comes from
+
+The server instructions ask Claude to call `cite` with the exact sentences it used and to put the returned link next to each fact, e.g. `[p. 3](http://127.0.0.1:8000/viewer.html?attachment=…&q=…)`. That link opens `frontend/viewer.html` (so the web app must be running), which:
+
+- renders the original PDF (PDF.js, loaded from a CDN) and draws numbered highlights over each quoted passage, scrolled into view, or shows the email body with the passages marked;
+- lists the passages in a sidebar with their page; click one to jump to it.
+
+Matching ignores case, whitespace, punctuation and hyphenation, because PDF text extraction mangles those. `cite` rejects quotes that aren't in the document, which also catches made-up quotes. If the start and end of a quote match but the middle doesn't (multi-column layouts can do this), the viewer marks it as an "approximate match". The search results in the web UI have the same feature via the "show in document" link.
 
 ### Prerequisites
 
@@ -95,6 +105,7 @@ The repo contains `.mcp.json`, so Claude Code picks the server up automatically 
 - "Which emails with attachments were sent in January 2002? Summarise each in one line."
 - "What changed in the real-time trading schedule for February, and who sent it?"
 - "Show me the W-4 form that was sent around. What is it for?"
+- "Why did FERC staff say the price cap wasn't to blame for utility losses? Show me where it says that."
 
 ### Troubleshooting
 
@@ -103,3 +114,4 @@ The repo contains `.mcp.json`, so Claude Code picks the server up automatically 
 - **No results**: data not loaded yet, run the ingest step.
 - **Re-ingested data**: restart Claude Desktop so the server reopens the databases.
 - **PDF links don't open**: the web app (uvicorn) isn't running.
+- **Claude doesn't give highlight links**: the server instructions changed, so restart Claude Desktop (or `/mcp` → reconnect in Claude Code) to load the new `cite` tool.

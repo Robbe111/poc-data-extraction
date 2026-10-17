@@ -19,7 +19,9 @@ from mcp.server.mcpserver.exceptions import ToolError  # noqa: E402
 
 # Keep any chatter from library imports (Chroma, model loading) off the protocol channel.
 with contextlib.redirect_stdout(sys.stderr):
+    import citations  # noqa: E402
     import database  # noqa: E402
+    import enron_dataset  # noqa: E402
     import vector_store  # noqa: E402
     from config import APP_BASE_URL  # noqa: E402
 
@@ -30,8 +32,11 @@ mcp = MCPServer(
         "Search and read the broker's email archive: email bodies and the PDF attachments sent with them. "
         "Use search_documents for questions about content, list_emails for filtering by sender/date/subject, "
         "get_email and get_pdf_text to read a full item. Always ground answers in the retrieved text and cite "
-        "the email subject, sender and date (and PDF filename). When a PDF is relevant, give its open_url link "
-        "so the user can view the original."
+        "the email subject, sender and date (and PDF filename). "
+        "For every fact you take from a document, call cite with the exact sentence(s) you relied on, copied "
+        "verbatim from the retrieved text, and put the returned highlight_url next to that fact as a markdown "
+        "link (e.g. [p. 3](highlight_url)): it opens the original with the passage highlighted. Group quotes "
+        "from the same document into one cite call. Prefer highlight_url over open_url."
     ),
 )
 
@@ -166,6 +171,66 @@ def get_pdf_text(attachment_id: str, offset: int = 0, max_chars: int = 20000) ->
         "text": text[offset:end],
         "has_more": end < len(text),
         "next_offset": end if end < len(text) else None,
+    }
+
+
+@mcp.tool()
+def cite(quotes: list[str], attachment_id: str | None = None, email_id: str | None = None) -> dict:
+    """Get a link that opens a document with the given passages highlighted, so the user can see exactly
+    where an answer comes from. Pass attachment_id for a PDF, or email_id for an email body.
+
+    Args:
+        quotes: one or more passages copied verbatim from the document's text (a sentence or a few
+            lines each; at least a few words). Whitespace, case and punctuation differences are tolerated,
+            paraphrases are not.
+
+    Each quote is checked against the document; quotes that don't occur in it are reported back in
+    not_found and left out of the link. Fix them (copy the text exactly) or drop the claim.
+    """
+    if bool(attachment_id) == bool(email_id):
+        raise ToolError("Pass exactly one of attachment_id or email_id")
+    quotes = [q for q in quotes if q.strip()]
+    if not quotes:
+        raise ToolError("Pass at least one quote")
+
+    with contextlib.redirect_stdout(sys.stderr):
+        if attachment_id:
+            source = database.get_attachment(attachment_id)
+            if source is None:
+                raise ToolError(f"No attachment with id {attachment_id!r}")
+            text, label = source["text"], source["filename"]
+            try:
+                pdf = enron_dataset.read_native(source["zip_name"], source["native_path"])
+            except (FileNotFoundError, KeyError):
+                pdf = None
+        else:
+            source = database.get_email(email_id)
+            if source is None:
+                raise ToolError(f"No email with id {email_id!r}")
+            text, label, pdf = f"{source['subject']}\n\n{source['body']}", source["subject"], None
+
+        found, not_found = [], []
+        for quote in quotes:
+            if not citations.find(quote, text):
+                not_found.append(quote)
+                continue
+            entry = {"quote": quote}
+            if pdf and (page := citations.pdf_page_of(quote, pdf)):
+                entry["page"] = page
+            found.append(entry)
+
+    if not found:
+        raise ToolError(
+            f"None of the quotes occur in {label!r}. Copy them verbatim from get_pdf_text / get_email / "
+            "search_documents output."
+        )
+    return {
+        "source": label,
+        "highlight_url": citations.viewer_url(
+            [f["quote"] for f in found], attachment_id=attachment_id, email_id=email_id
+        ),
+        "found": found,
+        "not_found": not_found,
     }
 
 

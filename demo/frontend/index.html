@@ -13,6 +13,7 @@
     .email .body { white-space: pre-wrap; font-size: 0.9rem; margin-top: 0.5rem; max-height: 14rem; overflow: auto; }
     .badge { display: inline-block; font-size: 0.75rem; padding: 0.05rem 0.4rem; border-radius: 4px; background: #eef; color: #335; margin-right: 0.3rem; }
     .badge.pdf { background: #fde8e8; color: #822; }
+    .badge.locate { background: #fff3b0; color: #640; }
     a.badge { text-decoration: none; }
     a.badge:hover { text-decoration: underline; }
     .distance { font-size: 0.8rem; color: #999; }
@@ -112,6 +113,10 @@
           ? [{ label: 'email body', cls: 'email' }]
           : [{ label: `${m.source_type.toUpperCase()}: ${m.attachment_name}`, cls: m.source_type,
                href: m.attachment_id ? attachmentUrl(m.attachment_id) : null }];
+        // Email chunks carry the subject as a prefix (see vector_store.py); it isn't part of the body text.
+        const passage = m.source_type === 'email' ? r.document.slice(m.subject.length).trim() : r.document;
+        const target = m.attachment_id ? `attachment=${encodeURIComponent(m.attachment_id)}` : `email=${encodeURIComponent(m.email_id)}`;
+        badges.push({ label: 'show in document', cls: 'locate', href: `viewer.html?${target}&q=${encodeURIComponent(passage || m.subject)}` });
         container.appendChild(renderCard({
           sender: m.sender, recipients: m.recipients, subject: m.subject, date: m.date,
           body: r.document, badges, distance: r.distance,

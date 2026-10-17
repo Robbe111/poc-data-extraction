@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Source viewer</title>
+  <style>
+    :root {
+      --ink: #222; --muted: #666; --line: #ddd; --paper-bg: #e9e9ec;
+      --hl-0: 255, 205, 0; --hl-1: 0, 190, 230; --hl-2: 255, 110, 170; --hl-3: 90, 210, 90;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, sans-serif; color: var(--ink); background: var(--paper-bg); }
+    header { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); padding: 0.6rem 1rem; }
+    header .title { font-weight: 600; overflow-wrap: anywhere; }
+    header .meta { font-size: 0.85rem; color: var(--muted); overflow-wrap: anywhere; }
+    header a { color: inherit; }
+    .layout { display: flex; gap: 1rem; padding: 1rem; align-items: flex-start; }
+    aside { position: sticky; top: 5rem; flex: 0 0 300px; max-height: calc(100vh - 6rem); overflow: auto; }
+    aside h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 0.5rem; }
+    .quote { display: flex; gap: 0.5rem; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem 0.6rem; margin-bottom: 0.5rem; cursor: pointer; font-size: 0.85rem; }
+    .quote:hover { border-color: #999; }
+    .quote.missing { cursor: default; opacity: 0.6; }
+    .quote .text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .quote .status { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+    .chip { flex: 0 0 auto; width: 1.4rem; height: 1.4rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.75rem; font-weight: 700; color: #222; }
+    main { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .page { position: relative; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+    .page canvas { display: block; }
+    .page .num { position: absolute; bottom: -1.2rem; right: 0; font-size: 0.75rem; color: var(--muted); }
+    .hl { position: absolute; border-radius: 2px; mix-blend-mode: multiply; pointer-events: none; }
+    .badge { position: absolute; width: 1.4rem; height: 1.4rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.75rem; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+    .pulse { animation: pulse 1.2s ease-out 2; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(var(--c), .9); } 100% { box-shadow: 0 0 0 14px rgba(var(--c), 0); } }
+    .textdoc { background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.2); padding: 1.5rem 2rem; width: 100%; max-width: 820px; white-space: pre-wrap; font-size: 0.92rem; line-height: 1.5; overflow-wrap: anywhere; }
+    .textdoc .subject { font-weight: 600; font-size: 1.05rem; margin-bottom: 1rem; }
+    mark { color: inherit; border-radius: 2px; padding: 0 1px; }
+    .notice { background: #fff8e1; border: 1px solid #f0d58a; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.85rem; max-width: 820px; width: 100%; }
+    @media (max-width: 800px) {
+      .layout { flex-direction: column; }
+      aside { position: static; flex-basis: auto; width: 100%; max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title" id="title">Loading…</div>
+    <div class="meta" id="meta"></div>
+  </header>
+  <div class="layout">
+    <aside>
+      <h2>Cited passages</h2>
+      <div id="quotes"></div>
+    </aside>
+    <main id="doc"></main>
+  </div>
+
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+
+    const params = new URLSearchParams(location.search);
+    const quotes = params.getAll('q').filter(q => q.trim());
+    const docEl = document.getElementById('doc');
+    const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const color = (i) => `var(--hl-${i % 4})`;
+    const MIN_QUOTE_CHARS = 8;
+
+    // --- matching: same normalisation as backend/citations.py --------------------------
+    // Only letters and digits count (accents, case, whitespace, punctuation and hyphenation
+    // ignored), so pypdf's and PDF.js's different text extraction still line up.
+    const isWordChar = (c) => /[\p{L}\p{N}]/u.test(c);
+    const normalize = (s) => [...s.normalize('NFKD').toLowerCase()].filter(isWordChar).join('');
+
+    // segments: [{text, ref}] -> one normalised string + a map from each of its chars back
+    // to (segment, offset in segment.text)
+    function buildIndex(segments) {
+      let norm = '';
+      const map = [];
+      segments.forEach((seg, si) => {
+        for (let i = 0; i < seg.text.length;) {
+          const ch = String.fromCodePoint(seg.text.codePointAt(i));
+          for (const c of ch.normalize('NFKD').toLowerCase()) {
+            if (isWordChar(c)) { norm += c; map.push([si, i, i + ch.length]); }
+          }
+          i += ch.length;
+        }
+      });
+      return { norm, map };
+    }
+
+    // -> {start, end, exact} in normalised coordinates, or null
+    function locate(index, quote) {
+      const needle = normalize(quote);
+      if (needle.length < MIN_QUOTE_CHARS) return null;
+      const at = index.norm.indexOf(needle);
+      if (at !== -1) return { start: at, end: at + needle.length, exact: true };
+      // Fallback: match the start and the end of the quote separately (copes with extraction
+      // differences in the middle, e.g. column/table order).
+      const k = Math.min(30, Math.floor(needle.length / 3));
+      if (k < MIN_QUOTE_CHARS) return null;
+      const head = index.norm.indexOf(needle.slice(0, k));
+      if (head === -1) return null;
+      const tail = index.norm.indexOf(needle.slice(-k), head + k);
+      if (tail !== -1 && tail + k - head < needle.length * 2 + 200) return { start: head, end: tail + k, exact: false };
+      return { start: head, end: head + k, exact: false };
+    }
+
+    // normalised range -> [{seg, from, to}] in original text offsets
+    function toSegmentRanges(index, { start, end }) {
+      const out = [];
+      for (let i = start; i < end; i++) {
+        const [seg, from, to] = index.map[i];
+        const last = out[out.length - 1];
+        if (last && last.seg === seg) last.to = to;
+        else out.push({ seg, from, to });
+      }
+      return out;
+    }
+
+    // --- sidebar ------------------------------------------------------------------------
+    function renderQuoteList(results, describe) {
+      const list = document.getElementById('quotes');
+      if (!quotes.length) list.innerHTML = '<div class="status">No passages in the link.</div>';
+      quotes.forEach((q, i) => {
+        const r = results[i];
+        const el = document.createElement('div');
+        el.className = 'quote' + (r ? '' : ' missing');
+        el.innerHTML = `<span class="chip" style="background: rgb(${color(i)})">${i + 1}</span>
+          <div><div class="text">${escapeHtml(q)}</div>
+          <div class="status">${r ? describe(r) + (r.exact ? '' : ' · approximate match') : 'not found in this document'}</div></div>`;
+        if (r) el.addEventListener('click', () => focusQuote(i));
+        list.appendChild(el);
+      });
+    }
+
+    const anchors = [];  // per quote: element to scroll to
+    function focusQuote(i, smooth = true) {
+      const target = anchors[i];
+      if (!target) return;
+      target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+      target.style.setProperty('--c', getComputedStyle(document.documentElement).getPropertyValue(`--hl-${i % 4}`));
+      target.classList.remove('pulse');
+      void target.offsetWidth;
+      target.classList.add('pulse');
+    }
+
+    // --- PDF ----------------------------------------------------------------------------
+    async function showPdf(url) {
+      const pdf = await pdfjsLib.getDocument(url).promise;
+      const pages = [];
+      const segments = [];
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const page = await pdf.getPage(p);
+        const items = (await page.getTextContent()).items.filter(it => 'str' in it);
+        pages.push({ page, items });
+        items.forEach((item, idx) => segments.push({ text: item.str, ref: { p: p - 1, idx } }));
+      }
+      const index = buildIndex(segments);
+      const results = quotes.map(q => {
+        const hit = locate(index, q);
+        if (!hit) return null;
+        const ranges = toSegmentRanges(index, hit).map(r => ({ ...segments[r.seg].ref, from: r.from, to: r.to }));
+        return { ...hit, ranges, page: ranges[0].p + 1 };
+      });
+      renderQuoteList(results, r => `page ${r.page}`);
+
+      const width = Math.min(docEl.clientWidth, 1000);
+      const dpr = window.devicePixelRatio || 1;
+      for (const [p, { page, items }] of pages.entries()) {
+        const viewport = page.getViewport({ scale: width / page.getViewport({ scale: 1 }).width });
+        const div = document.createElement('div');
+        div.className = 'page';
+        div.style.width = `${viewport.width}px`;
+        div.style.height = `${viewport.height}px`;
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.floor(viewport.width * dpr);
+        canvas.height = Math.floor(viewport.height * dpr);
+        canvas.style.width = `${viewport.width}px`;
+        canvas.style.height = `${viewport.height}px`;
+        div.append(canvas);
+        div.insertAdjacentHTML('beforeend', `<span class="num">${p + 1} / ${pages.length}</span>`);
+        docEl.appendChild(div);
+        await page.render({
+          canvasContext: canvas.getContext('2d'), viewport,
+          transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null,
+        }).promise;
+
+        results.forEach((r, qi) => {
+          if (!r) return;
+          const rects = mergeLines(r.ranges.filter(x => x.p === p).map(x => itemRect(items[x.idx], x.from, x.to, viewport)));
+          rects.forEach((rect, n) => {
+            const hl = document.createElement('div');
+            hl.className = 'hl';
+            Object.assign(hl.style, {
+              left: `${rect.x1 - 1}px`, top: `${rect.y1}px`,
+              width: `${rect.x2 - rect.x1 + 2}px`, height: `${rect.y2 - rect.y1}px`,
+              background: `rgba(${color(qi)}, ${r.exact ? 0.45 : 0.3})`,
+            });
+            div.appendChild(hl);
+            if (n === 0 && !anchors[qi]) {
+              // In the margin left of the passage, level with its first line.
+              const left = Math.max(2, Math.min(...rects.map(r => r.x1)) - 28);
+              const badge = document.createElement('div');
+              badge.className = 'badge';
+              badge.textContent = qi + 1;
+              Object.assign(badge.style, { left: `${left}px`, top: `${rect.y1}px`, background: `rgb(${color(qi)})` });
+              div.appendChild(badge);
+              anchors[qi] = badge;
+            }
+          });
+        });
+        const first = results.findIndex(Boolean);
+        if (anchors[first]?.parentElement === div) focusQuote(first, false);
+      }
+    }
+
+    // Box around chars [from, to) of a text item, in viewport pixels. Character positions are
+    // interpolated over the item's width, which is close enough for a highlight.
+    function itemRect(item, from, to, viewport) {
+      const [, , c, d, e, f] = item.transform;
+      const size = Math.hypot(c, d) || item.height || 10;
+      const len = item.str.length || 1;
+      const x1 = e + item.width * (from / len), x2 = e + item.width * (to / len);
+      const [ax, ay, bx, by] = viewport.convertToViewportRectangle([x1, f - size * 0.25, x2, f + size * 0.95]);
+      return { x1: Math.min(ax, bx), x2: Math.max(ax, bx), y1: Math.min(ay, by), y2: Math.max(ay, by) };
+    }
+
+    // Join boxes on the same line so a highlighted sentence reads as one band per line.
+    function mergeLines(rects) {
+      const out = [];
+      for (const r of rects) {
+        const last = out[out.length - 1];
+        const h = r.y2 - r.y1;
+        if (last && Math.abs(last.y1 - r.y1) < h * 0.5 && r.x1 - last.x2 < h * 1.5 && r.x2 >= last.x1) {
+          last.x1 = Math.min(last.x1, r.x1); last.x2 = Math.max(last.x2, r.x2);
+          last.y1 = Math.min(last.y1, r.y1); last.y2 = Math.max(last.y2, r.y2);
+        } else out.push({ ...r });
+      }
+      return out;
+    }
+
+    // --- plain text (email bodies, attachments without a renderable original) ------------
+    function showText(sections) {
+      const index = buildIndex(sections);
+      const marks = sections.map(() => []);
+      const results = quotes.map((q, qi) => {
+        const hit = locate(index, q);
+        if (!hit) return null;
+        toSegmentRanges(index, hit).forEach(r => marks[r.seg].push({ ...r, qi }));
+        return hit;
+      });
+      renderQuoteList(results, () => 'highlighted below');
+
+      const box = document.createElement('div');
+      box.className = 'textdoc';
+      sections.forEach((s, si) => {
+        const el = document.createElement('div');
+        el.className = s.ref;
+        let html = '', pos = 0;
+        for (const m of marks[si].sort((a, b) => a.from - b.from)) {
+          if (m.from < pos) continue;  // overlaps an earlier quote
+          html += escapeHtml(s.text.slice(pos, m.from));
+          html += `<mark data-q="${m.qi}" style="background: rgba(${color(m.qi)}, 0.5)">${escapeHtml(s.text.slice(m.from, m.to))}</mark>`;
+          pos = m.to;
+        }
+        el.innerHTML = html + escapeHtml(s.text.slice(pos));
+        box.appendChild(el);
+      });
+      docEl.appendChild(box);
+      quotes.forEach((_, qi) => { anchors[qi] = box.querySelector(`mark[data-q="${qi}"]`); });
+      focusQuote(results.findIndex(Boolean), false);
+    }
+
+    function notice(text) {
+      docEl.insertAdjacentHTML('afterbegin', `<div class="notice">${escapeHtml(text)}</div>`);
+    }
+
+    function setHeader(title, metaHtml) {
+      document.title = `${title} — Source viewer`;
+      document.getElementById('title').textContent = title;
+      document.getElementById('meta').innerHTML = metaHtml;
+    }
+
+    const fmtDate = (d) => d ? new Date(d).toLocaleString() : '';
+
+    async function main() {
+      const attachmentId = params.get('attachment');
+      const emailId = params.get('email');
+      if (attachmentId) {
+        const res = await fetch(`/api/attachments/${encodeURIComponent(attachmentId)}/info`);
+        if (!res.ok) throw new Error('Attachment not found');
+        const info = await res.json();
+        const fileUrl = `/api/attachments/${encodeURIComponent(attachmentId)}`;
+        const e = info.email;
+        setHeader(info.filename, `${e ? `Attached to <a href="viewer.html?email=${encodeURIComponent(e.id)}">${escapeHtml(e.subject)}</a>
+          · ${escapeHtml(e.sender)} · ${fmtDate(e.date)} · ` : ''}<a href="${fileUrl}" target="_blank">open original ↗</a>`);
+        if (info.extension === 'pdf' && info.has_original) {
+          try { return await showPdf(fileUrl); }
+          catch (err) { notice(`Could not render the original PDF (${err.message}); showing extracted text instead.`); }
+        }
+        return showText([{ text: info.text, ref: 'body' }]);
+      }
+      if (emailId) {
+        const res = await fetch(`/api/emails/${encodeURIComponent(emailId)}`);
+        if (!res.ok) throw new Error('Email not found');
+        const email = await res.json();
+        const attachments = email.attachments.map(a =>
+          `<a href="viewer.html?attachment=${encodeURIComponent(a.id)}">${escapeHtml(a.filename)}</a>`).join(', ');
+        setHeader(email.subject, `From ${escapeHtml(email.sender)} · To ${escapeHtml(email.recipients.slice(0, 200))}
+          · ${fmtDate(email.date)}${attachments ? ` · Attachments: ${attachments}` : ''}`);
+        return showText([{ text: email.subject, ref: 'subject' }, { text: email.body, ref: 'body' }]);
+      }
+      throw new Error('Nothing to show: the link needs ?attachment=… or ?email=…');
+    }
+
+    main().catch(err => { setHeader('Could not open document', ''); notice(err.message); });
+  </script>
+</body>
+</html>
