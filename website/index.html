@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Naam] · De AI-kennisbank voor verzekeringsmakelaars</title>
+<meta name="description" content="Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI. Stel een vraag en krijg meteen het antwoord, met de exacte clausule erbij.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="De AI-kennisbank voor verzekeringsmakelaars">
+<meta property="og:description" content="Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI. Stel een vraag en krijg meteen het antwoord, met de exacte clausule erbij.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:locale" content="nl_BE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/geist-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Lettertypes staan op de eigen server (geen Google Fonts, dus geen IP-adressen naar derden) */
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/geist-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/geist-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/geist-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/geist-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/geist-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/geist-mono-latin-500-normal.woff2) format('woff2')}
+:root{--accent:#C41E2E;--accent-dark:#9E1724;--accent-soft:#FDF3F4;--ink:#141414;--muted:#555555;--line:#E6E6E6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF;color:var(--ink);font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1A1A1A}a:hover{color:var(--accent)}
+img{max-width:100%}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:#fff;padding:8px 12px;z-index:10}
+.btn{display:inline-block;text-decoration:none;border-radius:10px;font-size:16px;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn-red{background:var(--accent);color:#fff;padding:15px 24px;font-weight:600}.btn-red:hover{background:var(--accent-dark);color:#fff}
+.btn-line{border:1px solid #DADADA;color:var(--ink);padding:14px 24px;font-weight:500}.btn-line:hover{border-color:var(--ink);color:var(--ink)}
+.btn-dark{background:var(--ink);color:#fff;padding:11px 18px;border-radius:8px;font-size:15px;font-weight:500}.btn-dark:hover{background:#333;color:#fff}
+.btn-white{background:#fff;color:var(--ink);padding:17px 26px;border-radius:12px;font-size:17px;font-weight:600}.btn-white:hover{background:#F3F3F3;color:var(--ink)}
+.nav-links a:not(.btn){text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- animaties ---------- */
+.stage-wrap{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#F6F6F7}
+.stage{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:top left;overflow:hidden;background:#F6F6F7;font-family:'Geist',system-ui,sans-serif;color:var(--ink)}
+.stage .fx{transition:opacity .45s ease,transform .65s cubic-bezier(.22,1,.36,1),box-shadow .5s ease,border-color .4s ease,background-color .4s ease,max-height .6s ease}
+.stage .fx.off{opacity:0;pointer-events:none}
+.stage .fx.up.off{transform:translateY(10px)}
+.stage .fx.lf.off{transform:translateX(-18px)}
+.stage .fx.pop.off{transform:scale(.9)}
+.stage .fx.slide.off{transform:translateX(560px)}
+.stage .fx.line.off{transform:scaleX(0)}
+.stage .fx.scene.off{transform:scale(.985)}
+.stage .line{transform-origin:left center}
+.stage .nsel{border-color:var(--accent) !important;box-shadow:0 10px 28px rgba(196,30,46,.16);transform:scale(1.03)}
+.stage .xoff{max-height:0;opacity:0}
+.stage .xon{max-height:96px;opacity:1}
+.stage .lit{border-color:var(--accent) !important;box-shadow:0 0 0 10px rgba(196,30,46,.07),0 22px 60px rgba(196,30,46,.32)}
+.stage .mk{transition:background-color .45s ease;border-radius:3px}
+.stage .moff{background-color:transparent}
+.stage .mon{background-color:#FFE58A}
+.stage .tp{background-color:var(--accent) !important;color:#fff !important;border-color:var(--accent) !important}
+.stage .bp{transform:scale(.96);background-color:var(--accent-dark) !important}
+.stage .act{background-color:#fff !important;border-color:var(--line) !important;color:var(--ink) !important}
+.stage .cursor{pointer-events:none;transition:transform .85s cubic-bezier(.65,0,.35,1),opacity .3s ease}
+.stage .rip{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;background:rgba(196,30,46,.35);opacity:0}
+.stage .rip.go{animation:rip .45s ease-out}
+@keyframes rip{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(1.7)}}
+.stage .ring{animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.4);opacity:0}}
+.stage .orbit{animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stage .caret{animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.stage .chip{position:absolute;left:470px;width:250px;height:32px;box-sizing:border-box;display:flex;align-items:center;gap:8px;padding:0 12px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12px;box-shadow:0 6px 16px rgba(0,0,0,.06);transition:opacity .5s ease,transform .9s cubic-bezier(.65,0,.35,1);opacity:0}
+.stage .pdf{font-family:'Geist Mono',monospace;font-size:10px;font-weight:500;color:#fff;background:var(--accent);border-radius:3px;padding:1px 4px}
+.stage .pill{position:absolute;width:130px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:500}
+.stage .row{border:1px solid #EDEDED;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:3px;background:#fff}
+.stage .row-top{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600}
+.stage .row-top span{font-weight:400;color:#8A8A8A}
+.stage .row-sub{font-size:12.5px;color:var(--muted)}
+.stage .link{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px}
+.stage .link-l{display:flex;flex-direction:column;gap:1px}
+.stage .link-l b{font-weight:600}
+.stage .link-l span{font-size:12px;color:#666}
+.stage .tag-ok{font-size:11.5px;color:var(--accent-dark);background:var(--accent-soft);border-radius:6px;padding:3px 8px}
+.stage .src{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid #F1C9CD;background:var(--accent-soft);color:var(--accent-dark);border-radius:6px;padding:4px 9px;font-size:12px}
+.stage .badge{width:16px;height:16px;border-radius:50%;background:#F5C400;color:var(--ink);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.stage .sec{background:#EEF0F3;font-weight:700;padding:4px 6px;margin-top:4px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.stage *{animation:none !important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<!-- NAV -->
+<header style="border-bottom: 1px solid #EDEDED; background: #FFFFFF">
+<nav aria-label="Hoofdmenu" style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #141414">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; background: var(--accent); display: block"></span>
+<span style="font-size: 21px; font-weight: 700; letter-spacing: -0.02em">[Naam]</span>
+</a>
+<div class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px">
+<a href="#hoe">Hoe het werkt</a>
+<a href="#functies">Functies</a>
+<a href="#team">Over ons</a>
+<a href="#beta" class="btn btn-dark">Word bètapartner</a>
+</div>
+</nav>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section id="top" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 56px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px">
+<div style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid #F1C9CD; background: #FDF3F4; color: #9E1724; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 500">
+<span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: block"></span>
+Nu in bèta voor Belgische makelaarskantoren
+</div>
+<h1 style="margin: 0; font-size: clamp(28px, 7.4vw, 80px); line-height: 1.04; hyphens: auto; overflow-wrap: break-word; letter-spacing: -0.04em; font-weight: 700; max-width: 960px">De AI-kennisbank voor <span style="color: var(--accent)">verzekeringsmakelaars</span></h1>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: #555555; max-width: 640px">Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI. Stel een vraag en krijg meteen het antwoord, met de exacte clausule erbij.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px">
+<a href="#beta" class="btn btn-red">Word bètapartner</a>
+<a href="#hoe" class="btn btn-line">Bekijk hoe het werkt</a>
+</div>
+</section>
+
+<!-- DEMO: twee animaties onder elkaar -->
+<section aria-label="Demo" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 112px">
+<div style="border: 1px solid #E6E6E6; border-radius: 20px; background: #FAFAFA; padding: clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(28px, 4vw, 48px)">
+
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<figcaption style="display: flex; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 600"><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500">01</span>Je mails en polissen worden één AI-kennisbank, gekoppeld per klant</figcaption>
+<div class="stage-wrap">
+<div class="stage" id="anim-overzicht" role="img" aria-label="Animatie: mails en polissen komen binnen, worden ingelezen in de AI-kennisbank en gekoppeld aan het klantdossier van Nathalie Dubois.">
+<div aria-hidden="true" style="position: absolute; inset: 0; width: 1308px; height: 768px; left: -28px">
+<div class="fx scene off" data-cls="s1" style="position: absolute; inset: 0; width: 1303px; height: 747px; top: 11px; left: 16px">
+
+<!-- Inbox -->
+<div class="fx lf off" data-cls="inbox" style="position: absolute; left: 56px; top: 56px; width: 400px; height: 576px; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04); overflow: hidden">
+<div style="display: flex; align-items: center; padding: 14px 18px; border-bottom: 1px solid #EDEDED">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Inbox</span>
+</div>
+<div style="padding: 10px; display: flex; flex-direction: column; gap: 8px">
+<div class="row fx lf off" data-cls="r0"><span class="row-top">Els Hoflandt<span>09:45</span></span><span class="row-sub">Vervaldag familiale verzekering</span></div>
+<div class="row fx lf off" data-cls="r1"><span class="row-top">Sarah De Smet<span>07:58</span></span><span class="row-sub">Ree aangereden – wat moet ik doen?</span></div>
+<div class="row fx lf off" data-cls="r2"><span class="row-top">Bart Wouters<span>07:12</span></span><span class="row-sub">DRINGEND – auto gestolen vannacht</span></div>
+<div class="row fx lf off" data-cls="r3 nsel">
+<span class="row-top">Nathalie Dubois<span>09:30</span></span>
+<span style="font-size: 14px; font-weight: 600">Hagelschade auto en veranda</span>
+<div class="fx xoff" data-cls="nexp" style="overflow: hidden"><p style="margin: 6px 0 0; font-size: 12px; line-height: 1.5; color: #555555">Tijdens het onweer gisterenavond in Lier kwamen er hagelstenen zo groot als knikkers naar beneden. Mijn Renault Clio zit vol deukjes, het dak van onze veranda is gebarsten…</p></div>
+</div>
+<div class="row fx lf off" data-cls="r4"><span class="row-top">Pieter Janssens<span>10:44</span></span><span class="row-sub">RE: Hagelschade auto en veranda</span></div>
+</div>
+</div>
+
+<!-- Bronnen die naar de kennisbank vliegen -->
+<div class="chip" data-style="c0" style="top: 444px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Mail · Hagelschade auto en veranda</div>
+<div class="chip" data-style="c1" style="top: 482px"><span class="pdf">PDF</span>Auto Plus – Bijz. voorwaarden</div>
+<div class="chip" data-style="c2" style="top: 520px"><span class="pdf">PDF</span>Woning Flex – Bijz. voorwaarden</div>
+<div class="chip" data-style="c3" style="top: 558px"><span class="pdf">PDF</span>Woning Flex – Algemene voorwaarden</div>
+
+<!-- Verbindingslijnen -->
+<div class="fx line off" data-cls="l1" style="position: absolute; left: 456px; top: 329px; width: 100px; height: 2px; background: var(--accent)"></div>
+<div class="fx line off" data-cls="l2" style="position: absolute; left: 724px; top: 329px; width: 116px; height: 2px; background: var(--accent)"></div>
+
+<!-- AI-kennisbank -->
+<div class="fx pop off" data-cls="brain" style="position: absolute; left: 556px; top: 246px; width: 168px; height: 168px">
+<div class="ring" style="position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--accent)"></div>
+<div class="orbit" style="position: absolute; inset: -18px; border-radius: 50%; border: 1.5px dashed #E8B4BA"></div>
+<div class="fx" data-cls="lit" style="position: absolute; inset: 0; border-radius: 50%; background: #FFFFFF; border: 1.5px solid #F1C9CD; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="1.8"/><circle cx="19" cy="6" r="1.8"/><circle cx="5" cy="18" r="1.8"/><circle cx="19" cy="18" r="1.8"/><path d="M6.5 7.2 10.2 10.4M17.5 7.2l-3.7 3.2M6.5 16.8l3.7-3.2M17.5 16.8l-3.7-3.2"/></svg>
+<span style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em">AI-kennisbank</span>
+</div>
+</div>
+
+<!-- Inhoud van de kennisbank -->
+<div class="pill fx pop off" data-cls="p0" style="left: 505px; top: 186px">Mails &amp; bijlagen</div>
+<div class="pill fx pop off" data-cls="p1" style="left: 645px; top: 186px">Polissen</div>
+<div class="pill fx pop off" data-cls="p2" style="left: 505px; top: 446px">Klantgegevens</div>
+<div class="pill fx pop off" data-cls="p3" style="left: 645px; top: 446px">Werkwijze kantoor</div>
+
+<!-- Klantdossier -->
+<div class="fx pop off" data-cls="card" style="position: absolute; left: 840px; top: 152px; width: 384px; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.04)">
+<span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--accent)">KLANTDOSSIER</span>
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600">ND</span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 600">Nathalie Dubois</span><span style="font-size: 12.5px; color: #666666">Hoogveld 12, 2500 Lier</span></span>
+</div>
+<div style="height: 1px; background: #EDEDED"></div>
+<div class="link fx lf off" data-cls="k0"><span class="link-l"><b>Auto Plus 43.110.058</b><span>Renault Clio · Mini Omnium Extra</span></span><span class="tag-ok">gekoppeld ✓</span></div>
+<div class="link fx lf off" data-cls="k1"><span class="link-l"><b>Woning Flex 51.220.914</b><span>Hoogveld 12 · gebouw + inboedel</span></span><span class="tag-ok">gekoppeld ✓</span></div>
+<div class="link fx lf off" data-cls="k2"><span class="link-l"><b>4 mails · hagelschade</b><span>laatste: 8 juli 2026</span></span><span class="tag-ok">gekoppeld ✓</span></div>
+<div class="link fx lf off" data-cls="k3"><span class="link-l"><b>Dossiers S-2026-0431 / 0432</b><span>woning en auto</span></span><span class="tag-ok">gekoppeld ✓</span></div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</figure>
+
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<figcaption style="display: flex; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 600"><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500">02</span>Stel een vraag, controleer de bron en verstuur het antwoord</figcaption>
+<div class="stage-wrap">
+<div class="stage" id="anim-chat" role="img" aria-label="Animatie: een makelaar stelt een vraag over hagelschade, krijgt een antwoord met de exacte clausule, controleert de bron en verstuurt een antwoordmail.">
+<div aria-hidden="true" style="position: absolute; inset: 0; width: 1308px; height: 768px; left: -28px">
+<div class="fx scene off" data-cls="s2" style="position: absolute; inset: 0">
+<div style="position: absolute; left: 40px; top: 12px; width: 1200px; height: 664px; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,.08); overflow: hidden; transform: scale(1.0467); transform-origin: top left">
+
+<!-- Zijbalk -->
+<div style="position: absolute; left: 0; top: 0; width: 210px; height: 664px; background: #FAFAFA; border-right: 1px solid #EDEDED; padding: 16px 12px; display: flex; flex-direction: column; gap: 14px">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; padding: 0 6px"><span style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); display: block"></span>[Naam]</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; border: 1px solid #E2E2E2; background: #FFFFFF; border-radius: 8px; padding: 8px 10px">+ Nieuw gesprek</span>
+<span style="font-family: 'Geist Mono', monospace; font-size: 10.5px; color: #8A8A8A; letter-spacing: 0.06em; padding: 4px 6px 0">RECENT</span>
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="fx" data-cls="sideAct" style="font-size: 13px; border: 1px solid transparent; border-radius: 8px; padding: 7px 10px; color: #8A8A8A">Hagelschade Dubois</span><span style="font-size: 13px; padding: 7px 10px; color: #555555">Diefstal BMW Wouters</span><span style="font-size: 13px; padding: 7px 10px; color: #555555">Vervaldag Verstraeten</span></div>
+<div style="margin-top: auto; border: 1px solid #F1C9CD; background: #FDF3F4; border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 2px">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #9E1724"><span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: block"></span>AI-kennisbank verbonden</span>
+<span style="font-size: 11.5px; color: #9E1724">Hoflandt · mails, polissen, werkwijze</span>
+</div>
+</div>
+
+<!-- Titelbalk -->
+<div style="position: absolute; left: 210px; top: -15px; right: 0; height: 44px; border-bottom: 1px solid #EDEDED; display: flex; align-items: center; padding: 0 20px">
+<span class="fx off" data-cls="title" style="font-size: 13px; font-weight: 600">Hagelschade Dubois: auto en woning</span>
+</div>
+
+<!-- Vraag -->
+<div class="fx up off" data-cls="bubble" style="position: absolute; top: 58px; right: 40px; max-width: 732px; background: #F1F1F1; border-radius: 14px 14px 4px 14px; padding: 11px 16px; font-size: 13.5px; line-height: 1.5">Nathalie Dubois heeft hagelschade aan haar Renault Clio en aan haar veranda (offerte 2.460 euro). Voor hoeveel zijn haar auto en woning verzekerd, en welke vrijstelling gaat eraf?</div>
+
+<!-- Antwoord -->
+<p class="fx up off" data-cls="a0" style="position: absolute; top: 132px; left: 250px; width: 910px; margin: 16px 0; font-size: 16px">Dit staat in de bijzondere voorwaarden die Hoflandt op 10 maart 2026 naar Nathalie stuurde.</p>
+
+<div class="fx up off" data-cls="a1" style="position: absolute; top: 226px; left: 250px; width: 447px; height: 172px; border: 1px solid #E6E6E6; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--accent)">AUTO</span>
+<span style="font-size: 14px; font-weight: 600">Renault Clio · Auto Plus 43.110.058<span style="display: inline-flex; align-items: center; gap: 6px; border: 1px solid #E6E6E6; border-radius: 6px; padding: 4px 9px; font-size: 12px; color: #444444; font-weight: 400"><span class="pdf" style="font-size: 9.5px">PDF</span>Woning Flex – Bijz. voorwaarden</span></span>
+<span style="font-size: 13px; color: #333333; line-height: 1.45">• Verzekerde waarde 18.760 EUR<br>• Mini Omnium Extra: hagel gedekt<br>• Vrijstelling <strong style="font-weight: 600">250 EUR</strong></span>
+<span class="src"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Auto Plus – Bijz. voorwaarden, p. 1</span>
+</div>
+
+<div class="fx up off" data-cls="a2" style="position: absolute; top: 226px; left: 713px; width: 447px; height: 172px; border: 1px solid #E6E6E6; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: var(--accent)">WONING</span>
+<span style="font-size: 14px; font-weight: 600">Hoogveld 12, Lier · Woning Flex 51.220.914</span>
+<span style="font-size: 13px; color: #333333; line-height: 1.45">• Gebouw: stelsel kamers (± 412.000 EUR)<br>• Inboedel 45.000 EUR · vrijstelling <strong style="font-weight: 600">285,17 EUR</strong><br>• Veranda en dakgoot gedekt (art. 3.14 A)</span>
+<span class="src fx" data-cls="tagPressed"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Woning Flex – Bijz. voorwaarden, p. 1</span>
+</div>
+
+<div class="fx up off" data-cls="a3" style="position: absolute; top: 408px; left: 250px; width: 910px; height: 40px; display: flex; align-items: center; gap: 10px; background: #FDF3F4; border-radius: 10px; padding: 0 16px; font-size: 13.5px">
+<span style="font-weight: 600">Vergoeding veranda</span><span style="color: #555555">offerte 2.460 EUR − vrijstelling 285,17 EUR =</span><strong style="font-weight: 700; color: #9E1724">± 2.174,83 EUR</strong>
+</div>
+
+<p class="fx up off" data-cls="a4" style="position: absolute; top: 458px; left: 250px; width: 910px; margin: 0; font-size: 13px; line-height: 1.4; color: #333333"><strong style="font-weight: 600">Niet gedekt:</strong> de tuinset met glazen tafel (buiten, niet vastgemaakt). Auto: schatting in de hagelstraat op 15 juli.</p>
+
+<div class="fx up off" data-cls="a5" style="position: absolute; top: 490px; left: 250px; display: flex; gap: 10px">
+<span class="fx" data-cls="btnPressed" style="height: 40px; width: 210px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: #FFFFFF; border-radius: 10px; font-size: 13.5px; font-weight: 600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Stel antwoordmail op</span>
+<span style="height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border: 1px solid #DADADA; border-radius: 10px; font-size: 13.5px">Kopieer</span>
+</div>
+
+<!-- Invoerveld -->
+<div style="position: absolute; top: 592px; left: 250px; width: 910px; height: 58px; border: 1px solid #DADADA; border-radius: 14px; padding: 9px 56px 9px 16px; font-size: 13.5px; line-height: 1.45; box-shadow: 0 2px 8px rgba(0,0,0,.04)">
+<span class="fx" data-cls="phOn" style="position: absolute; left: 16px; top: 18px; color: #9A9A9A">Stel een vraag over je klanten en polissen…</span>
+<span data-text="typed"></span><span class="fx caret off" data-cls="caretOn" style="display: inline-block; width: 1.5px; height: 16px; background: #141414; vertical-align: -3px; margin-left: 1px"></span>
+<span style="position: absolute; right: 10px; top: 11px; width: 36px; height: 36px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></span>
+</div>
+
+<!-- PDF-paneel -->
+<div class="fx slide off" data-cls="panel" style="position: absolute; top: 0; right: 0; width: 540px; height: 664px; background: #F4F4F5; border-left: 1px solid #E2E2E2; box-shadow: -20px 0 40px rgba(0,0,0,.08); display: flex; flex-direction: column">
+<div style="background: #FFFFFF; border-bottom: 1px solid #E6E6E6; padding: 12px 16px; display: flex; flex-direction: column; gap: 3px">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600"><span class="pdf" style="font-size: 9.5px">PDF</span>Woning Flex 51.220.914 – Bijzondere voorwaarden 01.2026.pdf</span>
+<span style="font-size: 11.5px; color: #777777">Bijlage bij “RE: Kopie van mijn polissen voor de bank” · Els Hoflandt · 10/03/2026</span>
+</div>
+<div style="margin: 16px; background: #FFFFFF; border: 1px solid #E2E2E2; box-shadow: 0 2px 10px rgba(0,0,0,.05); padding: 20px 22px; display: flex; flex-direction: column; gap: 7px; font-size: 11.5px; line-height: 1.4">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 16px; font-weight: 700">Noordhaven Verzekeringen</span><span style="font-size: 12.5px; font-weight: 600">Bijzondere voorwaarden (kopie)</span></div>
+<div style="display: flex; justify-content: space-between; color: #444444; padding-bottom: 6px; border-bottom: 2px solid #141414"><span>Woning Flex</span><span>Polisnummer 51.220.914</span></div>
+<div style="display: grid; grid-template-columns: 130px 1fr; gap: 4px 10px; padding-top: 4px">
+<span style="font-weight: 600">Verzekeringnemer</span><span>Nathalie Dubois</span>
+<span style="font-weight: 600">Adres</span><span>Hoogveld 12, 2500 Lier</span>
+<span style="font-weight: 600">Type</span><span>Halfopen woning met veranda (polycarbonaat dak, 2019)</span>
+<span style="font-weight: 600">Aantal kamers</span><span>8 (stelsel kamers, geen evenredigheidsregel)</span>
+</div>
+<div class="sec">Verzekerde bedragen</div>
+<div style="display: grid; grid-template-columns: 130px 1fr; gap: 4px 10px">
+<span style="font-weight: 600">Gebouw</span><span>volgens stelsel kamers (indicatief 412.000 EUR)</span>
+<span style="font-weight: 600">Inboedel</span><span>45.000 EUR</span>
+</div>
+<div class="sec">Waarborgen</div>
+<div style="display: grid; grid-template-columns: 1fr 110px 120px; gap: 4px 10px">
+<span style="font-weight: 600">Waarborg</span><span style="font-weight: 600">Bedrag</span><span style="font-weight: 600">Vrijstelling</span>
+<span>Basisdekkingen gebouw: brand, storm en hagel, water, glas</span><span>stelsel kamers</span>
+<span style="position: relative"><span class="mk moff" data-cls="m1" style="padding: 1px 3px">285,17 EUR (geïndexeerd)</span><span class="badge fx pop off" data-cls="b1" style="position: absolute; left: -22px; top: 0">1</span></span>
+</div>
+<div class="sec">Bijzondere bepalingen</div>
+<span style="position: relative; padding-left: 22px"><span class="badge fx pop off" data-cls="b2" style="position: absolute; left: 0; top: 1px">2</span><span class="mk moff" data-cls="m2" style="padding: 1px 3px">Art. 3.14 A – Storm, hagel, sneeuw- en ijsdruk: de veranda en de dakgoot zijn inbegrepen. Niet gedekt: voorwerpen buiten die niet blijvend vastgemaakt zijn.</span></span>
+</div>
+</div>
+
+<!-- Mail-lade -->
+<div class="fx slide off" data-cls="drawer" style="position: absolute; top: 0; right: 0; width: 540px; height: 664px; background: #FFFFFF; border-left: 1px solid #E2E2E2; box-shadow: -20px 0 40px rgba(0,0,0,.08); display: flex; flex-direction: column">
+<div style="padding: 14px 20px; border-bottom: 1px solid #EDEDED; display: flex; justify-content: space-between; align-items: center"><span style="font-size: 14px; font-weight: 600">Antwoordmail</span><span class="tag-ok">Opgesteld uit 3 bronnen</span></div>
+<div style="padding: 10px 20px; border-bottom: 1px solid #EDEDED; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px">
+<span><span style="color: #8A8A8A">Aan</span>  nathalie.dubois@telenet.be</span>
+<span><span style="color: #8A8A8A">Onderwerp</span>  RE: Hagelschade auto en veranda (S-2026-0431 / 0432)</span>
+</div>
+<div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; line-height: 1.5; color: #222222">
+<span class="fx up off" data-cls="e0">Dag Nathalie,</span>
+<span class="fx up off" data-cls="e1">Hierbij een overzicht van uw verzekerde bedragen en de vrijstellingen.</span>
+<span class="fx up off" data-cls="e2"><strong style="font-weight: 600">Veranda en dakgoot</strong> (Woning Flex 51.220.914)<br>Vrijstelling 285,17 EUR. De offerte van 2.460 EUR is aanvaard: u ontvangt ongeveer 2.175 EUR na ontvangst van de factuur.</span>
+<span class="fx up off" data-cls="e3"><strong style="font-weight: 600">Renault Clio</strong> (Auto Plus 43.110.058)<br>Verzekerde waarde 18.760 EUR, Mini Omnium Extra dekt hagel. Vrijstelling 250 EUR. U kan op 15 juli om 14u terecht in de hagelstraat in Mechelen.</span>
+<span class="fx up off" data-cls="e4">De tuinset blijft helaas uitgesloten van dekking.</span>
+<span class="fx up off" data-cls="e5">Met vriendelijke groeten,<br>Pieter Janssens, Verzekeringskantoor Hoflandt</span>
+</div>
+<div style="margin-top: auto; padding: 0 20px 16px; display: flex; justify-content: flex-end; gap: 10px">
+<span style="height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border: 1px solid #DADADA; border-radius: 10px; font-size: 13.5px">Bewerk</span>
+<span class="fx" data-cls="sendPressed" style="height: 40px; width: 120px; display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #FFFFFF; border-radius: 10px; font-size: 13.5px; font-weight: 600">Verstuur</span>
+</div>
+<div class="fx off" data-cls="sent" style="position: absolute; inset: 0; background: rgba(255,255,255,.94); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px">
+<span class="fx pop off" data-cls="sent" style="width: 72px; height: 72px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 34px rgba(196,30,46,.35)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+<span style="font-size: 17px; font-weight: 600">Verzonden naar Nathalie Dubois</span>
+<span style="font-size: 13px; color: #666666">Bewaard in haar klantdossier</span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor" data-cursor style="position: absolute; left: 0; top: 0; z-index: 50; opacity: 0">
+<span class="rip" data-cls="ripple"></span>
+<svg width="22" height="22" viewBox="0 0 24 24" style="position: absolute; left: -3px; top: -2px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25))"><path d="M4 2.5v17.2l4.6-4.4 2.9 6.6 2.9-1.3-2.9-6.5h6.4z" fill="#141414" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/></svg>
+</div>
+
+</div>
+</div>
+</div>
+</figure>
+
+<p style="margin: 0; font-size: 12px; color: #8A8A8A">Fictief voorbeeld: alle namen, polissen en verzekeraars zijn verzonnen.</p>
+</div>
+</section>
+
+<!-- HOE HET WERKT -->
+<section id="hoe" style="border-top: 1px solid #EDEDED; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent)">Hoe het werkt</span>
+<h2 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700">Van verspreide mails naar één bedrijfsbrein</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #555555">In drie stappen, zonder dat je iets moet installeren.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+
+<div style="flex: 1 1 300px; min-width: 0; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 500">01</span>
+<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.02em; font-weight: 600">Verbind je bronnen</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Met één klik geef je toegang. Wij halen alles op wat al verspreid zit over je kantoor.</p>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px">
+<div style="display: flex; align-items: center; gap: 10px; background: #FAFAFA; border: 1px solid #EDEDED; border-radius: 10px; padding: 10px 12px; font-size: 15px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+Mailbox en bijlagen (polissen, contracten)</div>
+<div style="display: flex; align-items: center; gap: 10px; background: #FAFAFA; border: 1px solid #EDEDED; border-radius: 10px; padding: 10px 12px; font-size: 15px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+Klantgegevens uit je beheersysteem</div>
+<div style="display: flex; align-items: center; gap: 10px; background: #FAFAFA; border: 1px solid #EDEDED; border-radius: 10px; padding: 10px 12px; font-size: 15px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+Interne processen en documenten</div>
+</div>
+</div>
+
+<div style="flex: 1 1 300px; min-width: 0; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 500">02</span>
+<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.02em; font-weight: 600">Wij bouwen je bedrijfsbrein</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Elke mail en elke polis wordt gelezen, aan de juiste klant gekoppeld en doorzoekbaar gemaakt in een beveiligde kennisbank.</p>
+<div style="margin-top: 4px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 10px; padding: 10px 12px; background: #FDF3F4; font-size: 15px; color: #9E1724"><span>Polissen herkend en uitgelezen</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 10px; padding: 10px 12px; background: #FDF3F4; font-size: 15px; color: #9E1724"><span>Gekoppeld per klant</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 10px; padding: 10px 12px; background: #FDF3F4; font-size: 15px; color: #9E1724"><span>Altijd up-to-date</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
+</div>
+</div>
+
+<div style="flex: 1 1 300px; min-width: 0; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 500">03</span>
+<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.02em; font-weight: 600">Stel je vragen aan je AI</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Koppel de kennisbank aan de AI-assistent die je al gebruikt, of werk in onze eigen chat. Elk antwoord verwijst naar de bron.</p>
+<div style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px">
+<span style="border: 1px solid #DADADA; border-radius: 999px; padding: 8px 14px; font-size: 14px">Claude</span>
+<span style="border: 1px solid #DADADA; border-radius: 999px; padding: 8px 14px; font-size: 14px">Microsoft Copilot</span>
+<span style="border: 1px solid #DADADA; border-radius: 999px; padding: 8px 14px; font-size: 14px">ChatGPT</span>
+<span style="background: #141414; color: #FFFFFF; border-radius: 999px; padding: 8px 14px; font-size: 14px">Onze chat</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FUNCTIES -->
+<section id="functies" style="background: #FAFAFA; border-top: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent)">Functies</span>
+<h2 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700">Alles wat je over een klant moet weten, in één oogopslag</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+
+<div style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 10px; background: #FDF3F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 600">Volledig klantoverzicht</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Alle polissen, bijvoegsels, mails en vervaldagen per klant samen. Zie meteen welk contract het actuele is.</p>
+</div>
+
+<div style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 10px; background: #FDF3F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 600">Antwoord met de exacte clausule</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Vraag wat gedekt is en krijg het antwoord met artikel en pagina, zodat je het zelf kan nakijken.</p>
+</div>
+
+<div style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 10px; background: #FDF3F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span>
+<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 600">Automatische e-mails</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Laat een antwoord aan je klant opstellen op basis van zijn dossier. Jij leest na en verstuurt.</p>
+</div>
+
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; border-top: 1px solid #E6E6E6; padding-top: 28px; font-size: 15px; color: #333333">
+<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Gehost in de EU</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>GDPR-conform</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Je data blijft van jou, verwijderbaar op elk moment</span>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 500">Wie zijn wij?</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 40px">
+
+<div style="flex: 1 1 320px; max-width: 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<img src="img/stefan.jpg" alt="Stefan Lommaert" width="112" height="112" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 25%; border: 1px solid #E2E2E2; display: block">
+<h3 style="margin: 4px 0 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em">Stefan Lommaert</h3>
+<span style="font-size: 14px; color: var(--accent); font-weight: 500">Co-founder · Burgerlijk ingenieur computerwetenschappen</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #555555">Stefan heeft ervaring als AI- en dataconsultant en bouwt de technologie achter de AI-kennisbank.</p>
+<a href="https://www.linkedin.com/in/stefan-lommaert-069668226/" target="_blank" rel="noopener" aria-label="LinkedIn van Stefan Lommaert" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; align-self: flex-start">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+</div>
+
+<div style="flex: 1 1 320px; max-width: 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<img src="img/robbe.jpg" alt="Robbe Vermeiren" width="112" height="112" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 30%; border: 1px solid #E2E2E2; display: block">
+<h3 style="margin: 4px 0 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em">Robbe Vermeiren</h3>
+<span style="font-size: 14px; color: var(--accent); font-weight: 500">Co-founder · Burgerlijk ingenieur toegepaste wiskunde</span>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #555555">Robbe heeft ervaring als consultant en doet momenteel een doctoraat aan de KU Leuven.</p>
+<a href="https://www.linkedin.com/in/robbe-vermeiren/" target="_blank" rel="noopener" aria-label="LinkedIn van Robbe Vermeiren" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; align-self: flex-start">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- BETA CTA -->
+<section id="beta" style="padding: 0 24px 104px; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; background: var(--accent); color: #FFFFFF; border-radius: 24px; padding: clamp(36px, 6vw, 80px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 700">Interesse?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 520px">We zoeken een handvol makelaarskantoren die mee willen bouwen aan de kennisbank.</p>
+<ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+<li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gratis toegang tijdens de bèta</li>
+<li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rechtstreekse inspraak in nieuwe functies</li>
+<li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Persoonlijke opstart, wij doen het werk</li>
+</ul>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+<a href="https://cal.com/d/coYGPq1ju2yXdG1cdEt8p6/15min" target="_blank" rel="noopener" class="btn btn-white">Plan een gesprek</a>
+<span style="font-size: 14px; line-height: 1.6">of mail naar <a href="mailto:vermeirenrobbe@hotmail.com" style="color: #FFFFFF">vermeirenrobbe@hotmail.com</a><br>of <a href="mailto:stefan.lommaert@gmail.com" style="color: #FFFFFF">stefan.lommaert@gmail.com</a></span>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid #EDEDED; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; font-size: 14px; color: #666666">
+<span style="display: flex; align-items: center; gap: 8px; color: #141414; font-weight: 600"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); display: block"></span>[Naam]</span>
+<span>© 2026 [Naam]</span>
+<a href="privacy.html" style="color: #666666">Privacybeleid</a>
+</div>
+</footer>
+
+<script>
+(function () {
+  // ---------- tijdlijnen (zelfde timing als in het ontwerp) ----------
+  function helpers(t) {
+    var is = function (a, b) { return t >= a && t < (b === undefined ? 99 : b); };
+    var on = function (a, b) { return is(a, b) ? 'on' : 'off'; };
+    return { is: is, on: on };
+  }
+
+  function overzicht(t) {
+    var h = helpers(t), is = h.is, on = h.on, E = 14.6;
+    var tops = [444, 482, 520, 558], v = {};
+    tops.forEach(function (top, i) {
+      var appear = 4.0 + 0.4 * i, fly = 5.8 + 0.3 * i;
+      var dx = 640 - 595, dy = 330 - (top + 16);
+      if (t < appear || t >= E) v['c' + i] = 'opacity:0;transform:translate(-16px,0px) scale(1)';
+      else if (t < fly) v['c' + i] = 'opacity:1;transform:translate(0px,0px) scale(1)';
+      else v['c' + i] = 'opacity:0;transform:translate(' + dx + 'px,' + dy + 'px) scale(.2)';
+    });
+    return Object.assign(v, {
+      s1: on(0.05, E),
+      inbox: on(0.2, E), r0: on(0.4, E), r1: on(0.6, E), r2: on(0.8, E), r3: on(1.0, E), r4: on(1.2, E),
+      nsel: is(1.8, E) ? 'nsel' : '', nexp: is(2.3, E) ? 'xon' : 'xoff',
+      brain: on(3.5, E), l1: on(5.4, E), lit: is(7.0, E) ? 'lit' : '',
+      p0: on(7.4, E), p1: on(8.0, E), p2: on(8.6, E), p3: on(9.2, E),
+      l2: on(10.0, E), card: on(10.3, E), k0: on(10.8, E), k1: on(11.3, E), k2: on(11.8, E), k3: on(12.3, E)
+    });
+  }
+
+  var Q = 'Nathalie Dubois heeft hagelschade aan haar Renault Clio en aan haar veranda (offerte 2.460 euro). Voor hoeveel zijn haar auto en woning verzekerd, en welke vrijstelling gaat eraf?';
+  function chat(t) {
+    var h = helpers(t), is = h.is, on = h.on, E = 20.4;
+    var n = 0;
+    if (t >= 3.6) n = Q.length; else if (t > 0.8) n = Math.floor(((t - 0.8) / 2.8) * Q.length);
+    var typed = is(0.3, 3.9) ? Q.slice(0, n) : '';
+    var cx = 1010, cy = 600, co = 0;
+    if (is(8.3, 8.7)) { co = 1; }
+    else if (is(8.7, 10.2)) { cx = 900; cy = 395; co = 1; }
+    else if (is(10.2, 13.0)) { cx = 1010; cy = 330; co = 1; }
+    else if (is(13.0, 14.4)) { cx = 395; cy = 534; co = 1; }
+    else if (is(14.4, 16.6)) { cx = 960; cy = 300; co = 1; }
+    else if (is(16.6, 18.6)) { cx = 1160; cy = 652; co = 1; }
+    cx = Math.round(40 + (cx - 40) * 1.0467);
+    cy = Math.round(12 + (cy - 24) * 1.0467);
+    return {
+      s2: on(0.05, E),
+      typed: typed, phOn: typed.length === 0 ? 'on' : 'off', caretOn: is(0.5, 3.9) ? 'on' : 'off',
+      sideAct: is(3.9, E) ? 'act' : '', title: on(3.9, E), bubble: on(3.9, E),
+      a0: on(5.0, E), a1: on(5.5, E), a2: on(6.0, E), a3: on(6.6, E), a4: on(7.0, E), a5: on(7.5, E),
+      tagPressed: is(9.6, 13.4) ? 'tp' : '',
+      panel: on(9.9, 13.4), m1: is(10.6, 13.4) ? 'mon' : 'moff', b1: on(10.6, 13.4), m2: is(11.4, 13.4) ? 'mon' : 'moff', b2: on(11.4, 13.4),
+      btnPressed: is(13.9, 14.15) ? 'bp' : '',
+      drawer: on(14.1, E),
+      e0: on(14.5, E), e1: on(14.85, E), e2: on(15.2, E), e3: on(15.55, E), e4: on(15.9, E), e5: on(16.25, E),
+      sendPressed: is(17.5, 17.75) ? 'bp' : '', sent: on(17.8, E),
+      ripple: (is(9.6, 10.05) || is(13.9, 14.35) || is(17.5, 17.95)) ? 'go' : '',
+      cursor: 'translate(' + cx + 'px,' + cy + 'px)', co: String(co)
+    };
+  }
+
+  // ---------- speler ----------
+  var DYNAMIC = ['on', 'off', 'nsel', 'xon', 'xoff', 'lit', 'mon', 'moff', 'tp', 'bp', 'act', 'go'];
+  function Player(root, timeline, duration, stillFrame) {
+    var els = Array.prototype.slice.call(root.querySelectorAll('[data-cls]'));
+    var styled = Array.prototype.slice.call(root.querySelectorAll('[data-style]'));
+    var texts = Array.prototype.slice.call(root.querySelectorAll('[data-text]'));
+    var cursor = root.querySelector('[data-cursor]');
+    function render(t) {
+      var v = timeline(t);
+      els.forEach(function (el) {
+        var keys = el.getAttribute('data-cls').split(' ');
+        var sig = keys.map(function (k) { return v[k] || ''; }).join(' ');
+        if (el._sig === sig) return;
+        el._sig = sig;
+        DYNAMIC.forEach(function (c) { el.classList.remove(c); });
+        keys.forEach(function (k) { if (v[k]) el.classList.add(v[k]); });
+      });
+      styled.forEach(function (el) {
+        var s = v[el.getAttribute('data-style')];
+        if (el._s === s) return;
+        el._s = s;
+        s.split(';').forEach(function (decl) {
+          var i = decl.indexOf(':');
+          if (i > 0) el.style.setProperty(decl.slice(0, i).trim(), decl.slice(i + 1).trim());
+        });
+      });
+      texts.forEach(function (el) {
+        var s = v[el.getAttribute('data-text')];
+        if (el.textContent !== s) el.textContent = s;
+      });
+      if (cursor) {
+        if (cursor._t !== v.cursor) { cursor._t = v.cursor; cursor.style.transform = v.cursor; }
+        cursor.style.opacity = v.co;
+      }
+    }
+    var start = null, running = false, raf = null;
+    function tick(now) {
+      if (!running) return;
+      if (start === null) start = now;
+      render(((now - start) / 1000) % duration);
+      raf = requestAnimationFrame(tick);
+    }
+    this.play = function () { if (running) return; running = true; start = null; raf = requestAnimationFrame(tick); };
+    this.pause = function () { running = false; if (raf) cancelAnimationFrame(raf); };
+    this.still = function () { render(stillFrame); };
+    this.at = render;
+    render(0);
+  }
+
+  // ---------- schalen naar de breedte van de kader ----------
+  function fit(stage) {
+    var wrap = stage.parentElement;
+    var s = wrap.clientWidth / 1280;
+    stage.style.transform = 'scale(' + s + ')';
+  }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  [['anim-overzicht', overzicht, 15.2, 13.0], ['anim-chat', chat, 21, 8.0]].forEach(function (cfg) {
+    var stage = document.getElementById(cfg[0]);
+    if (!stage) return;
+    fit(stage);
+    if ('ResizeObserver' in window) new ResizeObserver(function () { fit(stage); }).observe(stage.parentElement);
+    else window.addEventListener('resize', function () { fit(stage); });
+    var player = new Player(stage, cfg[1], cfg[2], cfg[3]);
+    stage._player = player;
+    if (reduced) { player.still(); return; }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) player.play(); else player.pause(); });
+      }, { threshold: 0.25 }).observe(stage.parentElement);
+    } else {
+      player.play();
+    }
+  });
+})();
+</script>
+</body>
+</html>
