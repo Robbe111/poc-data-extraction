@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>[Naam] · De AI-kennisbank voor verzekeringsmakelaars</title>
-<meta name="description" content="Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI. Stel een vraag en krijg meteen het antwoord, met de exacte clausule erbij.">
+<meta name="description" content="Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="De AI-kennisbank voor verzekeringsmakelaars">
-<meta property="og:description" content="Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI. Stel een vraag en krijg meteen het antwoord, met de exacte clausule erbij.">
+<meta property="og:description" content="Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI.">
 <meta property="og:image" content="og-image.png">
 <meta property="og:locale" content="nl_BE">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/geist-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/geist-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Lettertypes staan op de eigen server (geen Google Fonts, dus geen IP-adressen naar derden) */
 @font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/geist-sans-latin-400-normal.woff2) format('woff2')}
@@ -22,24 +23,47 @@
 @font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/geist-sans-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/geist-mono-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/geist-mono-latin-500-normal.woff2) format('woff2')}
-:root{--accent:#C41E2E;--accent-dark:#9E1724;--accent-soft:#FDF3F4;--ink:#141414;--muted:#555555;--line:#E6E6E6}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-500-normal.woff2) format('woff2')}
+:root{--accent:#C41E2E;--accent-dark:#9E1724;--accent-soft:#FDF3F4;--ink:#191919;--muted:#545454;--line:#E7E7E2;--tint:#F0F0EE;--serif:'Newsreader',Georgia,'Times New Roman',serif;--gutter:clamp(20px, 4vw, 48px)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#FFFFFF;color:var(--ink);font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:#1A1A1A}a:hover{color:var(--accent)}
+body{margin:0;background:#FFFFFF;color:var(--ink);font-family:'Geist',system-ui,sans-serif;font-size:16px;line-height:1.4;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}a:hover{color:var(--accent)}
 img{max-width:100%}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:#fff;padding:8px 12px;z-index:10}
-.btn{display:inline-block;text-decoration:none;border-radius:10px;font-size:16px;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
-.btn-red{background:var(--accent);color:#fff;padding:15px 24px;font-weight:600}.btn-red:hover{background:var(--accent-dark);color:#fff}
-.btn-line{border:1px solid #DADADA;color:var(--ink);padding:14px 24px;font-weight:500}.btn-line:hover{border-color:var(--ink);color:var(--ink)}
-.btn-dark{background:var(--ink);color:#fff;padding:11px 18px;border-radius:8px;font-size:15px;font-weight:500}.btn-dark:hover{background:#333;color:#fff}
-.btn-white{background:#fff;color:var(--ink);padding:17px 26px;border-radius:12px;font-size:17px;font-weight:600}.btn-white:hover{background:#F3F3F3;color:var(--ink)}
-.nav-links a:not(.btn){text-decoration:none}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+/* titels: serif, regulier gewicht, krappe regelafstand */
+.display,.h2,.h3{font-family:var(--serif);font-weight:400;letter-spacing:-0.02em;margin:0;color:var(--ink)}
+.display{font-size:clamp(40px, 7vw, 76px);line-height:1.02}
+.display em{font-style:italic;color:var(--accent)}
+.h2{font-size:clamp(32px, 4vw, 48px);line-height:1.12}
+.h3{font-size:clamp(22px, 2vw, 26px);line-height:1.2}
+.lead{margin:0;font-size:clamp(17px, 1.5vw, 20px);line-height:1.45;color:var(--muted)}
+.body{margin:0;font-size:16px;line-height:1.5;color:var(--muted)}
+
+/* labels zoals op de tag-chips: wit, dunne rand, klein */
+.tag{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:#FFFFFF;border:1px solid #D3D3D3;border-radius:4px;padding:6px 10px;font-size:14px;line-height:1.15;font-weight:500;letter-spacing:0;color:#747474}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.num{font-family:'Geist Mono',monospace;font-size:13px;font-weight:500;letter-spacing:0;color:var(--accent)}
+
+.card{border:1px solid var(--line);border-radius:12px;background:#FFFFFF;padding:28px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1px solid transparent;border-radius:8px;padding:10px 14px;font-size:15px;line-height:1.2;font-weight:500;letter-spacing:-0.01em;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn-lg{padding:13px 20px;font-size:16px}
+.btn-red{background:var(--accent);border-color:var(--accent);color:#fff}.btn-red:hover{background:var(--accent-dark);border-color:var(--accent-dark);color:#fff}
+.btn-line{background:#fff;border-color:#D3D3D3;color:var(--ink)}.btn-line:hover{background:var(--tint);color:var(--ink)}
+.btn-dark{background:var(--ink);border-color:var(--ink);color:#fff}.btn-dark:hover{background:rgba(25,25,25,.85);color:#fff}
+.btn-white{background:#fff;border-color:#fff;color:var(--ink)}.btn-white:hover{background:var(--tint);border-color:var(--tint);color:var(--ink)}
+.nav-links a:not(.btn){text-decoration:none;font-weight:500;padding:8px 14px;border-radius:8px;transition:background-color .2s ease}
+.nav-links a:not(.btn):hover{background:var(--tint);color:var(--ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* ---------- animaties ---------- */
-.stage-wrap{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#F6F6F7}
-.stage{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:top left;overflow:hidden;background:#F6F6F7;font-family:'Geist',system-ui,sans-serif;color:var(--ink)}
+.stage-wrap{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#F6F6F7}
+.stage{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:top left;overflow:hidden;background:#F6F6F7;font-family:'Geist',system-ui,sans-serif;line-height:normal;letter-spacing:normal;color:var(--ink)}
 .stage .fx{transition:opacity .45s ease,transform .65s cubic-bezier(.22,1,.36,1),box-shadow .5s ease,border-color .4s ease,background-color .4s ease,max-height .6s ease}
 .stage .fx.off{opacity:0;pointer-events:none}
 .stage .fx.up.off{transform:translateY(10px)}
@@ -91,17 +115,17 @@ img{max-width:100%}
 <a class="skip" href="#main">Naar de inhoud</a>
 
 <!-- NAV -->
-<header style="border-bottom: 1px solid #EDEDED; background: #FFFFFF">
-<nav aria-label="Hoofdmenu" style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #141414">
-<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; background: var(--accent); display: block"></span>
-<span style="font-size: 21px; font-weight: 700; letter-spacing: -0.02em">[Naam]</span>
+<header style="background: #FFFFFF; border-bottom: 1px solid var(--line)">
+<nav aria-label="Hoofdmenu" class="wrap" style="padding-top: 14px; padding-bottom: 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink)">
+<span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--accent); display: block"></span>
+<span style="font-size: 20px; font-weight: 600; letter-spacing: -0.03em">[Naam]</span>
 </a>
-<div class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px">
+<div class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 15px">
 <a href="#hoe">Hoe het werkt</a>
 <a href="#functies">Functies</a>
 <a href="#team">Over ons</a>
-<a href="#beta" class="btn btn-dark">Word bètapartner</a>
+<a href="#beta" class="btn btn-dark" style="margin-left: 10px">Word bètapartner</a>
 </div>
 </nav>
 </header>
@@ -109,25 +133,21 @@ img{max-width:100%}
 <main id="main">
 
 <!-- HERO -->
-<section id="top" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 56px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px">
-<div style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid #F1C9CD; background: #FDF3F4; color: #9E1724; border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 500">
-<span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: block"></span>
-Nu in bèta voor Belgische makelaarskantoren
-</div>
-<h1 style="margin: 0; font-size: clamp(28px, 7.4vw, 80px); line-height: 1.04; hyphens: auto; overflow-wrap: break-word; letter-spacing: -0.04em; font-weight: 700; max-width: 960px">De AI-kennisbank voor <span style="color: var(--accent)">verzekeringsmakelaars</span></h1>
-<p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: #555555; max-width: 640px">Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI. Stel een vraag en krijg meteen het antwoord, met de exacte clausule erbij.</p>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px">
-<a href="#beta" class="btn btn-red">Word bètapartner</a>
-<a href="#hoe" class="btn btn-line">Bekijk hoe het werkt</a>
+<section id="top" class="wrap" style="padding-top: clamp(72px, 10vw, 128px); padding-bottom: 64px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px">
+<h1 class="display" style="max-width: 920px; hyphens: auto; overflow-wrap: break-word">De AI-kennisbank voor <em>verzekeringsmakelaars</em></h1>
+<p class="lead" style="max-width: 600px">Al je mails, polissen en klantgegevens in één kennisbank, gekoppeld aan jouw favoriete AI.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px">
+<a href="#beta" class="btn btn-lg btn-red">Word bètapartner</a>
+<a href="#hoe" class="btn btn-lg btn-line">Bekijk hoe het werkt</a>
 </div>
 </section>
 
 <!-- DEMO: twee animaties onder elkaar -->
-<section aria-label="Demo" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 112px">
-<div style="border: 1px solid #E6E6E6; border-radius: 20px; background: #FAFAFA; padding: clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(28px, 4vw, 48px)">
+<section aria-label="Demo" class="wrap" style="padding-bottom: clamp(80px, 9vw, 128px)">
+<div style="border: 1px solid var(--line); border-radius: 16px; background: var(--tint); padding: clamp(12px, 3vw, 40px); display: flex; flex-direction: column; gap: clamp(28px, 4vw, 48px)">
 
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
-<figcaption style="display: flex; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 600"><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500">01</span>Je mails en polissen worden één AI-kennisbank, gekoppeld per klant</figcaption>
+<figcaption style="display: flex; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 500"><span class="num">01</span>Je mails en polissen worden één AI-kennisbank, gekoppeld per klant</figcaption>
 <div class="stage-wrap">
 <div class="stage" id="anim-overzicht" role="img" aria-label="Animatie: mails en polissen komen binnen, worden ingelezen in de AI-kennisbank en gekoppeld aan het klantdossier van Nathalie Dubois.">
 <div aria-hidden="true" style="position: absolute; inset: 0; width: 1308px; height: 768px; left: -28px">
@@ -198,7 +218,7 @@ Nu in bèta voor Belgische makelaarskantoren
 </figure>
 
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 14px">
-<figcaption style="display: flex; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 600"><span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500">02</span>Stel een vraag, controleer de bron en verstuur het antwoord</figcaption>
+<figcaption style="display: flex; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 500"><span class="num">02</span>Stel een vraag, controleer de bron en verstuur het antwoord</figcaption>
 <div class="stage-wrap">
 <div class="stage" id="anim-chat" role="img" aria-label="Animatie: een makelaar stelt een vraag over hagelschade, krijgt een antwoord met de exacte clausule, controleert de bron en verstuurt een antwoordmail.">
 <div aria-hidden="true" style="position: absolute; inset: 0; width: 1308px; height: 768px; left: -28px">
@@ -331,57 +351,56 @@ Nu in bèta voor Belgische makelaarskantoren
 </div>
 </figure>
 
-<p style="margin: 0; font-size: 12px; color: #8A8A8A">Fictief voorbeeld: alle namen, polissen en verzekeraars zijn verzonnen.</p>
 </div>
 </section>
 
 <!-- HOE HET WERKT -->
-<section id="hoe" style="border-top: 1px solid #EDEDED; background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 56px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
-<span style="font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent)">Hoe het werkt</span>
-<h2 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700">Van verspreide mails naar één bedrijfsbrein</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #555555">In drie stappen, zonder dat je iets moet installeren.</p>
+<section id="hoe" style="background: #FFFFFF; border-top: 1px solid var(--line)">
+<div class="wrap" style="padding-top: clamp(80px, 9vw, 128px); padding-bottom: clamp(80px, 9vw, 128px); display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 720px">
+<span class="tag">Hoe het werkt</span>
+<h2 class="h2">Van verspreide mails naar één bedrijfsbrein</h2>
+<p class="lead">In drie stappen, zonder dat je iets moet installeren.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
 
-<div style="flex: 1 1 300px; min-width: 0; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 500">01</span>
-<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.02em; font-weight: 600">Verbind je bronnen</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Met één klik geef je toegang. Wij halen alles op wat al verspreid zit over je kantoor.</p>
+<div class="card" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span class="num">01</span>
+<h3 class="h3">Verbind je bronnen</h3>
+<p class="body">Met één klik geef je toegang. Wij halen alles op wat al verspreid zit over je kantoor.</p>
 <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px">
-<div style="display: flex; align-items: center; gap: 10px; background: #FAFAFA; border: 1px solid #EDEDED; border-radius: 10px; padding: 10px 12px; font-size: 15px">
+<div style="display: flex; align-items: center; gap: 10px; background: var(--tint); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 15px">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
 Mailbox en bijlagen (polissen, contracten)</div>
-<div style="display: flex; align-items: center; gap: 10px; background: #FAFAFA; border: 1px solid #EDEDED; border-radius: 10px; padding: 10px 12px; font-size: 15px">
+<div style="display: flex; align-items: center; gap: 10px; background: var(--tint); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 15px">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
 Klantgegevens uit je beheersysteem</div>
-<div style="display: flex; align-items: center; gap: 10px; background: #FAFAFA; border: 1px solid #EDEDED; border-radius: 10px; padding: 10px 12px; font-size: 15px">
+<div style="display: flex; align-items: center; gap: 10px; background: var(--tint); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 15px">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
 Interne processen en documenten</div>
 </div>
 </div>
 
-<div style="flex: 1 1 300px; min-width: 0; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 500">02</span>
-<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.02em; font-weight: 600">Wij bouwen je bedrijfsbrein</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Elke mail en elke polis wordt gelezen, aan de juiste klant gekoppeld en doorzoekbaar gemaakt in een beveiligde kennisbank.</p>
+<div class="card" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span class="num">02</span>
+<h3 class="h3">Wij bouwen je bedrijfsbrein</h3>
+<p class="body">Elke mail en elke polis wordt gelezen, aan de juiste klant gekoppeld en doorzoekbaar gemaakt in een beveiligde kennisbank.</p>
 <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 10px; padding: 10px 12px; background: #FDF3F4; font-size: 15px; color: #9E1724"><span>Polissen herkend en uitgelezen</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
-<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 10px; padding: 10px 12px; background: #FDF3F4; font-size: 15px; color: #9E1724"><span>Gekoppeld per klant</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
-<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 10px; padding: 10px 12px; background: #FDF3F4; font-size: 15px; color: #9E1724"><span>Altijd up-to-date</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 8px; padding: 10px 12px; background: var(--accent-soft); font-size: 15px; color: #9E1724"><span>Polissen herkend en uitgelezen</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 8px; padding: 10px 12px; background: var(--accent-soft); font-size: 15px; color: #9E1724"><span>Gekoppeld per klant</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 8px; padding: 10px 12px; background: var(--accent-soft); font-size: 15px; color: #9E1724"><span>Altijd up-to-date</span><span aria-hidden="true" style="font-family: 'Geist Mono', monospace; font-size: 13px">✓</span></div>
 </div>
 </div>
 
-<div style="flex: 1 1 300px; min-width: 0; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-<span style="font-family: 'Geist Mono', monospace; font-size: 14px; color: var(--accent); font-weight: 500">03</span>
-<h3 style="margin: 0; font-size: 22px; letter-spacing: -0.02em; font-weight: 600">Stel je vragen aan je AI</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Koppel de kennisbank aan de AI-assistent die je al gebruikt, of werk in onze eigen chat. Elk antwoord verwijst naar de bron.</p>
+<div class="card" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span class="num">03</span>
+<h3 class="h3">Stel je vragen aan je AI</h3>
+<p class="body">Koppel de kennisbank aan de AI-assistent die je al gebruikt, of werk in onze eigen chat. Elk antwoord verwijst naar de bron.</p>
 <div style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px">
-<span style="border: 1px solid #DADADA; border-radius: 999px; padding: 8px 14px; font-size: 14px">Claude</span>
-<span style="border: 1px solid #DADADA; border-radius: 999px; padding: 8px 14px; font-size: 14px">Microsoft Copilot</span>
-<span style="border: 1px solid #DADADA; border-radius: 999px; padding: 8px 14px; font-size: 14px">ChatGPT</span>
-<span style="background: #141414; color: #FFFFFF; border-radius: 999px; padding: 8px 14px; font-size: 14px">Onze chat</span>
+<span style="border: 1px solid #D3D3D3; border-radius: 4px; padding: 6px 10px; font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--muted)">Claude</span>
+<span style="border: 1px solid #D3D3D3; border-radius: 4px; padding: 6px 10px; font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--muted)">Microsoft Copilot</span>
+<span style="border: 1px solid #D3D3D3; border-radius: 4px; padding: 6px 10px; font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--muted)">ChatGPT</span>
+<span style="background: var(--ink); border: 1px solid var(--ink); color: #FFFFFF; border-radius: 4px; padding: 6px 10px; font-size: 14px; font-weight: 500; letter-spacing: 0">Onze chat</span>
 </div>
 </div>
 
@@ -390,34 +409,34 @@ Interne processen en documenten</div>
 </section>
 
 <!-- FUNCTIES -->
-<section id="functies" style="background: #FAFAFA; border-top: 1px solid #EDEDED; border-bottom: 1px solid #EDEDED">
-<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 56px">
-<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
-<span style="font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent)">Functies</span>
-<h2 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.035em; font-weight: 700">Alles wat je over een klant moet weten, in één oogopslag</h2>
+<section id="functies" style="background: var(--tint)">
+<div class="wrap" style="padding-top: clamp(80px, 9vw, 128px); padding-bottom: clamp(80px, 9vw, 128px); display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 720px">
+<span class="tag">Functies</span>
+<h2 class="h2">Alles wat je over een klant moet weten, in één oogopslag</h2>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
 
-<div style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 10px; background: #FDF3F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
-<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 600">Volledig klantoverzicht</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Alle polissen, bijvoegsels, mails en vervaldagen per klant samen. Zie meteen welk contract het actuele is.</p>
+<div class="card" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 8px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+<h3 class="h3" style="margin-top: 8px">Volledig klantoverzicht</h3>
+<p class="body">Alle polissen, bijvoegsels, mails en vervaldagen per klant samen. Zie meteen welk contract het actuele is.</p>
 </div>
 
-<div style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 10px; background: #FDF3F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
-<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 600">Antwoord met de exacte clausule</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Vraag wat gedekt is en krijg het antwoord met artikel en pagina, zodat je het zelf kan nakijken.</p>
+<div class="card" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 8px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
+<h3 class="h3" style="margin-top: 8px">Antwoord met de exacte clausule</h3>
+<p class="body">Vraag wat gedekt is en krijg het antwoord met artikel en pagina, zodat je het zelf kan nakijken.</p>
 </div>
 
-<div style="flex: 1 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 10px; background: #FDF3F4; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span>
-<h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 600">Automatische e-mails</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #555555">Laat een antwoord aan je klant opstellen op basis van zijn dossier. Jij leest na en verstuurt.</p>
+<div class="card" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="width: 44px; height: 44px; border-radius: 8px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C41E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span>
+<h3 class="h3" style="margin-top: 8px">Automatische e-mails</h3>
+<p class="body">Laat een antwoord aan je klant opstellen op basis van zijn dossier. Jij leest na en verstuurt.</p>
 </div>
 
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; border-top: 1px solid #E6E6E6; padding-top: 28px; font-size: 15px; color: #333333">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; border-top: 1px solid #D9D9D3; padding-top: 28px; font-size: 15px; font-weight: 500; color: var(--ink)">
 <span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Gehost in de EU</span>
 <span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>GDPR-conform</span>
 <span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Je data blijft van jou, verwijderbaar op elk moment</span>
@@ -427,24 +446,27 @@ Interne processen en documenten</div>
 
 <!-- TEAM -->
 <section id="team" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 40px">
-<h2 style="margin: 0; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 500">Wie zijn wij?</h2>
+<div class="wrap" style="padding-top: clamp(80px, 9vw, 128px); padding-bottom: clamp(80px, 9vw, 128px); display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 720px">
+<span class="tag">Over ons</span>
+<h2 class="h2">Wie zijn wij?</h2>
+</div>
 <div style="display: flex; flex-wrap: wrap; gap: 40px">
 
-<div style="flex: 1 1 320px; max-width: 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<img src="img/stefan.jpg" alt="Stefan Lommaert" width="112" height="112" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 25%; border: 1px solid #E2E2E2; display: block">
-<h3 style="margin: 4px 0 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em">Stefan Lommaert</h3>
+<div class="card" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<img src="img/stefan.jpg" alt="Stefan Lommaert" width="112" height="112" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 25%; border: 1px solid var(--line); display: block">
+<h3 class="h3" style="margin-top: 8px">Stefan Lommaert</h3>
 <span style="font-size: 14px; color: var(--accent); font-weight: 500">Co-founder · Burgerlijk ingenieur computerwetenschappen</span>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #555555">Stefan heeft ervaring als AI- en dataconsultant en bouwt de technologie achter de AI-kennisbank.</p>
+<p class="body">Stefan heeft ervaring als AI- en dataconsultant en bouwt de technologie achter de AI-kennisbank.</p>
 <a href="https://www.linkedin.com/in/stefan-lommaert-069668226/" target="_blank" rel="noopener" aria-label="LinkedIn van Stefan Lommaert" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; align-self: flex-start">
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
 </div>
 
-<div style="flex: 1 1 320px; max-width: 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<img src="img/robbe.jpg" alt="Robbe Vermeiren" width="112" height="112" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 30%; border: 1px solid #E2E2E2; display: block">
-<h3 style="margin: 4px 0 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em">Robbe Vermeiren</h3>
+<div class="card" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<img src="img/robbe.jpg" alt="Robbe Vermeiren" width="112" height="112" style="width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 30%; border: 1px solid var(--line); display: block">
+<h3 class="h3" style="margin-top: 8px">Robbe Vermeiren</h3>
 <span style="font-size: 14px; color: var(--accent); font-weight: 500">Co-founder · Burgerlijk ingenieur toegepaste wiskunde</span>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #555555">Robbe heeft ervaring als consultant en doet momenteel een doctoraat aan de KU Leuven.</p>
+<p class="body">Robbe heeft ervaring als consultant en doet momenteel een doctoraat aan de KU Leuven.</p>
 <a href="https://www.linkedin.com/in/robbe-vermeiren/" target="_blank" rel="noopener" aria-label="LinkedIn van Robbe Vermeiren" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; align-self: flex-start">
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
 </div>
@@ -454,11 +476,11 @@ Interne processen en documenten</div>
 </section>
 
 <!-- BETA CTA -->
-<section id="beta" style="padding: 0 24px 104px; background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; background: var(--accent); color: #FFFFFF; border-radius: 24px; padding: clamp(36px, 6vw, 80px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
+<section id="beta" class="wrap" style="padding-bottom: clamp(80px, 9vw, 128px)">
+<div style="background: var(--accent); color: #FFFFFF; border-radius: 16px; padding: clamp(36px, 6vw, 80px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 700">Interesse?</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 520px">We zoeken een handvol makelaarskantoren die mee willen bouwen aan de kennisbank.</p>
+<h2 class="h2" style="color: #FFFFFF; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.05">Interesse?</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 520px">We zoeken een handvol makelaarskantoren die mee willen bouwen aan de kennisbank.</p>
 <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
 <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gratis toegang tijdens de bèta</li>
 <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rechtstreekse inspraak in nieuwe functies</li>
@@ -466,7 +488,7 @@ Interne processen en documenten</div>
 </ul>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
-<a href="https://cal.com/d/coYGPq1ju2yXdG1cdEt8p6/15min" target="_blank" rel="noopener" class="btn btn-white">Plan een gesprek</a>
+<a href="https://cal.com/d/coYGPq1ju2yXdG1cdEt8p6/15min" target="_blank" rel="noopener" class="btn btn-lg btn-white">Plan een gesprek</a>
 <span style="font-size: 14px; line-height: 1.6">of mail naar <a href="mailto:vermeirenrobbe@hotmail.com" style="color: #FFFFFF">vermeirenrobbe@hotmail.com</a><br>of <a href="mailto:stefan.lommaert@gmail.com" style="color: #FFFFFF">stefan.lommaert@gmail.com</a></span>
 </div>
 </div>
@@ -475,11 +497,11 @@ Interne processen en documenten</div>
 </main>
 
 <!-- FOOTER -->
-<footer style="border-top: 1px solid #EDEDED; background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; font-size: 14px; color: #666666">
-<span style="display: flex; align-items: center; gap: 8px; color: #141414; font-weight: 600"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); display: block"></span>[Naam]</span>
+<footer style="border-top: 1px solid var(--line); background: #FFFFFF">
+<div class="wrap" style="padding-top: 32px; padding-bottom: 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; font-size: 14px; color: var(--muted)">
+<span style="display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); display: block"></span>[Naam]</span>
 <span>© 2026 [Naam]</span>
-<a href="privacy.html" style="color: #666666">Privacybeleid</a>
+<a href="privacy.html" style="color: var(--muted)">Privacybeleid</a>
 </div>
 </footer>
 

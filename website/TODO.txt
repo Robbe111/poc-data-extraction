@@ -1,0 +1,2 @@
+- Change text, make animation slightly bigger
+- Check if it works on phone

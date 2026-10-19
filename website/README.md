@@ -9,7 +9,7 @@ Statische one-pager. Geen build-stap, geen frameworks: alles staat in `index.htm
 | `index.html` | De volledige pagina, inclusief de twee animaties (HTML + CSS + een klein script onderaan) |
 | `privacy.html` | Kladversie van het privacybeleid (laten nalezen) |
 | `img/` | Foto's van Stefan en Robbe |
-| `fonts/` | Geist en Geist Mono, zelf gehost (geen Google Fonts nodig, OFL-licentie) |
+| `fonts/` | Geist en Geist Mono (tekst) en Newsreader (titels), zelf gehost (geen Google Fonts nodig, OFL-licentie) |
 | `favicon.svg` | Rood bolletje als tab-icoon |
 | `og-image.png` | Voorbeeldafbeelding voor LinkedIn en andere links (1200×630) |
 
