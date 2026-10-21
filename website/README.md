@@ -37,5 +37,5 @@ python3 -m http.server 8000
 
 De tijdlijnen staan onderaan in `index.html` in de functies `overzicht(t)` en `chat(t)`. Elk element met `data-cls="sleutel"` krijgt de klasse die de tijdlijn op dat moment teruggeeft (`on`/`off`, ...). Een moment uitstellen = het getal in `on(start, E)` verhogen.
 
-- Animatie 1 duurt 15,2 s, animatie 2 duurt 21 s; ze lopen in een lus.
+- Animatie 1 duurt 18,8 s, animatie 2 duurt 21 s; ze lopen in een lus.
 - Ze spelen alleen af als ze in beeld zijn, en staan stil op een eindbeeld voor wie "minder beweging" aanzet in het besturingssysteem.
