@@ -128,6 +128,7 @@ img{max-width:100%}
 .stage .src{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid #F1C9CD;background:var(--accent-soft);color:var(--accent-dark);border-radius:6px;padding:4px 9px;font-size:12px}
 .stage .badge{width:16px;height:16px;border-radius:50%;background:#F5C400;color:var(--ink);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .stage .sec{background:#EEF0F3;font-weight:700;padding:4px 6px;margin-top:4px}
+@media (max-width: 700px){.stage-wrap{aspect-ratio:2/3}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.stage *{animation:none !important}}
 </style>
 </head>
@@ -690,6 +691,7 @@ Interne processen en documenten</div>
         if (cursor._t !== v.cursor) { cursor._t = v.cursor; cursor.style.transform = v.cursor; }
         cursor.style.opacity = v.co;
       }
+      if (root._onFrame) root._onFrame(t);
     }
     var start = null, running = false, raf = null;
     function tick(now) {
@@ -705,17 +707,46 @@ Interne processen en documenten</div>
     render(0);
   }
 
-  // ---------- schalen naar de breedte van de kader ----------
+  // ---------- camera op smalle schermen: inzoomen op waar de actie is ----------
+  // sleutels: [tijd, midden x, midden y, zichtbare breedte] in stage-coördinaten (1280 x 720)
+  var CAM = {
+    'anim-overzicht': [[0, 244, 354, 430], [6.4, 244, 354, 430], [7.2, 610, 380, 420], [13.3, 610, 380, 420], [14.0, 1020, 330, 430]],
+    // chat: tijdens het typen volgt de camera de tekst van links naar rechts, en terug voor de tweede regel
+    // (een 5e waarde 1 = lineair bewegen in plaats van versnellen/vertragen)
+    'anim-chat': [[0, 524, 380, 520], [1.5, 524, 380, 520], [2.83, 1050, 380, 520, 1], [3.1, 520, 380, 520], [3.9, 520, 380, 520],
+                  [4.3, 760, 380, 520], [4.9, 760, 380, 520], [5.4, 520, 380, 520], [7.2, 520, 380, 520], [7.8, 990, 380, 520], [9.5, 990, 380, 520],
+                  [10.0, 985, 360, 580], [13.3, 985, 360, 580], [13.6, 520, 420, 520], [14.0, 520, 420, 520], [14.4, 985, 360, 580]]
+  };
+  function camAt(keys, t) {
+    for (var i = 0; i < keys.length - 1; i++) {
+      var a = keys[i], b = keys[i + 1];
+      if (t < b[0]) {
+        var f = clamp01((t - a[0]) / (b[0] - a[0]));
+        if (!b[4]) f = ease(f);
+        return [a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f, a[3] + (b[3] - a[3]) * f];
+      }
+    }
+    var z = keys[keys.length - 1];
+    return [z[1], z[2], z[3]];
+  }
+  var narrow = window.matchMedia ? window.matchMedia('(max-width: 700px)') : { matches: false };
+
+  // ---------- schalen naar de kader (op gsm: met camera) ----------
   function fit(stage) {
-    var wrap = stage.parentElement;
-    var s = wrap.clientWidth / 1280;
-    stage.style.transform = 'scale(' + s + ')';
+    var wrap = stage.parentElement, W = wrap.clientWidth, H = wrap.clientHeight;
+    var keys = CAM[stage.id];
+    if (!narrow.matches || !keys) { stage.style.transform = 'scale(' + (W / 1280) + ')'; return; }
+    var c = camAt(keys, stage._t || 0), w = c[2], s = W / w, h = H / s;
+    var cx = w >= 1280 ? 640 : Math.min(Math.max(c[0], w / 2), 1280 - w / 2);
+    var cy = h >= 720 ? 360 : Math.min(Math.max(c[1], h / 2), 720 - h / 2);
+    stage.style.transform = 'translate(' + (-(cx - w / 2) * s).toFixed(2) + 'px,' + (-(cy - h / 2) * s).toFixed(2) + 'px) scale(' + s.toFixed(4) + ')';
   }
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   [['anim-overzicht', overzicht, 18.8, 16.6], ['anim-chat', chat, 21, 8.0]].forEach(function (cfg) {
     var stage = document.getElementById(cfg[0]);
     if (!stage) return;
+    stage._onFrame = function (t) { stage._t = t; if (narrow.matches) fit(stage); };
     fit(stage);
     if ('ResizeObserver' in window) new ResizeObserver(function () { fit(stage); }).observe(stage.parentElement);
     else window.addEventListener('resize', function () { fit(stage); });
