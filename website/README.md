@@ -29,7 +29,7 @@ python3 -m http.server 8000
 
 ## Online zetten
 
-**GitHub Pages:** zet de bestanden in de root van je repo, push, en zet in *Settings → Pages* de bron op de `main`-branch. Eigen domein: vul het in onder *Custom domain* en voeg bij je registrar een `CNAME`-record toe naar `<gebruikersnaam>.github.io`.
+**GitHub Pages:** de workflow `.github/workflows/pages.yml` publiceert de map `website/` (zonder README en TODO) bij elke push naar `main` of `client-filter` die iets in `website/` wijzigt. Eenmalig instellen: *Settings → Pages → Source: GitHub Actions*. Eigen domein: vul het in onder *Custom domain* en voeg bij je registrar een `CNAME`-record toe naar `robbe111.github.io`.
 
 **Netlify of Cloudflare Pages:** koppel de GitHub-repo; build command leeg laten, publish directory `/`. Daarna je domein toevoegen en de DNS-records volgen die ze tonen. HTTPS komt er automatisch bij.
 

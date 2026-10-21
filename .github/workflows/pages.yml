@@ -1,0 +1,33 @@
+# Publiceert enkel de map website/ op GitHub Pages (zonder README en TODO).
+name: Website naar GitHub Pages
+
+on:
+  push:
+    branches: [main, client-filter]
+    paths: ['website/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - run: rsync -a --exclude README.md --exclude TODO.txt website/ _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
