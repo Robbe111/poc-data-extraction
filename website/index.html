@@ -129,6 +129,10 @@ img{max-width:100%}
 .stage .badge{width:16px;height:16px;border-radius:50%;background:#F5C400;color:var(--ink);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .stage .sec{background:#EEF0F3;font-weight:700;padding:4px 6px;margin-top:4px}
 @media (max-width: 700px){.stage-wrap.cam{aspect-ratio:2/3}}
+/* regelafbreking in titels: andere plek op gsm dan op desktop */
+.br-m{display:none}
+@media (max-width: 700px){.br-m{display:inline}.br-d{display:none}}
+@media (max-width: 400px){.h2{font-size:8vw}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.stage *{animation:none !important}}
 </style>
 </head>
@@ -415,7 +419,7 @@ img{max-width:100%}
 <div class="wrap" style="padding-top: clamp(80px, 9vw, 128px); padding-bottom: clamp(80px, 9vw, 128px); display: flex; flex-direction: column; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 18px; max-width: 720px">
 <span class="tag">Hoe het werkt</span>
-<h2 class="h2">Van verspreide info naar één<br>slimme kennisbank</h2>
+<h2 class="h2">Van verspreide info naar<br class="br-m"> één<br class="br-d"> slimme kennisbank</h2>
 </div>
 <div class="steps">
 
