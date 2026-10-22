@@ -8,14 +8,14 @@ Statische one-pager. Geen build-stap, geen frameworks: alles staat in `index.htm
 |---|---|
 | `index.html` | De volledige pagina, inclusief de twee animaties (HTML + CSS + een klein script onderaan) |
 | `privacy.html` | Kladversie van het privacybeleid (laten nalezen) |
-| `img/` | Foto's van Stefan en Robbe |
+| `img/` | Foto's van Stefan en Robbe, en het Ordo-logo: `ordo-logo.svg` (donker, voor lichte achtergronden), `ordo-logo-white.svg` (voor donkere achtergronden) en `ordo-symbol.svg` (enkel het symbool) |
 | `fonts/` | Geist en Geist Mono (tekst) en Newsreader (titels), zelf gehost (geen Google Fonts nodig, OFL-licentie) |
-| `favicon.svg` | Rood bolletje als tab-icoon |
+| `favicon.svg` | Het Ordo-symbool als tab-icoon (de ring wordt wit in donkere modus) |
 | `og-image.png` | Voorbeeldafbeelding voor LinkedIn en andere links (1200×630) |
 
 ## Nog in te vullen (zoek op `[`)
 
-- `[Naam]`: productnaam (navigatie, footer, chatvenster in animatie 2, paginatitel, privacy)
+- `og-image.png`: toont nog geen Ordo-logo; opnieuw maken met de naam en het logo.
 - `og:image`: zet er de volledige URL voor zodra je domein live staat, bv. `https://jouwdomein.be/og-image.png`. LinkedIn heeft een absolute URL nodig.
 - Zodra jullie een bedrijf, een domeinmailadres of een LinkedIn-bedrijfspagina hebben: e-mailadressen vervangen in `index.html` en `privacy.html`, en KBO-nummer en adres toevoegen in de footer.
 - In `privacy.html`: `[termijn]` (hoe lang jullie contactgegevens bewaren)
